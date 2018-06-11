@@ -1,0 +1,44 @@
+\section{Conjecture Regarding Maximal Adelic Image of Hyperelliptic Curves}
+
+As we saw in Section~\ref{symbed}, the $\bmod$-$2$ monodromy of a hyperelliptic
+curve $y^2 = f(x)$ always lies in the subgroup $S_{2g+2} \subset \Sp_{2g}(\mathbb Z/2 \mathbb Z)$. Further, the $\bmod$-$2$ monodromy will be all of $S_{2g+2}$
+if and only if the spitting field of $f(x)$ is as large as possible;
+i.e., has Galois group $S_{2g+2}$ over the base field $K$.
+In Lemma~\ref{lemma:2-adic}, we saw that for $g = 2$ or $3$,
+if the $\bmod$-$2$ monodromy is surjective modulo $2$, then it is surjective
+$2$-adically. We conjecture that this pattern continues to hold in higher
+genera:
+\begin{conjecture}
+	\label{conjecture:surjective-mod-2-implies-surjective-2-adically}
+	Let $g \geq 2$ and let $H \subset \hypaddict_{2g+2}$ be a closed
+	subgroup. If $H(2) = S_{2g+2}$ then $H = \hypaddict_{2g+2}$.
+\end{conjecture}
+To conclude, we make some remarks on the consequences of this conjecture.
+\begin{remark}
+	\label{remark:}
+	As described in the proof of Lemma~\ref{lemma:reduction-from-adelic-to-mod-l},
+	via an easy generalization of the argument given 
+	in~\cite[Lemma 3, Section IV.3.4]{serre1989abelian},
+	to prove
+	Conjecture~\ref{conjecture:surjective-mod-2-implies-surjective-2-adically},
+	it suffices to check $\hypaddict_{2g+2}(8) = H(8)$.
+\end{remark}
+\begin{remark}
+	\label{remark:conjecture-implies-maximal-adelic}
+Note that Conjecture~\ref{conjecture:surjective-mod-2-implies-surjective-2-adically}, if true, has the following useful consequence:
+If $C$ is a hyperelliptic curve over $\mathbb Q$ with Jacobian $J$ satisfying
+$H_J(2) = S_{2g+2}$ and $H_J(\ell) \supset \Sp_{2g}(\mathbb Z/\ell \mathbb Z)$
+for every $\ell \geq 3$, then the $C$ has maximal adelic Galois image.
+That is, $[\grouphyp{g}{\QQ} : \mono_J] = 2$.
+
+Indeed, granting Conjecture~\ref{conjecture:surjective-mod-2-implies-surjective-2-adically}, this claim follows immediately from Lemma~\ref{lemma:reduction-from-adelic-to-mod-l}.
+\end{remark}
+\begin{remark}
+	\label{remark:anni-maximal-adelic-examples}
+	As follows from Remark~\ref{remark:conjecture-implies-maximal-adelic},
+	Conjecture~\ref{conjecture:surjective-mod-2-implies-surjective-2-adically}, would imply that the examples of hyperelliptic
+curves with maximal $\bmod$-$\ell$ image constructed in 
+\cite[Theorem 7.1]{anni2016residual} in fact have maximal adelic image.
+\end{remark}
+
+

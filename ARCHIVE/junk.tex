@@ -1,0 +1,389 @@
+We know by either~\cite[Lemma 8.12]{mumford:tata-lectures-on-theta-ii} or~\cite[Th\'eor\`eme 1]{acampo:tresses-monodromie-et-le-groupe-symplectique},
+	that 
+	\begin{align*}
+		\left\{
+	M \in \Sp_{2g}(\widehat{\mathbb Z}) :M \equiv \id_{2g} \bmod 2
+\right\} \subset \mono_{\standardFamily g 1 {\overline K}}.
+	\end{align*}
+	Recall that after restricting $\sigma_1: \symmetricFamily g 1 K \rightarrow \standardFamily g 1 K$ 
+	to an open subscheme of the target,
+	$\sigma_1$ is a covering map of degree $(2g+2)!$ by
+	Lemma~\ref{lemma:connected-generic-fiber}.
+	Therefore, the index $\left[ \mono_{\standardFamily g 1 K} : \mono_{\symmetricFamily g 1 {\overline K}} \right] \leq (2g+2)!$.
+	\todo{This is clearly true, but is the justification sufficient?}
+	\todo{An alternate proof, as suggested by james, would be to simply observe that there is a topological path in the the standard family which interchanges the roots, and this gives the full symmetric group, once we identify the
+	action of the symmetric group with the roots of the polynomial}
+
+	In order to complete the proof it suffices to show
+	$\grouphyp g {\overline K} \subset \mono_{\standardFamily g 1 {\overline K}}$, since $\left[  \grouphyp g {\overline K} : \mono_{\standardFamily g 1 K} \right] = (2g+2)!$.
+In turn to show this, it suffices to show that
+$S_{2g+2}$ is contained in $\mono_{\standardFamily g 1 {\overline K}} \bmod 2$.
+Since $\standardFamily g 1 {\overline K}$ is the base change of
+$\standardFamily g 1 K$ to ${\overline K}$
+and there is some finite extension $L/K$ so that
+$\mono_{\standardFamily g 1 L} \bmod 2$
+agrees with $\mono_{\standardFamily g 1 {\overline K}} \bmod 2$ 
+it suffices to show that for any number field $L$ we have
+$\mono_{\standardFamily g 1 L} \bmod 2 \supset S_{2g+2}$.
+	
+\todo{possibly make the following into a lemma if used elsewhere}
+To see this, it in turn suffices to exhibit a single hyperelliptic
+curve $C/L$ so that the mod-$2$ image of the Galois representation of this curve
+contains $S_{2g+2}$.
+Now, take any degree $2g+2$ polynomial $f(x)$ whose splitting field has
+Galois group
+$S_{2g+2}$ over $L$,
+and consider the curve $y^2 = f(x)$.
+Note such an $f(x)$ exists by Hilbert irreducibility.
+Then, since the roots of $f(x)$ can be identified with the two-torsion
+of the Jacobian of $C$, the action of $G_L$ on the roots of $f(x)$
+can be identified with the mod-$2$ Galois representation.
+Since the the Galois group of the splitting field of $f(x)$ is $S_{2g+2}$,
+it follows that the mod-$2$ image of the Galois representation of $C$
+is also $S_{2g+2}$, as desired.
+
+
+
+
+\begin{proposition}
+	\label{proposition:monodromy-of-small-standard-family}
+	For $i \in \left\{ 3,4 \right\}$, we have $\mono_{\standardFamily g K i} = \grouphypboth g {(i-2)} K$.
+\end{proposition}
+\begin{proof}
+	Since $i = 3,4$ are quite analogous, we only prove the slightly
+	trickier case that $i = 3$.
+	As in the proof of
+	Lemma~\ref{lemma:geometric-monodromy-of-standard-family},
+	we may reduce verifying the claim for geometric monodromy.
+	
+	We first show that the monodromy of
+	$\symmetricFamily g 3 {\overline K}$ is precisely
+	\begin{align*}
+		\Gamma_2 := \left\{ M \in \Sp_{2g+2} : M \equiv I_{2g} \bmod 2 \right\}.
+	\end{align*}			
+	Since the action of $\pi_1(\symmetricFamily g {\overline K})$ on the $2$-torsion
+	of $\symmetricFamily g 3 K$ is trivial, since the $2$-torsion precisely
+	corresponds to the roots of $f(x)$ in $y^2 = f(x)$,
+	\todo{make this more precise/understand better}
+	we obtain that $\mono_{\symmetricFamily g 3 K} \subset \grouphypsmall g {\overline K}.$
+	On the other hand,
+	observe that over a dense open subscheme of $W \subset \moduliSpaceHyp g K$,
+	the map $\phi_3|_{\phi_3^{-1}(W)}: \phi_3^{-1}(W) \rightarrow W$ as defined in~\eqref{equation:standard-family-and-symmetric-family}
+	is a smooth covering whose geometric generic fiber has
+	$(2g+2)!$ connected components corresponding
+	to the $(2g+2)!$ orderings of the ramification points of the hyperelliptic
+	curve.
+	Let $Z := \phi_3^{-1}(W)$.
+	Since, locally on the target, any smooth $X \rightarrow Y$ factors as
+	$X \rightarrow \mathbb A^n_Y \rightarrow Y$, where
+	the first map is \'etale map.
+	Hence, after possibly replacing $W$ and $Z$ with smaller open subschemes,
+	we can assume the map $\phi_3$ factors as $Z \xrightarrow \alpha \mathbb A^n_W \rightarrow W$.
+	Since $\phi_3$ has $(2g + 2)!$ components in its geometric generic fiber,
+	so does $\alpha$, and so after possibly further shrinking $W$,
+	we can assume that $\alpha$ is an \'etale cover of degree
+	$(2g+2)!$.
+	Since the map $\pi_1(\mathbb A^n_W) \rightarrow \pi_1(W)$ is surjective
+	as the map of schemes is dominant, it follows that the index
+	$[\mono_W : \mono_Z] \leq (2g+2)!$.
+	Of course, $\mono_W = \mono_{\symmetricFamily g 3 K}$ since
+	it is $W \subset \symmetricFamily g 3 K$ is a dense open subscheme.
+	Since we have shown above that $\mono_W \subset \Gamma_2$,
+	we have both
+	$[\mono_W :\mono_Z] \geq [\Gamma_2 : \grouphyp g {\overline K}] = (2g+2)!$
+	and $[\mono_W : \mono_Z] \leq (2g+2)!$.
+	It follows that $\mono_W = \Gamma_2$.
+
+	To conclude, we use the geometric monodromy of the symmetric
+	family to deduce the geometric monodromy of the standard family.
+	Recall the map $\sigma_3: \symmetricFamily g 3 {\overline K} \rightarrow \standardFamily g 3 {\overline K}$.
+	Note that this is a generically \'etale degree $(2g+1)!$ cover.
+	To conclude the proof, we only need verify that the image of the 
+	action on the two torsion of $\standardFamily g 3 {\overline K}$
+	is given by the group 
+	$S_{2g+1} \subset \Sp_{2g}(\mathbb Z/2 \mathbb Z)$,
+	acting on the
+	$2g+1$ ramification
+	points of the family $\standardFamily g 3 {\overline K}$ (and the $2g+2$nd point
+	is fixed at $\infty$).
+	There are elementary algebraic ways to see this, but perhaps
+	the simplest way is to use the equivalence of the \'etale
+	fundamental group and the topological fundamental group,
+	and then use the Lefschetz principle to replace $\overline K$
+	by $\mathbb C$.
+	Then, for any basepoint $[C] \in\standardFamily g 3 {\mathbb C}$,
+one can find a loop in $\standardFamily g 3 {\mathbb C}$,
+which permutes the ramification points of $[C]$ by an arbitrary way.
+Therefore, the deck transformations of $\sigma_3$ are indeed identified
+with $S_{2g+1}$, and since they act by permuting the $2g+1$ 
+ramification points, the mod-$2$ image of this representation indeed
+agrees with the reduction of $\grouphypsmall g {\mathbb C}$.
+Since the mod $2$ reductions of $\grouphypsmall g {\mathbb C}$
+and $\mono_{\standardFamily g 3 {\mathbb C}}$ agree and
+both contain $\Gamma_2$, it follows that they are equal as subgroups
+of $\Sp_{2g}(\widehat{\mathbb Z})$.
+	\end{proof}
+
+
+\subsection*{This obselete section contains the old version of Lemma 3.2, and its incorrect proof. These can be deleted. -James}
+\begin{lemma*}
+%Consider $S_{2g+1}$ and $S_{2g+2}$ as subgroups of $\Sp_{2g}(\bz / 2 \bz)$. Let $\hyphat_{2g+1}$ and $\hyphat_{2g+2}$ be their preimages in $\GSp_{2g}(\zh)$. These are the Galois images of the standard families of hyperelliptic curves. By Theorem~\ref{theorem:small-ab},
+Let $g \geq 2$ and let $H \subset \GSp_{2g}(\widehat{\mathbb Z})$ be a subgroup.
+%, and for a prime number $\ell$, let $H_\ell$ denote the $\ell$-adic reduction of $H$. 
+Suppose that $H_2 \supset \hypaddict_{2g+i}$ for some $i \in \{1,2\}$ and that
+$H(\ell) \supset \Sp_{2g}(\bz/\ell \bz)$ for all odd primes $\ell$.
+%If $g = 1$, further assume that $H(9) \supset \Sp_{2}(\bz/9 \mathbb Z)$
+Then
+$[\hyphat_{2g+i} : [H,H]] = 2$, and in particular, $[\hyphat_{2g+i} : [\grouphypboth g i K,\grouphypboth g i K]] = 2$. \todo{The hypothesis $H_2 = \hypaddict_{2g+i}$ is needed. Otherwise, $H$ could equal all of $\GSp_{2g}(\zh)$, and the result fails. I leave this only as a comment, in case its a controversial change. -James}
+%	\begin{itemize}
+%		\item $[\hyphat_{2g+1}, \hyphat_{2g+1}]$ has index 2 in $\hyphat_{2g+1} \cap \Sp_{2g}(\zh)$, and 
+%		\item $[\hyphat_{2g+2}, \hyphat_{2g+2}]$ has index 2 in $\hyphat_{2g+2} \cap \Sp_{2g}(\zh)$. 
+%	\end{itemize}
+\end{lemma*} 
+%\begin{remark}
+%Upon reading the statement of Corollary~\ref{theorem:r=2}, one can immediately proceed to read the proofs of Theorems~\ref{mainbldg} and~\ref{exemplinongratia}, which are detailed in Sections~\ref{section:proof-of-mainbldg} and~\ref{verified}, respectively.
+%\todo{this remark should certianly be elsewhere, unless this
+%lemma is placed in the group theory section}
+%\end{remark}
+\begin{proof} 
+	Fix $i \in \{1, 2\}$. Since we are only interested in the commutator subgroup of $H$, it suffices to consider the case where $H \subset \Sp_{2g}(\widehat{\mathbb Z})$.
+	Note that $H_\ell = \Sp_{2g}(\mathbb Z_\ell)$
+	by \cite[Theorem 1]{landesman-swaminathan-tao-xu:lifting-symplectic-group}.
+%	in the case $g \geq 2$ and 
+%	~\cite[Lemma 3, Section IV.3.4]{serre1989abelian}
+%	in the case $g = 1$. 
+	\mbox{Then, by~\cite[Proposition 2.5]{landesman-swaminathan-tao-xu:rational-families}, we have}
+	\begin{equation*}
+		H = H_2 \times \prod_{\ell \ge 3} \Sp_{2g}(\bz_\ell) \supset \hypaddict_{2g+i} \times \prod_{\ell \ge 3} \Sp_{2g}(\bz_\ell).
+	\end{equation*}
+	Since our ``closed'' commutators respect infinite products, we have that 
+    \begin{align*} 
+    	[H, H] %&= [\hypaddict_{2g+i}, \hypaddict_{2g+i}] \times \prod_{\ell \ge 3} [\Sp_{2g}(\bz_\ell), \Sp_{2g}(\bz_\ell)] \\
+        &\supset [\hypaddict_{2g+i}, \hypaddict_{2g+i}] \times \prod_{\ell \ge 3} [\Sp_{2g}(\bz_\ell), \Sp_{2g}(\bz_\ell)], 
+    \end{align*} 
+    By Theorem~\ref{theorem:small-ab} together with the fact that $[S_{2g+i}, S_{2g+i}] = A_{2g+i}$, the alternating group, we have that $[\hypaddict_{2g+i}, \hypaddict_{2g+i}] = \fy{2^\infty}{2}^{-1}(A_{2g+i})$. Also, $[\Sp_{2g}(\bz_\ell), \Sp_{2g}(\bz_\ell)] = \Sp_{2g}(\ZZ_\ell)$ by~\cite[Proposition 3(a)]{landesman-swaminathan-tao-xu:lifting-symplectic-group} when $g \geq 2$. 
+   % by~\cite[Lemma A.1]{zywina2010elliptic} for $g = 1, \ell > 3$, and by direct computation for $g = 1, \ell = 3$.
+   % \todo{question for david: is there a better reference for the $g = 1$ case?}
+We deduce that
+\begin{align*}
+[H,H] &\supset \fy{2^\infty}{2}^{-1}(A_{2g+i}) \times \prod_{\ell \ge 3} \Sp_{2g}(\bz_\ell) = (\GSp_{2g}(\zh) \to \Sp_{2g}(\bz / 2 \bz))^{-1}(A_{2g+i}).
+\end{align*}
+In fact, the containment above is an equality, because
+$\left[ H,H \right](2) = \left[ S_{2g+i}, S_{2g+i} \right] = A_{2g+i}$.
+The desired result then follows from the fact that $[S_{2g+i} : A_{2g+i}] = 2$. 
+\end{proof}
+
+\subsection*{Obselete: Monodromy of Hyperelliptic Families // The improved version of `embedding the symmetric group' makes most of this section unnecessary. -James} \label{imtiredoflabellingthesethings}
+% LOL
+
+In this section, we compute the monodromy of the families $\standardFamily g i K \to \standardTarget g i K$ 
+in Lemma~\ref{lemma:geometric-monodromy-of-standard-family}
+and
+of the moduli stack $\hyperelliptic g K$ of genus-$g$ hyperelliptic curves over $K$
+in Lemma~\ref{lemma:moduli-stack-monodromy}, with its universal family. For concision, we shall refer to each family by its base, and omit writing the total space. 
+
+Our strategy for computing the monodromy of $\hyperelliptic g K$ and $\standardTarget g i K$ is as follows: We first show that $\standardTarget g 2 K$ has the same monodromy
+as $\hyperelliptic g K$.
+We do this by demonstrating that the map $\standardTarget g 2 K \rightarrow \hyperelliptic g K$ has geometrically connected generic fiber
+in Lemma~\ref{lemma:connected-generic-fiber}.
+We then compute the monodromy of the families $\standardTarget g i K$ in Lemma~\ref{lemma:geometric-monodromy-of-standard-family},
+and we finally deduce the monodromy of $\hyperelliptic g K$ in Lemma~\ref{lemma:moduli-stack-monodromy}.
+
+The family $\standardTarget g 2 K$ was constructed by using an affine space to parameterize the coefficients of a polynomial $f(x)$ of degree $2g+2$, and hence a hyperelliptic curve $y^2 = f(x)$ given in Weierstrass form. In order to show $\standardTarget g 2 K$ and $\hyperelliptic g K$ have the same monodromy,
+we need to introduce an auxiliary family, mapping to $\standardTarget g 2 K$, where we instead label the roots of $f(x)$.
+
+\begin{definition}
+	\label{definition:symmetric-families}
+	Let $\symmetricTarget g 2 K := \mathbb A^{2g+2}_{[b_0, \ldots, b_{2g+1}]}$
+and define the family $\symmetricFamily g 2 K \rightarrow \symmetricTarget g 2 K$ of genus $g$ over $K$
+to be the smooth projective completion of the family of affine curves given by 
+\[
+%\symmetricFamily g 1 K &:= V(y^2 - (x - b_{2g}) \cdots (x -b_0)) \subset \mathbb A^{2g+1}_{[b_0, \ldots, b_{2g}]} \times\mathbb A^2_{[x,y]}, \\
+	V(y^2 - (x - b_{2g+1}) \cdots (x -b_0)) \hookrightarrow \symmetricTarget g 2 K \times \mathbb A^2_{[x,y]} \rightarrow \symmetricTarget g 2 K. \\
+%\symmetricFamily g 3 K &:= V\left( y^2 - (x - b_{2g}) \cdots (x-b_1) \cdot \left( x + \sum_{j=1}^{2g} b_j  \right)\right) \subset \mathbb A^{2g+2}_{[b_1, \ldots, b_{2g}]} \times \mathbb A^2_{[x,y]}, \\
+%	\widetilde{\symmetricFamily g 4 K} & \defeq V\left (y^2 - (x - b_{2g+1}) \cdots (x -b_1) \cdot \left( x + \sum_{j=1}^{2g+1} b_j  \right)\right) \subset \mathbb A^{2g+1}_{[b_1, \ldots, b_{2g+1}]} \times \mathbb A^2_{[x,y]}.
+\]
+\end{definition}
+
+By construction, we have the following fibered diagram: 
+\[
+\begin{tikzcd}
+\symmetricFamily{g}{2}{K} \ar{r} \ar{d} & \standardFamily{g}{2}{K} \ar{d} \\
+\symmetricTarget{g}{2}{K} \ar{r}{\sigma_2} & \standardTarget{g}{2}{K}
+\end{tikzcd}
+\]
+where $\sigma_2$ is a map between affine spaces, defined by the elementary symmetric polynomials in $b_0, \ldots, b_{2g+1}$. Furthermore, the families of hyperelliptic curves defined over $\symmetricFamily g 2 K$ and $\standardFamily g 2 K$ are represented by maps from these spaces to $\hyperelliptic g K$. We hence obtain maps to the associated coarse moduli space $\moduliSpaceHyp g K$, as shown in this commutative diagram: 
+\begin{equation}
+	\label{equation:standard-family-and-symmetric-family}
+	\begin{tikzcd}
+		\symmetricTarget g 2 K \ar {rr}{\sigma_2} \ar{rd}{\Phi_2} \ar[swap]{rdd}{\phi_2} && \standardTarget g 2 K \ar {ldd}{\psi_2} \ar[swap]{ld}{\Psi_2} \\
+		& \hyperelliptic g K \ar{d} & \\
+		 & \moduliSpaceHyp g K. & 
+	 \end{tikzcd}\end{equation}
+
+\begin{lemma}
+	\label{lemma:connected-generic-fiber}
+	The geometric generic fibers of the maps $\Psi_2$ and $\psi_2$ defined in~\eqref{equation:standard-family-and-symmetric-family} are connected.
+%	Furthermore, there is an open subcheme of $W \subset \standardTarget g i K$ so that the map $\sigma_i|_{\sigma_i^{-1}(W)}$ is a covering map of degree $(2g+2)!$.
+\end{lemma}
+\begin{proof}
+%	We prove this only in the case that $i = 2$ for the sake of brevity, because the case $i = 4$ is completely analogous.
+	In order to show that the geometric generic fiber of $\Psi_2$
+	is connected, it suffices to show that the geometric generic fiber of $\psi_2$ is connected.
+	In turn, using \cite[Book IV, Th\'eor\`eme 9.7.7(ii)]{EGA}
+	(constructibility of the geometrically connected locus)
+	it suffices to show that for a general closed point of
+	$\moduliSpaceHyp g K$, the geometric fiber \mbox{of $\psi_2$
+	is connected.}
+
+	We now describe the fiber of $\phi_2$ over a closed
+	geometric point $\overline{[C]} \in \moduliSpaceHyp g K$ corresponding to a curve $C/\ol{K}$, 
+	showing that this fiber has $(2g+2)!$ connected components.
+	Suppose that $C$ is isomorphic over $\overline K$
+	to the curve cut out by the equation $y^2 = \prod_{j=1}^{2g+2} (x-b_j)$.
+	Then, $\PGL_2(\ol{K})$ acts on the $b_j$ as points in $\mathbb{P}_{\ol{K}}^1$
+	and the symmetric group $S_{2g+2}$ acts by permuting the $b_j$.
+	All curves in the fiber of $\phi_2$ are of the form
+	$y^2 = \prod_{j=1}^{2g+2} \left( x-\eta (\tau (b_j)) \right)$
+	for $\eta \in S_{2g+2}, \tau \in \PGL_2(\ol{K})$.
+	If the $b_j$ are chosen generally, there will be no nontrivial
+	$(\tau,\eta)$ so that $\left\{ \tau(b_1), \ldots, \tau(b_{2g+2}) \right\}  = \left\{ \eta(b_1), \ldots, \eta(b_{2g+2}) \right\}$.
+	Hence, there will be $(2g+2)!$ connected components of the fiber,
+	corresponding to the $\PGL_2(\ol{K})$ orbits of the $(2g+2)!$ elements
+	$\left\{ \eta(b_1), \ldots, \eta(b_{2g+2}) \right\}$ as $\eta$ ranges over elements
+	of $S_{2g+2}$.
+	Strictly speaking, by the way we constructed our families,
+	we do not allow any of the roots of the hyperelliptic
+	curves to lie at $\infty \in \mathbb{P}_{\ol{K}}^1$. 
+	So, each of the
+	connected components of the fiber is
+	parameterized by an open subscheme of $\PGL_2(\ol{K})$, which is still connected.
+
+	Now, let $V_1, \ldots, V_{(2g+2)!}$ be the connected components of
+	such a fiber of $\phi_2$. Observe that $V_1$
+	maps dominantly under $\sigma_2$ 
+	onto the corresponding fiber of $\psi_2$.
+		It follows that a general
+	closed fiber of $\phi_2$ is geometrically connected,
+	as we wanted to show.
+\end{proof}
+
+We next use Lemma~\eqref{lemma:connected-generic-fiber} to verify that \emph{any} family of hyperelliptic curves has monodromy contained in $\grouphyp g K$.
+
+\begin{lemma}
+	\label{lemma:monodromy-containment}
+	Let $g \geq 2$. Any family $A \rightarrow U$ of Jacobians of hyperelliptic curves satisfies
+$\mono_{A} \subset \grouphypboth g {2} K$.
+Furthermore, for $i \in \{1, 2, 3, 4\}$, we have that
+$\mono_{\standardFamily g i K} \subset \grouphypboth g {(i \bmod 2)} K$.
+\end{lemma}
+\begin{proof}
+%	First, we reduce the question of verifying the 
+%	the statement for arbitrary curves
+%	to verifying $\mono_{\standardFamily g 2 K} \subset
+%	\grouphyp g K$.
+	To prove the statement for arbitrary
+	families, it suffices to prove that
+	$\mono_{\hyperelliptic g K} \subset \grouphyp g K$.
+	However, since the geometric generic fiber of the map $\Psi_2$ from 
+	~\eqref{equation:standard-family-and-symmetric-family} is connected by Lemma~\ref{lemma:connected-generic-fiber} and
+	\cite[Proposition 5.2]{landesman-swaminathan-tao-xu:rational-families} (which says that in nice circumstances, a map from a scheme
+	to a stack with connected geometric generic fiber induces 
+	a surjective map of fundamental groups)
+	it follows
+	that $\mono_{\hyperelliptic g K} = \mono_{\standardFamily g 2 K}$. Thus, to complete the proof, we only need show that
+$\mono_{\standardFamily g i K} \subset \grouphypboth g {(i \bmod 2)} K$ for each $i \in \{1, 2, 3, 4\}$.
+	The condition that $\mono_{\standardFamily g i K} \subset \grouphyp g K$ is equivalent to the following
+	two conditions: 
+    \begin{enumerate}
+    \item[(a)] $\mono_{\standardFamily g i K} \subset \on{mult}^{-1}(\chi(K))$,
+	\item[(b)] $\mono_{\standardFamily g i K}(2) \subset S_{2g+(i \bmod 2)} \subset \Sp_{2g+2}(\mathbb Z/2\mathbb Z)$.
+    \end{enumerate}
+	Condition (a) holds by Remark~\ref{remark:det-rho-is-chi}.
+	As for Condition (b), note that by the version of Hilbert's Irreducibility Theorem \todo{not needed anymore, but it would be important that the base is rational to apply this} stated in~\cite[Theorem 1.2]{zywina2010hilbert}, most $K$-valued points of $U$ will have the same mod-$2$ monodromy
+	as that of the family. By Section~\ref{symbed}, all $K$-valued points have mod-$2$ monodromy contained in $S_{2g+(i \bmod 2)}$, so Condition (b) holds.
+\end{proof}
+
+We now show that the containment in Lemma~\ref{lemma:monodromy-containment} is an equality for the families $\standardFamily g i K$.
+\begin{lemma}
+	\label{lemma:geometric-monodromy-of-standard-family}
+	Let $g \geq 2$. For $i \in \{1, 2, 3, 4\}$, we have that $\mono_{\standardFamily g i K}= \grouphypboth g {(i \bmod 2)} {K}$ and for any algebraically closed field $L$ which is a subfield of $\mathbb C$, we have $\mono_{\standardFamily g i L}= \grouphypboth g {(i \bmod 2)} {L}$.
+\end{lemma}
+\begin{proof}
+We reduce the first statement for number fields $K$ to the second statement
+for algebraically closed fields in the case $L = \overline K$.
+Observe that for each $i \in \{1, 2, 3, 4\}$ we have a map of short exact sequences
+\begin{equation}
+	\label{equation:}
+	\begin{tikzcd}
+		0 \ar {r}  &  \mono_{\standardFamily g i {\overline K}} \ar {r}\ar{d} & \mono_{\standardFamily g i K} \ar {r}{\mult}\ar{d} & \chi(K) \ar {r}\ar[equal]{d} & 0 \\
+			0 \ar {r} &  \grouphypboth g {(i \bmod 2)} {\overline K} \ar {r} & \grouphypboth g {(i \bmod 2)} K \ar[swap]{r}{\mult} & \chi(K) \ar {r} & 0.
+	\end{tikzcd}\end{equation}
+%The first vertical map comes from the assumption that we know the statement holds over $\mathbb C$, and second vertical map
+%is an inclusion by Lemma~\ref{lemma:monodromy-containment}.
+Since the maps in~\eqref{equation:} are all inclusions or the $\mult$ map, the diagram commutes. By the Five Lemma, the second vertical map is an isomorphism if and only if the first one is.
+
+So, we only need prove the statement regarding algebraically closed
+fields $L$ of characteristic $0$ contained in $\mathbb C$.
+We now reduce to the case $L = \mathbb C$.
+Because $\mathbb C$ is a base extension of $L$, we have an injection
+$\pi_1(\standardTarget g i {\mathbb C}) \rightarrow \pi_1(\standardTarget g i {\overline K})$, implying
+$\mono_{\standardTarget g i {\mathbb C}} \subset \mono_{\standardTarget g i {\overline K}}.$
+However, if we assume $\pi_1(\standardTarget g i {\mathbb C}) =\grouphypboth g i {\mathbb C}$,
+(which is the case $L = \mathbb C$,) then
+by Lemma~\ref{lemma:monodromy-containment},
+$\mono_{\standardTarget g i {\overline K}} \subset \grouphypboth g i {\overline K} = \grouphypboth g i {\mathbb C} = \mono_{\standardTarget g i {\mathbb C}}$. Hence, $\mono_{\standardTarget g i {\overline K}} = \mono_{\standardTarget g i {\mathbb C}}.$
+
+Therefore, it suffices to show $\mono_{\standardFamily g i {\mathbb C}} = \grouphypboth g {(i \bmod 2)} {\mathbb C}$.
+This statement for $i = 1,2$ follows from~\cite[Th\'eor\`eme 1]{acampo:tresses-monodromie-et-le-groupe-symplectique}
+	(since the \'etale fundamental group is the profinite completion of the
+	topological fundamental group).
+To complete the proof we
+only need show that when $i = 3, 4$
+we have $\mono_{\standardFamily g i {\mathbb C}} = \mono_{\standardFamily g {i-2} {\mathbb C}}$.
+However, this claim follows because the family
+$\standardTarget g {i-2} {\mathbb C}$ topologically deformation retracts
+onto $\standardTarget g i {\mathbb C}$, and hence has the
+same monodromy group.
+We now construct this deformation retract explicitly.
+A hyperelliptic curve
+$y^2 = f(x)$ over $\mathbb C$ can be written as
+$C := V\left(y^2 - \prod_{j=1}^{2g+i-2} \left( x-b_j \right) \right)$.
+Then, the deformation retract of $\standardTarget g {i-2} {\mathbb C}$ onto $\standardTarget g i {\mathbb C}$ is given by the map
+\begin{align*}
+ \standardTarget g {i-2} {\mathbb C} \times [0,1] 
+& \rightarrow \standardTarget g {i-2} {\mathbb C}\\
+%	\left(  V\left(y^2 - \prod_{j=1}^{2g+i-2} \left( x-b_j \right) \right), t\right)
+% & \mapsto V \left( y^2 - \prod_{j=1}^{2g+i-2}\left( x- b_j + \frac{t}{2g+i-2} \cdot \sum_{i=0}^{2g+i-2} b_j \right) \right)
+% \left((b_1, \ldots, b_{2g+i-2}), t\right)
+ %& \mapsto (b_1 + \frac{t}{2g+i - 2}, \ldots, b_{2g+i-2} + \frac{t}{2g+i - 2})
+\left((b_1, \ldots, b_{2g+i-2}), t\right)
+& \mapsto (b_1 + \frac{t}{2g+i - 2}, \ldots, b_{2g+i-2} + \frac{t}{2g+i - 2})
+\end{align*}
+Therefore, $\pi_1(\standardTarget g {i-2}{\mathbb C}) \cong \pi_1(\standardTarget g i {\mathbb C})$, and the two families also have the same monodromy.
+\end{proof}
+
+We can now easily deduce the monodromy of the moduli stack of hyperelliptic
+curves from the previous lemmas:
+\begin{lemma}
+	\label{lemma:moduli-stack-monodromy}
+	Let $g \geq 2$. We have that $\mono_{\hyperelliptic g K} = \mono_{\moduliSpaceHyp g K} = \grouphyp g {K}$.
+\end{lemma}
+\begin{proof}
+By Lemma~\ref{lemma:connected-generic-fiber}, each of the maps $\Psi_2 \colon \standardTarget g 2 K \rightarrow \hyperelliptic g K$ and $\psi_2 \colon \standardTarget g 2 K \rightarrow \moduliSpaceHyp g K$ has geometrically connected generic fiber.
+	By~\cite[Proposition 5.2]{landesman-swaminathan-tao-xu:rational-families},
+	the induced maps $\pi_1(\standardTarget g 2 K) \rightarrow \pi_1(\hyperelliptic g K)$ and $\pi_1(\standardTarget g 2 K) \rightarrow \pi_1(\moduliSpaceHyp g K)$ are both surjective. We then have that \mbox{$\mono_{\hyperelliptic g K} = \mono_{\moduliSpaceHyp g K} = \mono_{\standardFamily g 2 K}$,}
+so the desired result follows from Lemma~\ref{lemma:geometric-monodromy-of-standard-family}.
+%	Recall that
+%	$\grouphyp g {\overline K}$ is precisely
+%	the set of matrices $M \in \Sp_{2g}(\widehat{\mathbb Z})$ with
+%	$M \bmod 2 \in S_{2g +2} \subset \Sp_{2g}(\mathbb Z/2 \mathbb Z)$,
+%	via the inclusion given in Lemma~\ref{theorem:include-s}.
+%
+%
+%	By \todo{cite appropriate version of goursat's lemma}
+%	to conclude the proof, it suffices to show that the $\bmod 2$ image
+%	of the geometric monodromy of $\hyperelliptic g K$ is
+%	precisely $S_{2g+2} \subset \Sp_{2g}(\widehat{\mathbb Z})$.
+\end{proof}
+

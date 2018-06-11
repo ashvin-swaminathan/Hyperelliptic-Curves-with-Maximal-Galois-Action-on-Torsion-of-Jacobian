@@ -1,0 +1,508 @@
+\section{Definitions and Properties of Symplectic Groups}
+\label{section:group-theory}
+
+This section is devoted to proving Theorem~\ref{theorem:small-ab},
+which is needed for proving the main results of this paper, Theorems~\ref{mainbldg} and~\ref{exemplinongratia}. We start in Sections~\ref{subsection:stimpy} and~\ref{subsection:notation} by defining symplectic groups, discussing their basic properties, and introducing some recurring notation. Then, in Section~\ref{mygawdjamesyousabeast} we prove a result that is a crucial input to Section~\ref{section:proof-of-mainbldg}, where we prove Theorem~\ref{mainbldg}.
+The reader may choose to continue directly to Section~\ref{section:proof-of-mainbldg} after studying the statement of Theorem~\ref{mygawdjamesyousabeast}.
+
+\subsection{Symplectic Groups}\label{subsection:stimpy}
+
+Let $R$ be a commutative ring, and let $g$ be a positive integer. Let $M$ be a free $R$-module of rank $2g$, and let $\langle -, - \rangle \colon M \times M \to R$ be a non-degenerate alternating bilinear form on $M$. Define the {\it general symplectic group} (otherwise known as the \emph{group of symplectic similitudes}) $\GSp(M) \subset \on{GL}(M)$ to be the subgroup of all $R$-automorphisms $S$ such that there exists some $m_S \in R^\times$, called the {\it multiplier} of $S$, satisfying $\langle S v, Sw \rangle = m_S \cdot \langle v, w \rangle$ for all $v, w \in M$. If $m_S$ exists, then it is necessarily unique, and one easily checks that the resulting {\it mult} map 
+\begin{align*}
+	\mult \colon \GSp(M) & \rightarrow R^\times \\
+	S & \mapsto m_S
+\end{align*}
+is a group homomorphism; we call its kernel the {\it symplectic group} $\Sp(M)$.
+
+Choose an $R$-basis for $M$, and denote by $\Omega_{2g}$ the matrix which expresses the inner product $\langle - , - \rangle$ with respect to this basis.
+%By selecting an appropriate $R$-basis for $M$, we can ensure that the matrix corresponding to the inner product $\langle -, - \rangle$ is given by
+%$$\Omega_{2g} = \left[\begin{array}{c|c} 0 & \id_g \\ \hline -\id_g & 0\end{array}\right],$$
+%where $\id_g$ denotes the $g \times g$ identity matrix. 
+The choice of basis gives rise to an identification $\GL(M) \simeq \GL_{2g}(R)$, and we take $\GSp_{2g}(R)$ to be the image of $\GSp(M)$ and $\Sp_{2g}(R)$ to be the image of $\Sp(M)$ under this identification. Let $\det \colon \GL_{2g}(R) \to R^\times$ be the determinant map, and observe that the diagram
+\begin{center}
+\begin{tikzcd}
+\GSp(M) \arrow{r}{\sim} \arrow[swap]{rd}{\on{mult}^g} &  \GSp_{2g}(R) \arrow{d}{\on{det}} \\
+& R^\times
+\end{tikzcd}
+\end{center}
+
+\noindent commutes. Note
+%\todo{the phrase ``it follows is confusing, see the following two todos}
+that $\GSp_{2g}(R) \subset \GL_{2g}(R)$ is the subgroup of all invertible matrices $S$ satisfying $S^T \Omega_{2g} S = (\on{mult} S) \, \Omega_{2g}$ 
+%\todo{this statement has nothing to do with the determinant,
+%	it is just the definition of being a symplectic
+%transformation, after choosing a basis}
+and that $\Sp_{2g}(R) = \ker(\on{mult} \colon \GSp_{2g}(R) \to R^\times)$.
+%\todo{this also has nothing to do with the determinant, it is again
+%just the definition}
+%The groups $\GSp(M)$ and $\GSp_{2g}(R)$ are typically referred to as general symplectic groups, or groups of \emph{symplectic similitudes}, while the groups $\Sp(M)$ and $\Sp_{2g}(R)$ are usually just \mbox{called symplectic groups.}
+
+Let $\on{Mat}_{2g \times 2g}(R)$ be the space of $2g \times 2g$ matrices having entries in $R$, and consider the Lie algebras $\mf{gsp}_{2g}(R)$ and $\mf{sp}_{2g}(R)$ defined by 
+		\begin{align*}
+        \mf{gsp}_{2g}(R) &\defeq \{\Lambda \in \on{Mat}_{2g \times 2g}(R) : \Lambda^T \Omega_{2g} + \Omega_{2g} \Lambda = d \cdot \Omega_{2g} \text{ for some } d \in R \}, \\
+			\mf{sp}_{2g}(R) &\defeq \{\Lambda \in \on{Mat}_{2g \times 2g}(R) : \Lambda^T \Omega_{2g} + \Omega_{2g} \Lambda = 0 \}. 
+		\end{align*} 
+%		The condition that $M^T \Omega_{2g} + \Omega_{2g}M = 0$ is equivalent to $M$ being a block matrix with $g \times g$ blocks having the form 
+%		\[
+%			M = \left[\begin{array}{c|c} A & B \\ \hline C & -A^T \end{array}\right], 
+%		\]
+%		where $B$ and $C$ are symmetric matrices.
+%Observe that $\mf{sp}_{2g}(R) \subset \mf{gsp}_{2g}(R)$; we call these spaces ``Lie algebras'' because their definitions mimic the usual definitions of the symplectic and general symplectic Lie algebras associated to $\Sp_{2g}(\CC)$ and $\GSp_{2g}(\CC)$, respectively.
+%\todo{These are actually the R valued points of the lie algebra, of the algebraic group, so there's no need to put lie algebra in quotes,
+%or explain why it mimics the usual definition. I would omit everything following the aligned equation}
+
+When studying Galois representations associated to PPAVs, we usually take $R$ to be one of the following: the profinite completion $\wh{\ZZ}$ of $\ZZ$, the ring of $\ell$-adic integers $\ZZ_{\ell}$ for a prime number $\ell$, or the finite cyclic ring $\ZZ / m \ZZ$ for a positive integer $m$. 
+%Recall that $$\ZZ_\ell = \underset{\longleftarrow k}\lim \, \ZZ/ \ell^k \ZZ$$ and that $\wh{\ZZ}$ can be characterized in the following two equivalent ways:
+%$$\prod_{\text{prime } \ell} \ZZ_\ell  \,\,\, \simeq  \,\,\, \wh{\ZZ} \,\,\,  \simeq \,\,\, \lim_{\longleftarrow m} \ZZ / m \ZZ.$$
+%Applying $\GSp_{2g}$ as a functor to the above identifications,
+% and in particular to the surjections
+%$$\wh{\ZZ} \twoheadrightarrow \ZZ_\ell \twoheadrightarrow \ZZ/({\ell^{k_1}}) \twoheadrightarrow \ZZ/({\ell^{k_2}})$$
+% for all primes $\ell$ and all positive integers $k_1,k_2$ with $k_1 \geq k_2$, we obtain the 
+Observe that we have the following isomorphisms of topological groups:
+\begin{equation}\label{orientation1}
+\GSp_{2g}(\ZZ_\ell)   \simeq  \varprojlim_k \GSp_{2g}(\ZZ/ \ell^k \ZZ) \quad \text{and}
+\end{equation}
+\begin{equation}\label{orientation2}
+\prod_{\text{prime } \ell} \GSp_{2g}(\ZZ_\ell) \simeq  \GSp_{2g}(\wh{\ZZ}) \simeq  \varprojlim_m \GSp_{2g}(\ZZ / m \ZZ).
+\end{equation}
+%along with the surjections
+%\begin{equation}\label{ontop}
+%\GSp_{2n}(\wh{\ZZ}) \twoheadrightarrow \GSp_{2n}(\ZZ_\ell) \twoheadrightarrow \GSp_{2n}(\ZZ/({\ell^{k_1}})) \twoheadrightarrow \GSp_{2n}(\ZZ/({\ell^{k_2}})).
+%\end{equation}
+The isomorphisms \eqref{orientation1} and~\eqref{orientation2} %and~\eqref{ontop} all
+remain valid if $\GSp_{2g}$ is replaced by $\Sp_{2g}$. As for the Lie algebras, note that by sending $\Lambda \mapsto \id_{2g} + \ell^k \Lambda$ we obtain group isomorphisms
+\begin{align*}
+\mf{gsp}_{2g}(\ZZ/ \ell \ZZ) &\simeq \ker(\GSp_{2g}(\ZZ/\ell^{k+1} \ZZ) \to \GSp_{2g}(\ZZ/ \ell^k \ZZ)), \\
+\mf{sp}_{2g}(\ZZ/ \ell \ZZ) &\simeq \ker(\Sp_{2g}(\ZZ/\ell^{k+1} \ZZ) \to \Sp_{2g}(\ZZ/ \ell^k \ZZ))
+\end{align*}
+for every $k \geq 1$, so when it is useful or convenient, we will sometimes use the Lie algebra notation to denote the above kernels.
+
+
+\subsection{Computing Commutators of Large Subgroups of $\GSp_{2g}(\ZZ_2)$} \label{mygawdjamesyousabeast}
+The objective of this section is to prove a soon-to-be-useful theorem concerning the commutator of a subgroup of $\GSp_{2g}(\ZZ_2)$ which is the preimage (under mod-2 reduction) of a subgroup of $\Sp_{2g}(\bz / 2 \bz)$ that contains a copy of the symmetric group $S_{2g+1}$.
+
+\subsubsection{Embedding the Symmetric Group, Take 1} \label{take1}
+
+We asserted in the discussion immediately preceding the statement of Theorem~\ref{mainbldg} that the symmetric group $S_{2g+1}$ may be viewed as a subgroup of $\Sp_{2g}(\ZZ/2\ZZ)$. We now provide a working description of the way in which this embedding is constructed; the manner in which this description applies to the context of studying hyperelliptic curves is discussed in Section~\ref{symbed}.
+%\todo{(see todo in statement of lemma \ref{lemma:include-s})} 
+%$S_{2g+2} \hookrightarrow \Sp_{2g}(\bz/2\bz)$ of the form described in the proof of the following Lemma~\ref{lemma:include-s}. 
+%\todo{I have added Lemma~\ref{lemma:2-torsion-of-hyperelliptic-curve-action} which proves the description of the action of 2 torsion that we knew well}
+\begin{lemma} \label{lemma:include-s}
+For every $g \ge 2$, we have an inclusion $S_{2g+2} \hookrightarrow \Sp_{2g}(\bz /2 \ZZ)$.
+When $g = 2$, this inclusion is an isomorphism. 
+%\todo{Aaron: isn't this inclusion canonical (i.e., independent of the basis of $V$ in the proof? I think it has to be because there is a canonical such subgroup through which every mod 2 Galois representation of an elliptic curve factors, since Hilbert irreducibility shows that all the copies of $S_{2g+2}$ must in fact be the same. That said, I don't completely see a proof that it's independent of the choice of symplectic basis.It would be nice if this inclusion were canonical because the proof via Hilbert irreducibility is somewhat roundabout, in which we need to first argue that there is a rational family with the same monodromy as the universal family}
+\end{lemma}
+\begin{proof} 
+	Let $V$ be a $(2g+2)$-dimensional vector space over $\FF_2$, and equip $V \simeq \mathbb{F}_2^{2g+2}$ with the standard inner product. Let $t \defeq (1, \ldots, 1)$ be the vector whose components are all equal to $1$. Then the hyperplane $t^\perp \subset V$ of all vectors orthogonal to $t$ actually contains $t$ since $\dim V = 2g+2$ is even. Moreover, if we define $W = t^\perp / \on{span}(t)$, the inner product on $V$ descends to a nondegenerate alternating bilinear form on $W$. The action of $S_{2g+2}$ given by permuting the coordinates of $V$ fixes both $t$ and $t^\perp$, so it descends to an action on $W$ that preserves the bilinear form. 
+    %One can verify via direct computation that the resulting action of $S_{2g+2}$ on $W$ preserves the induced symplectic form (for example by checking it for any transposition) 
+    % Since I commented out this sentence, let me explain why one does not need to check anything. (1) It is clear that permuting the coordinates of V preserves the standard inner product on V. (2) Since the inner product on W was descended from that on V, it follows that the induced action of S_{2g+2} on W preserves it. -James
+Thus, we obtain an inclusion of $S_{2g+2}$ into the group of symplectic transformations of $W$ with multiplier $1$. For a more conceptual
+explanation of this inclusion in terms of the two-torsion of hyperelliptic
+curves, see Section \ref{symbed}.
+%\todo{Aaron: I'm not seeing why they symmetric matrices are clearly symplectic. Is this obvious? I know this must ultimately follow via the identification with 2-torsion points of the hyperelliptic curve, but I'm not seeing it purely group theoretically}
+%\todo{Aaron: Since you commented out my previous todo, can you please explain to me why this follows from the definition of the symplectic group?
+%I'm not seeing it. (I know how to prove this by choosing a basis
+%and writing generators for the symmetric group, but that's an involved computation.)
+%}
+Upon choosing a suitable basis for $W$ we may identify this group with $\Sp_{2g}(\ZZ / 2 \ZZ)$. For $g = 2$, the resulting inclusion is an isomorphism because $\#(S_6) = 720 = \#(\Sp_4(\ZZ / 2 \ZZ))$.
+\end{proof}
+We embed $S_{2g+1} \hookrightarrow S_{2g+2}$ as the subgroup fixing the vector $(0,\dots,0,1) \in \FF_2^{2g+2}$.
+
+\subsubsection{Notation}
+\label{subsection:notation}
+
+In what follows, we shall (for the most part) study subquotients of $\GSp_{2g}(\ZZ_2)$ and $\GSp_{2g}(\ZZ/ 2^k \ZZ)$ for $k$ a positive integer. We employ the following notational conventions:
+\begin{itemize}
+\item Let $H\subset \GSp_{2g}(\ZZ_2)$ be a closed subgroup.
+\item For $m, n \in \ZZ_{> 0} \cup \{\infty\}$ 
+	%\todo{I think this should be $m,n \in \ZZ_{> 0 } \cup \left\{ \infty \right\}$. If $m = 2^{\infty}$ the it would read $\fy{2}{2^{2^\infty}}$}
+	with $m > n$, let $\gify{2^m}{2^n} \colon \GSp_{2g}(\ZZ/2^m \ZZ) \to \GSp_{2g}(\ZZ/2^n \ZZ)$ and $\fy{2^m}{2^n} \colon \Sp_{2g}(\ZZ/2^m \ZZ) \to \Sp_{2g}(\ZZ/2^n \ZZ)$ be the natural projection maps. (When $m = \infty$, $\ZZ/2^m\ZZ$ denotes $\ZZ_2$.) 
+\item Let $H(2^k) = \gify{2^\infty}{2^k}(H) \subset \GSp_{2g}(\ZZ/2^k \ZZ)$ be the mod-$2^k$ reduction of $H$.
+%\item For $H \subset G$, we let $\overline H$ denote the closure of $H$ in $G$.
+\item For any topological group $G$, let $[G,G]$ be the closure of its commutator subgroup, and let $G^{\ab} \defeq G/{ {[G,G]}}$ be its abelianization.
+\item For each positive integer $n$, let $\id_n$ denote the $n \times n$ identity matrix.
+\end{itemize}
+
+\subsubsection{Main Group Theoretic Result}
+
+We can now state the main theorem of this section.
+
+\begin{theorem} \label{theorem:small-ab}
+	Let $g \geq 2$. Let $H \subset \GSp_{2g}(\bz_2)$ be a subgroup such that $H = \gify{2^\infty}{2}^{-1}(H(2))$    and such that $H(2)$ contains $S_{2g+1}$. 
+%\todo{I think here we need to describe how $S_{2g+1}$ is embedded, referencing the above discussion, which may need to be edited if the subgroup $S_{2g+2}$ is unique}
+%   \todo{Does the sentence ``Here $S_{2g+1}$ is viewed as a subgroup of $\Sp_{2g}(\bz / 2 \bz)$ via any inclusion $S_{2g+2} \hookrightarrow \Sp_{2g}(\bz / 2 \bz)$ of the form described in the proof of the Lemma'' not suffice? -- James}
+    Then we have that
+	\begin{equation}\label{thefirstclaim}
+    [H, H] = \fy{2^\infty}{2}^{-1}([H(2), H(2)]).
+    \end{equation}
+	Moreover, the homomorphism \(H \to (H(2))^{\ab} \times (\bz_2)^\times\), defined on the left component by postcomposing reduction mod-2 with the abelianization map $H(2) \to H(2)^{\on{ab}}$ and on the right component by the multiplier map $\on{mult}$, induces an isomorphism
+    \begin{equation}\label{thesecondclaim}
+    H^{\on{ab}} \simeq (H(2))^{\ab} \times (\bz_2)^\times.
+    \end{equation}
+\end{theorem}
+
+The relevance of Theorem~\ref{theorem:small-ab} to studying Galois representations of Jacobians of hyperelliptic curves is described in Lemma~\ref{theorem:r=2}, given at the beginning of Section~\ref{section:proof-of-mainbldg}.
+We prove Theorem~\ref{theorem:small-ab} next in Section~\ref{subsection:proof-of-first-claim}.
+
+\subsection{Proof of Theorem~\ref{theorem:small-ab}}
+\label{subsection:proof-of-first-claim}
+\begin{proof}[Proof of Theorem~\ref{theorem:small-ab} assuming
+	Corollary~\ref{lemma:contains-mod-4} and 
+Proposition~\ref{lemma:contains-mod-2}]
+Because we have that $$[H, H](2) = [H(2), H(2)],$$ in order to prove~\eqref{thefirstclaim}, it suffices to prove that 
+\(
+	[H, H] \supset \ker \fy{2^\infty}{2}. 
+\)
+To prove this statement, it further suffices to prove the following two statements:
+\begin{enumerate}
+\item[\customlabel{property-a}{(A)}] \(
+	[H, H] \supset \ker \fy{2^\infty}{4},
+\)
+\item[\customlabel{property-b}{(B)}] \(
+	[H(4), H(4)] \supset \ker \fy{4}{2}.
+\)
+\end{enumerate}
+Statement~\ref{property-a} is proven in 
+Corollary~\ref{lemma:contains-mod-4}
+and statement~\ref{property-b} is proven in
+Proposition~\ref{lemma:contains-mod-2}.
+%Section~\ref{honeyseek} is devoted to proving , and Sections~\ref{tomswifties}--\ref{subsection:finishing-the-proof} are devoted to proving statement~\ref{property-b}. 
+To complete the proof, we only need verify~\eqref{thesecondclaim}. Note that~\eqref{thefirstclaim} tells us that the map $H \to (H(2))^{\ab} \times (\bz_2)^\times$ has kernel precisely $[H,H]$, so to prove~\eqref{thesecondclaim}, it suffices to check that the map $H \to (H(2))^{\ab} \times (\bz_2)^\times$ is surjective. 
+But this is easy to check by hand: 
+For $\alpha \in (\mathbb Z_2)^\times$, let $N_\alpha$ be the matrix which
+has alternating $1$'s and $\alpha$'s on the diagonal, taken with respect to
+a symplectic basis $e_1, \ldots, e_{2g}$ where $\langle e_{i}, e_{j} \rangle$ 
+is $1$ if $i = 2k, j = 2k+1$ for some integer $k$, is $-1$ if $i = 2k+1, j = 2k$, and is $0$ otherwise.
+For $(M_2, \alpha) \in (H(2))^{\ab} \times (\bz_2)^\times$, let $M_2^\infty \in \fy{2^\infty}{2}^{-1}(M_2)$, and observe that $M_2^\infty \cdot N_\alpha \mapsto (M_2, \alpha)$ via the map $H \to (H(2))^{\ab} \times (\bz_2)^\times$. This concludes the proof of our main group-theoretic result, Theorem~\ref{theorem:small-ab}.
+\end{proof}
+\subsubsection{Proving Statement~\ref{property-a}}\label{honeyseek}
+
+We begin with the following lemma, in which we compute the commutator subalgebra of $\mf{gsp}_{2g}(\ZZ / 2 \ZZ)$.
+
+\begin{lemma} \label{lemma:gsp-perfect} 
+	Let $\ell$ be a prime number. We have
+	\(
+		[\mf{gsp}_{2g}(\bz / \ell \bz), \mf{gsp}_{2g}(\bz / \ell \bz)] = \mf{sp}_{2g}(\bz / \ell \bz).
+	\)\footnote{This result is a variant of~\cite[Proposition 2.10]{landesman-swaminathan-tao-xu:rational-families}.}
+\end{lemma} 
+
+\begin{proof} 
+For convenience, let $\mf{g}_\ell \defeq [\mf{gsp}_{2g}(\bz / \ell \bz), \mf{gsp}_{2g}(\bz / \ell \bz)]$. That $\mf{g}_\ell \subset \mf{sp}_{2g}(\ZZ/2\ZZ)$ is obvious from the definitions of $\mf{gsp}_{2g}(\ZZ/\ell\ZZ)$ and $\mf{sp}_{2g}(\ZZ/\ell\ZZ)$, so it suffices to prove that reverse containment. For $\ell \geq 3$, this is immediate from~\cite[Proposition 2.10]{landesman-swaminathan-tao-xu:rational-families}, so we may restrict to the case where $\ell = 2$ (note that this is the case of primary interest to us). Choose a basis for $(\ZZ/2\ZZ)^{2g}$ with respect to which $\Omega_{2g}$ is given by
+    \(
+    	\Omega_{2g} = \left[ \begin{array}{c|c} 0 & \id_g \\  \hline  -\id_g & 0 \end{array} \right].
+    \)
+    Then $\mf{sp}_{2g}(\bz / 2 \bz)$ consists of matrices of the form
+    \(
+   	\left[ \begin{array}{c|c} A & B \\ \hline  C & -A^T \end{array} \right]
+    \)
+   where $A,B,C \in \on{Mat}_{g \times g}(\ZZ/2\ZZ)$ and $B,C$ are required to be symmetric. Since we have
+\begin{align}
+	\label{equation:block-diagonal-commutator}
+ \left[ \left[\begin{array}{c|c} A & 0 \\ \hline 0 & -A^T \end{array}\right], \left[\begin{array}{c|c} D & 0 \\ \hline 0 & -D^T \end{array}\right] \right] & = \left[\begin{array}{c|c} AD - DA & 0 \\ \hline 0 & A^TD^T - D^TA^T \end{array}\right],
+ \intertext{all block-diagonal matrices in $\mf{sp}_{2g}(\ZZ/2\ZZ)$ with every diagonal entry equal to $0$ are contained in $\mf{g}_2$. Moreover, for symmetric $B,C,E,F \in \on{Mat}_{g \times g}(\ZZ/2\ZZ)$, we have}
+\label{equation:block-off-diagonal-commutator}
+ \left[ \left[\begin{array}{c|c} 0 & B \\ \hline C & 0 \end{array}\right], \left[\begin{array}{c|c} 0 & E \\ \hline F & 0 \end{array}\right] \right] & = \left[\begin{array}{c|c} BF - EC & 0 \\ \hline 0 & CE - FB \end{array}\right],
+ \intertext{and we can arrange that $BF-EC$ is an elementary matrix with a single nonzero entry on the diagonal.
+	 Summing matrices from~\eqref{equation:block-diagonal-commutator} and~\eqref{equation:block-off-diagonal-commutator},
+tells us that all block-diagonal matrices in $\mf{sp}_{2g}(\ZZ/2\ZZ)$ are contained in $\mf{g}_2$. Additionally, note that $\mf{gsp}_{2g}(\bz / 2 \bz)$ also contains
+   	\(\left[ \begin{array}{c|c} \id_g & 0 \\ \hline  0 & 0  \end{array} \right], \)
+    from which we deduce that $\mf{g}_2$ contains }
+	    	\left[ \left[ \begin{array}{c|c} \id_g & 0 \\ \hline  0 & 0  \end{array} \right], \left[ \begin{array}{c|c} 0 & B \\ \hline  0 & 0 \end{array} \right] \right] &= \left[ \begin{array}{c|c} 0 & B \\ \hline  0 & 0 \end{array} \right], 
+\end{align}
+where $B \in \on{Mat}_{g \times g}(\ZZ/2\ZZ)$ is symmetric. One similarly checks that $\mf{g}_2$ contains 
+\(\left[ \begin{array}{c|c} 0 & 0 \\ \hline  C & 0 \end{array} \right],\)
+for $C \in \on{Mat}_{g \times g}(\ZZ/2\ZZ)$ symmetric. It follows that $\mf{g}_2 \supset \mf{sp}_{2g}(\ZZ/2\ZZ)$. \qedhere
+\end{proof} 
+%THIS IS WRONG!!!    
+%    All matrices 
+ %   \[
+  %  	\left[ \begin{array}{c|c} A & 0 \\ \hline  0 & -A^T \end{array} \right]
+   % \]
+   % with $\tr(A) = 0$ can be written in this form. 
+    
+%    Next, $[\mf{sp}_{2g}(\bz / 2 \bz), \mf{sp}_{2g}(\bz / 2 \bz)]$ also contains 
+%\begin{align}
+%	\label{equation:trace-non-zero}
+%		\left[ \left[ \begin{array}{c|c} 0 & B \\ \hline  0 & 0 \end{array} \right], \left[ \begin{array}{c|c} 0 & 0 \\ \hline  C & 0 \end{array} \right] \right] = \left[ \begin{array}{c|c} BC & 0 \\ \hline  0 & -CB \end{array} \right], 
+%\end{align}
+ %       where $B$ and $C$ are symmetric. Since $\tr(BC)$ can be nonzero (and in the general case can equal any scalar), we can
+%	obtain arbitrary matrices of the form in~\eqref{equation:trace-zero} by adding one of the form in~\eqref{equation:trace-non-zero}
+%	to one of the form in ~\eqref{equation:trace-zero} with trace $0$.
+%    \[
+%    	\left[ \begin{array}{c|c} 0 & 0 \\ \hline  0 & \id_g  \end{array} \right], 
+%	\]
+%    so $[\mf{gsp}_{2g}(\bz / 2 \bz), \mf{gsp}_{2g}(\bz / 2 \bz)]$ contains
+%    \[
+%    	\left[ \left[ \begin{array}{c|c} 0 & 0 \\ \hline  0 & \on{id}_g \end{array} \right], \left[ \begin{array}{c|c} 0 & 0 \\ \hline  C & 0 \end{array} \right] \right] = \left[ \begin{array}{c|c} 0 & 0 \\ \hline  C & 0 \end{array} \right],
+%    \]
+
+\begin{corollary} \label{corollary:coolwhip} 
+	We have
+	\(
+		[\ker \gify{2^\infty}{2}, \ker \gify{2^\infty}{2}] = \ker \fy{2^\infty}{4}.
+	\)
+\end{corollary} 
+\begin{proof} 
+Clearly \([\ker \gify{2^\infty}{2}, \ker \gify{2^\infty}{2}] \subset \ker \fy{2^\infty}{4}\), so it suffices to prove the reverse inclusion. By~\cite[Lemma 2.11]{landesman-swaminathan-tao-xu:rational-families}, we have that $[\ker \gify{2^\infty}{2}, \ker \gify{2^\infty}{2}] \supset \ker \fy{2^\infty}{8}$. Then, identifying $\mf{gsp}_{2g}(\ZZ/ 2 \ZZ)$ with $\ker \gify{8}{4}$ and $\mf{sp}_{2g}(\ZZ/2\ZZ)$ with $\ker \fy{8}{4}$, we have by Lemma~\ref{lemma:gsp-perfect} that
+\begin{align*}
+\ker \fy{8}{4} & = \left[ \ker \gify{8}{4},\ker \gify{8}{4} \right] = \left[ \ker \gify{2^\infty}{4},\ker \gify{2^\infty}{4} \right](8) \\
+& \subset \left[ \ker \gify{2^\infty}{2},\ker \gify{2^\infty}{2} \right](8)
+\end{align*}
+It follows that $\left[ \ker \gify{2^\infty}{2},\ker \gify{2^\infty}{2} \right] \supset \ker \fy{2^\infty}{4}$.
+%	Fix $n \ge 1$. For any $U, V \in \mf{gsp}_{2g}(\bz / 2 \bz)$, we can find $M_1, M_2 \in \Gamma_2$ such that
+%    \begin{align*}
+%    	M_1 & \equiv \id_{2g} + 2^n \cdot U \pmod{2^{n+1}} \\
+%        M_1 & \equiv \id_{2g} + 2 \cdot V \pmod{4}. 
+ %   \end{align*} 
+  %  Then \cite[Lemma 2.9]{landesman-swaminathan-tao-xu:rational-families} %\ref{lemma:commutator-formula} in the main paper
+%implies that $[\Gamma_2, \Gamma_2](8)$ contains 
+ %   \[
+  %  	\id_{2g} + 2^{n+1} \cdot [U, V] \pmod{2^{n+2}}, 
+   % \]
+    %\todo
+    %{what is $n$ here if the above commutator was taken mod 8}
+   % By Lemma~\ref{lemma:gsp-perfect}, this implies that $[\Gamma_2, \Gamma_2]$ surjects onto 
+   % \[
+    %	\on{id}_{2g} + 2^{n+1} \cdot \mf{sp}_{2g}(\bz/2\bz) = \ker\big(\Sp_{2g}(\bz / 2^{n+2} \bz) \to \Sp_{2g}(\bz / 2^{n+1} \bz)\big) 
+   % \]
+   % for all $n \ge 1$. The result follows by noting that these (finite) groups are the subquotients of a stratification of $\ker\big(\Sp_{2g}(\bz_2) \to \Sp_{2g}(\bz / 4 \bz)\big)$, and that $[\Gamma_2, \Gamma_2]$ is the \emph{closure} of the algebraic commutator. 
+\end{proof} 
+
+\begin{corollary} \label{lemma:contains-mod-4}
+	We have $\ker \fy{2^\infty}{4} \subset [H, H]$. 
+\end{corollary}
+\begin{proof} 
+	The hypothesis that 
+    \(
+    	H = \gify{2^\infty}{2}^{-1}(H(2))
+    \)
+    implies that $\ker \gify{2^\infty}{2} \subset H$, and hence $[\ker \gify{2^\infty}{2}, \ker \gify{2^\infty}{2}] \subset [H, H]$. Applying Corollary~\ref{corollary:coolwhip} then yields the desired result.
+\end{proof} 
+
+\subsubsection{Proving Statement (B): Tensor Product Notation}\label{tomswifties}
+
+Just as we did in the proof of Lemma~\ref{lemma:gsp-perfect}, we must choose a basis with respect to which our symplectic form has an easy-to-use matrix representation. The goal of this subsection is to choose such a basis and to develop a shorthand notation for this basis. In Sections~\ref{subsection:s-action} and~\ref{subsection:finishing-the-proof}, we use this notation to prove Statement (B), thereby completing the proof of Theorem~\ref{theorem:small-ab}.
+
+Recall the notation introduced in the first paragraph of Section~\ref{subsection:stimpy}: $R$ is a commutative ring (which we will take to be either $\ZZ_2$ or $\ZZ/4\ZZ$), and $M$ is a free $R$-module of rank $2g$. We choose a basis $(e_1, \ldots, e_{2g})$ for $M$ so that the symplectic form $\langle -, -\rangle$ is given by
+$$\langle e_i , e_j \rangle \defeq \begin{cases} j-i & \text{ if $|j-i| = 1$ and $\max\{i,j\} \equiv 0\,(\bmod\,2$) } \\ 0 & \text{ otherwise} \end{cases}$$
+%\begin{align*} 
+%\langle e_{2n-1}, e_{2n} \rangle &= 1 \\
+%\langle e_{2n}, e_{2n-1} \rangle &= -1 \\
+%\langle e_i, e_j \rangle &= 0 \text{ for all other pairs } (i, j). 
+%\end{align*} 
+%The goal of this subsection is to introduce some notation which expresses the idea that symplectic matrices with respect to such an alternating form are well-described by $2\times 2$ block matrices acting on the pairs $\{e_{2n-1}, e_{2n}\}$.
+
+We may alternatively construct $M$ as follows. Let $N_1 \simeq R^{2}$ have basis $(x_1, x_2)$ and let $N_2 \simeq R^{g}$ have basis $(y_1, \ldots, y_g)$. Endow $N_1$ with the alternating form given by $\langle x_i, x_j \rangle = j - i$, and endow $N_2$ with the symmetric form given by $\langle y_i, y_j \rangle = \delta_{ij}$, where $\delta_{ij}$ denotes the Kronecker $\delta$-function as usual. Then if we take $M \defeq N_1 \otimes N_2$, we have that $(x_i \otimes y_j : i \in \{1,2\}, \, j \in \{1, \dots, g\} )$ is a basis for $M$ and that $M$ is equipped with an alternating form defined on simple tensors by
+\[
+\langle a_1 \otimes b_1, a_2 \otimes b_2 \rangle \defeq \langle a_1, a_2 \rangle \cdot \langle b_1, b_2 \rangle. 
+\]
+Note that the map sending $x_i \otimes y_j \mapsto e_{2j + i - 2}$ gives an identification between our two different constructions of $M$.
+
+Linear operators on $M$ are $R$-linear combinations of tensor products of linear operators on $N_1$ with linear operators on $N_2$. If we denote by $x_{ij}$ the row-$i$, column-$j$ elementary matrix acting on $N_1$ and by $y_{mn}$ the row-$m$, column-$n$ elementary matrix acting on $N_2$, then a basis for $\on{End}(M)$ is given by $(x_{ij} \otimes y_{mn} : i,j \in \{1, 2\},\, m,n \in \{1, \dots, g\})$. Also notice that any element $\Lambda \in \on{End}(M)$ may be expressed as
+\begin{equation}\label{fouseytattoo}
+\Lambda =  \sum_{i=1}^g \sum_{j=1}^g \Lambda_{ij} \otimes y_{ij}
+\end{equation}
+where $\Lambda_{ij} \in \on{End}(N_1)$ for all $i,j \in \{1,\dots, g\}$.
+\begin{proposition} \label{proposition:lie}
+	Let $\phi \in \on{End}(\on{End}(N_1))$ be defined by
+	\[
+	x_{11} \mapsto -x_{22}, \quad x_{22} \mapsto -x_{11}, \quad x_{12} \mapsto x_{12}, \quad x_{21} \mapsto x_{21}.
+	\]
+The Lie algebra $\mf{gsp}_{2g}(R)$ consists of those elements $\Lambda \in \on{End}(M)$ with $\Lambda_{ij} \in \on{End}(N_1)$ such that there exists $d \in R$ satisfying
+    $$\phi(\Lambda_{ji}) = \Lambda_{ij} - (d\delta_{ij}) \cdot \id_2.$$
+Moreover, $\mf{sp}_{2g}(R)$ admits an analogous description in which $d$ is required to be zero. %\todo{The result should have $\phi(\Lambda_{ji})$ instead; see todo below. -- James} 
+\end{proposition}
+\begin{proof}  
+Since $\Omega_{2g}^2 = -\id_{2g}$, the defining equation for $\mf{gsp}_{2g}(R)$ is equivalent to
+\begin{align}	
+\Omega_{2g} \Lambda^T \Omega_{2g} - \Lambda + d \cdot (\id_2 \otimes \id_g) & = 0. \label{equation:lie-algebra-condition}
+\end{align} %\todo{I originally mistakenly used $\Omega^2 = 1$ instead of $\Omega^2=-1$, so there were some sign errors, as Aaron pointed out. The sign of $d$ is unimportant since $d \in R$ can be anything, but the sign of $\Lambda$ actually affects the result. I think this equation should now read $\Omega \Lambda^T \Omega - \Lambda + d \cdot \id = 0$. Do you agree? -- James}
+Note that the identity element $\on{End}(N_2)$ is given by $\id_g = y_{11} + \cdots + y_{gg}$. Substituting this in along with the expansion~\eqref{fouseytattoo} for $\Lambda$ as well as $(x_{12} - x_{21}) \otimes \id_g$ for $\Omega_{2g}$ on the left-hand side of~\eqref{equation:lie-algebra-condition} yields that
+\[
+\sum_{i =1}^g \sum_{j=1}^g \big[ (x_{12} - x_{21})(\Lambda_{ji})^T(x_{12} - x_{21}) - \Lambda_{ij} + (d\delta_{ij}) \cdot \id_2 \big] \otimes y_{ij} = 0,
+\]
+which is equivalent to the following condition:
+\[
+(x_{12} - x_{21})(\Lambda_{ji})^T(x_{12} - x_{21}) = \Lambda_{ij} - (d\delta_{ij}) \cdot \id_2
+\]%\todo{Ashvin, the original $\Lambda_{ji}^T$ was correct. The indices switch for this reason: $U^T = \sum_{i, j} \Lambda_{ij}^T \otimes y_{ij}^T = \sum_{i, j} \Lambda_{ij}^T \otimes y_{ji} = \sum_{i, j} \Lambda_{ji}^T \otimes y_{ij}$. -- James} 
+The desired result then follows upon observing that 
+	\(
+	(x_{12} - x_{21})(\Lambda_{ji})^T(x_{12} - x_{21}) = \phi(\Lambda_{ji}). \qedhere
+	\)
+\end{proof} 
+
+\begin{remark} \label{remark:sp-basis}
+	When $R = \ZZ/2\ZZ$, minus signs may be ignored, so the operator $\phi$ may be concisely described as transposition across the anti-diagonal. It follows from Proposition~\ref{proposition:lie} that the following is a basis for $\mf{sp}_{2g}(\ZZ/2\ZZ)$:
+	\begin{align*}
+    & \big(\id_2 \otimes y_{ii}, x_{12} \otimes y_{ii}, x_{21} \otimes y_{ii} : i \in \{1, \dots, g\}\big)\,\, \cup \\
+    & \big(x_{12} \otimes (y_{ij}+y_{ij}) , x_{11} \otimes y_{ij} + x_{22} \otimes y_{ji} ,  x_{21} \otimes (y_{ij} + y_{ji}) , x_{22} \otimes y_{ij} + x_{11} \otimes y_{ji} : 1 \leq i < j \leq g \big).
+\end{align*}
+%\todo{Aaron: I was contemplating making this change, but actually found this much easier to read on 7 lines as it was before, and have a very slight preference to revert to the old version}
+In Section~\ref{subsection:finishing-the-proof}, it will be convenient to define a function $\on{ind}$ that assigns to each of the above basis elements the value of $i$ (e.g., $\on{ind}(\id_2 \otimes y_{ii}) = i$ and $\on{ind}(x_{12} \otimes (y_{ij} + y_{ij})) = i$).
+%\todo{Aaron: later, why don't we just induct on n (the dimension of the group) instead of the first coordinate ind function? Probably I'm missing something,
+%but if the proofs are essentially the same, why add this additional notation?}
+\end{remark}  
+
+\subsubsection{Proving Statement (B): Describing the Action of $S_{2g+2}$} \label{subsection:s-action} 
+
+We now seek to describe the embedding $S_{2g+2} \hookrightarrow \Sp_{2g}(\bz / 2 \bz)$ from Lemma~\ref{lemma:include-s} in terms of the tensor product notation that we just introduced in Section~\ref{tomswifties}. To this end, we set $R = \ZZ/2\ZZ$, so that $M \simeq \FF_2^{2g}$.
+%Recall from the proof of Lemma~\ref{lemma:include-s} that the group $S_{2g+2}$ acts on $(\mathbb{F}_2)^{2g+2}$ by permuting the basis vectors $\{e_1, \ldots, e_{2g+2}\}$. 
+%We then obtain an induced action on the space $t^\perp / \langle t \rangle$, consisting of vectors $\sum_{i=1}^{2g+2} a_i\, e_i$ where we require that  $\sum_{i=1}^{2g+2} a_i = 0 \pmod{2}$, and we quotient by the relation $\sum_{i=1}^{2g+2} e_i = 0$.
+\begin{lemma} \label{lemma:basis} 
+	Recall notation from the proof of Lemma~\ref{lemma:include-s}. The map $\psi: M \ra t^\perp / \langle t \rangle$ of symplectic vector spaces defined by
+	\[ x_1 \otimes y_n \mapsto \sum_{i=1}^{2n} e_i \quad \text{and} \quad
+	x_2 \otimes y_n \mapsto e_{2n+1} + \sum_{i=1}^{2n-1} e_i \quad \text{for each} \quad n \in \{1, \dots, g\}
+	\] 
+    is an isomorphism.
+\end{lemma} 
+\begin{proof}
+The lemma follows immediately from the observation that $\psi$ identifies the symplectic forms of $M$ and $t^\perp / \langle t \rangle$.
+%	\[
+%	\langle \psi(x_1 \otimes y_n), \psi(x_2 \otimes y_n) \rangle = 2n-1 \equiv 1\,(\bmod\,{2}). 
+%	\]
+%	Second, let $a, b \in \{1, 2\}$ be arbitrary, and let $m < n$. Then  
+%	\[
+%	\langle \psi(x_a \otimes y_m), \psi(x_b \otimes y_n) \rangle = 0
+%	\]
+%Thus, $\phi$ respects the symplectic pairing.
+\end{proof}
+Recall that the group $S_{2g+2}$ is generated by the adjacent transpositions $T_k$ for $k \in \{1, \dots, 2g+1\}$ whose cycle types are given by $T_k = (k, k+1)$. We now compute the action of $T_k$ on $M$ for each $k$: 
+\begin{lemma} \label{lemma:s-action}
+	When viewed as operators on $M$, the transpositions $T_k$ are given by
+	\begin{align*} 
+	T_{2n} &= \id_{2g} + (x_{11} + x_{12} + x_{21} + x_{22}) \otimes y_{nn}, \\
+	T_{2n+1} &= \id_{2g} + x_{12} \otimes (y_{nn} + y_{(n+1) n} + y_{n (n+1)} + y_{(n+1) (n+1)}), 
+	\end{align*}
+	according as $k = 2n$ or $k = 2n+1$, where any term with an out-of-range index is zero. 
+\end{lemma} 
+\begin{proof} 	
+	The result for $k = 2n$ follows from the observation that $T_{2n}$ swaps $x_1 \otimes y_n$ with $x_2 \otimes y_n$ and keeps all the other basis vectors fixed. As for $k = 2n+1$, we break into three cases:  
+	\begin{enumerate} 
+		\item Suppose $n = 0$. The transposition $T_1$ sends 
+		$$\psi(x_2 \otimes y_1) = ( e_1 + e_3)  \mapsto (e_1 + e_2) + (e_1 + e_3) 
+		= \psi(x_1 \otimes y_1) + \psi(x_2 \otimes y_2)$$
+		and fixes all other $\psi(x_i \otimes y_j)$. Thus, $T_1$ is given by 
+		\(
+		T_1 = \id_{2g} + x_{12} \otimes y_{11}. 
+		\)
+		\item Suppose $n = g$. The transposition $T_{2g+1}$ sends 
+		$$ \psi(x_2 \otimes y_g) = e_{2g + 1} + \sum_{i=1}^{2g-1} e_i  \mapsto  \sum_{i=1}^{2g+1} e_i + \sum_{i=1}^{2g-1} e_i  = e_{2g} + e_{2g+1} = \psi(x_1 \otimes y_g) + \psi(x_2 \otimes y_g) $$
+		and fixes all other $\psi(x_i \otimes y_j)$. Thus, $T_g$ is given by 
+		\(
+		T_{2g+1} = \id_{2g} + x_{12} \otimes y_{gg}. 
+		\)
+		\item Finally, suppose $n \in \{1, \dots, g-1\}$. The transposition $T_{2n+1}$ sends 
+		\begin{align*}
+		\phi(x_2 \otimes y_n) = e_{2n + 1} + \sum_{i=1}^{2n-1} e_i \,\,\, & \mapsto \,\,\, \sum_{i=1}^{2n+2} e_i + \left( e_{2n+1} + \sum_{i=1}^{2n-1} e_i \right) + \sum_{i=1}^{2n} e_i \\
+		&\hphantom{\quad\mapsto}= \psi(x_1 \otimes y_{n+1}) + \psi(x_2 \otimes y_n) + \psi(x_1 \otimes y_n), \\
+		\psi(x_2 \otimes y_{n+1}) 
+		=  e_{2n + 3} + \sum_{i=1}^{2n+1} e_i \,\,\, &\mapsto \,\,\, e_{2n+3} + \sum_{i=1}^{2n+1} e_i + \sum_{i=1}^{2n+2} e_i + \sum_{i=1}^{2n} e_i \\
+		&\hphantom{\quad\mapsto}= \psi(x_2 \otimes y_{n+1}) + \psi(x_1 \otimes y_{n+1}) + \psi(x_1 \otimes y_n), 
+		\end{align*} 
+		and fixes all other $\psi(x_i \otimes y_n)$. Thus, $T_{2n+1}$ is given by 
+		\[
+		T_{2n+1} = \id_{2g} + x_{12} \otimes (y_{nn} + y_{(n+1) n} + y_{n (n+1)} + y_{(n+1) (n+1)}). 
+		\]
+	\end{enumerate} 
+	The result for $k = 2n+1$ follows immediately from points (1)--(3) above.
+\end{proof} 
+
+\subsubsection{Finishing the Proof of Statement (B)} 	
+\label{subsection:finishing-the-proof}
+\begin{proposition} \label{lemma:contains-mod-2}
+	We have $[H(4), H(4)] \supset \ker \fy{4}{2}$. 
+\end{proposition} 
+\begin{proof} 
+	The assumption that 
+    \(
+    	H = \gify{2^\infty}{2}^{-1}(H(2))
+    \)
+%    \todo{I think the first argument should be $2^\infty$, since $\gify{2}{2}$ is the identity map}
+    implies that 
+	\(
+	\ker \gify{4}{2} \subset H(4). 
+	\)
+	Recall that we may identify $\ker \gify{4}{2}$ with $\mf{gsp}_{2g}(\ZZ/2\ZZ)$, so that each $S \in \ker \gify{4}{2}$ may be expressed as $S = \id_{2g} + 2\Lambda$ where $\Lambda \in \mf{gsp}_{2g}(\bz / 2 \ZZ)$. The assumption that $H(2)$ contains $S_{2g+1}$ tells us that for any $M_2 \in S_{2g+1} \subset \Sp_{2g}(\bz / 2 \bz)$, we may lift $M_2$ to an element $M_4 \in H(4)$. In particular, we have that  
+$$\id_{2g} + 2(\Lambda + M_2 \Lambda M_2^{-1}) = (\id_{2g} + 2\Lambda)^{-1}M_4(\id_{2g} + 2\Lambda)M_4^{-1} \in [H(4), H(4)].$$
+To complete the proof, it suffices to show that matrices of the form $\Lambda + M_2 \Lambda M_2^{-1}$ span all of $\mf{sp}_{2g}(\bz / 2\bz)$. Let $V = \on{span}(\Lambda + M_2 \Lambda M_2^{-1} : \Lambda \in \mf{gsp}_{2g}(\ZZ/2\ZZ) \text{ and } M_2 \in S_{2g+1})$.
+	
+	It suffices to restrict our consideration to matrices $M_2$ corresponding to transpositions $T_k \in S_{2g+1}$. Note that $T_k = (T_k)^{-1}$, so that if we write $T_k = \id_{2g} + N_k$, then we have
+    \begin{align} \label{equation:nuns-on-the-run}		
+	\Lambda + T_k\Lambda(T_k)^{-1} = N_k\Lambda + \Lambda N_k + N_k \Lambda N_k.
+	\end{align}	
+	As in Lemma~\ref{lemma:s-action}, we will have to treat the cases $k = 2n$ and $k = 2n+1$ separately. In what follows, we induct on the value of the $\on{ind}$ function that $V$ contains the seven types of basis elements listed in Remark~\ref{remark:sp-basis}.
+   % \todo{Ashvin, what was written before was correct. The induction statement is, in the notation of Remark~\ref{remark:sp-basis}, that all basis elements with $i \le n$ are contained in $V$. Note that $j$ is arbitrary, and need not be less than $n$. This statement is vacuous when $n = 0$. For $n \ge 1$, it implies that $x_{12} \otimes y_{(n-1)(n-1)}$ and $x_{12} \otimes (y_{(n-1)n} + y_{n(n-1)})$ are contained in $V$. This was what was needed to establish that $x_{12} \otimes y_{nn} \in V$. }
+First, however, we perform some calculations that serve to greatly simplify this inductive argument. Combining Lemma~\ref{lemma:s-action} with~\eqref{equation:nuns-on-the-run} and taking $\Lambda = x_{11} \otimes \id_g$, we find that 
+\begin{align}
+\Lambda + T_{2n} \Lambda T_{2n} & = \id_2 \otimes y_{nn} \in V, \label{jc1}\\
+\Lambda + T_{2n-1} \Lambda T_{2n-1} & = x_{12} \otimes (y_{(n-1)(n-1)} + y_{(n-1)n} + y_{n(n-1)} + y_{nn}) \in V. \label{jc2} \\
+\intertext{Repeating this calculation for $k = 2n$ but taking $\Lambda = x_{12} \otimes y_{nn}$, we find that}
+	\Lambda + T_{2n} \Lambda T_{2n} & = (x_{12} + x_{21}) \otimes y_{nn} \in V. \label{jc9} \\
+\intertext{Now fix $n, \ell$ with $\ell > n$, and take $\Lambda = M \otimes y_{n\ell} + \phi(M) \otimes y_{\ell n}$ for any $M \in \on{Mat}_{2 \times 2}(\bz / 2 \bz)$. By Proposition~\ref{proposition:lie}, all such $\Lambda$ are elements of $\mf{gsp}_{2g}(\bz/2\bz)$. We find that}
+\Lambda + T_{2n} \Lambda T_{2n} & = (x_{11} + x_{12} + x_{21} + x_{22})M \otimes y_{n\ell} \, +  \label{jc5}\\
+& \hphantom{===} \phi(M)(x_{11} + x_{12} + x_{21} + x_{22}) \otimes y_{\ell n} \in V, \nonumber \\ 
+\Lambda + T_{2n-1}\Lambda T_{2n-1} & = x_{12}M \otimes (y_{n \ell} + y_{(n-1)\ell}) + \phi(M) x_{12} \otimes (y_{\ell n} + y_{\ell (n-1)}) \in V \label{jc3}. \\
+\intertext{Taking $M = x_{11}$ in~\eqref{jc5}, so that $\phi(M) = x_{22}$, yields that}
+	& (x_{11} + x_{21}) \otimes y_{n \ell} + (x_{21} + x_{22}) \otimes y_{\ell n} \in V, \label{jc6} \\
+    \intertext{and taking $M = x_{22}$ in~\eqref{jc5}, so that $\phi(M) = x_{11}$, yields that}
+	& (x_{12} + x_{22}) \otimes y_{n\ell} + (x_{11} + x_{12}) \otimes y_{\ell n} \in V. \label{jc7} \\
+\intertext{Taking $M = x_{22}$ in~\eqref{jc3}, so that $\phi(M) = x_{11}$, yields that}
+& x_{12} \otimes (y_{n \ell} + y_{\ell n}) \in V \label{jc4} \\
+\intertext{and taking $M = x_{21}$ in~\eqref{jc4}, so that $\phi(M) = x_{21}$, yields that}
+&  x_{11} \otimes y_{n \ell} + x_{22} \otimes y_{\ell n} \in V. \label{jc8}
+\end{align}
+We are now ready to carry out the induction. For the base case, we need to check that all basis vectors with $\on{ind}$-value equal to $1$ are in $V$; this follows immediately upon taking $n = 1$ in~\eqref{jc1}--\eqref{jc8}. Next, suppose for some $N \in \{1, \dots, g\}$ we have that all basis vectors with $\on{ind}$-value less than $N$ are in $V$. Taking $n = N$ in~\eqref{jc1}--\eqref{jc8} and applying the inductive hypothesis yields that all basis vectors with $\on{ind}$-value equal to $N$ are in $V$.
+\begin{comment}    
+	Since $x_{12} \otimes y_{kk} \in V$, we also have $x_{21} \otimes y_{kk} \in V$. 
+	
+	By the inductive hypothesis, $V$ contains 
+	\[
+	x_{12}M \otimes y_{(k-1)\ell} + \phi(M) x_{12} \otimes y_{\ell(k-1)}, 
+	\]
+	so we conclude that 
+	\[
+	x_{12}M \otimes y_{k \ell} + \phi(M) x_{12} \otimes y_{\ell k} \in V. 
+	\]
+	
+	
+	Since we already know that $x_{11} \otimes y_{k \ell} + x_{22} \otimes y_{\ell k} \in V$, we conclude that 
+	\[
+	x_{21} \otimes y_{k \ell} + x_{21} \otimes y_{\ell k} \in V. 
+	\]
+
+	Since we already know that $x_{12} \otimes y_{k \ell} +  x_{12} \otimes y_{\ell k} \in V$, we conclude that 
+	\[
+	x_{22} \otimes y_{k \ell} + x_{11} \otimes y_{\ell k} \in V. 
+	\]
+	Examining the boxed statements shows that we have proven the inductive step.
+\end{comment}
+\end{proof}
+%We are finally in position to complete the proof of the main result of this section:
+
+%\begin{proof}[Proof of Theorem~\ref{theorem:small-ab}] 
+%	Since surjections of groups respect commutators, we have that the group $[H(4), H(4)] \subset \Sp_{2g}(\bz / 4 \bz)$ is the reduction of $[H, H] \subset \Sp_{2g}(\bz / 2 \bz)$ modulo 4. Therefore, Lemma~\ref{lemma:contains-mod-2} says that $[H, H]$ represents all elements of $\ker(\Sp_{2g}(\bz / 4 \bz) \ra \Sp_{2g}(\bz / 2 \bz))$. On the other hand, Lemma~\ref{lemma:contains-mod-4} says that $[H, H]$ contains $\ker(\Sp_{2g}(\bz_2) \ra \Sp_{2g}(\bz / 4 \bz))$. It follows that $[H, H]$ contains $\ker(\Sp_{2g}(\bz_2) \to \Sp_{2g}(\bz / 2 \bz))$. 
+	
+%	On the other hand, $[H, H](2) = [H(2), H(2)]$ and $[H, H] \subset \Sp_{2g}(\bz_2)$, so 
+%	\[
+%		[H, H] = \redtwo^{-1}(H(2), H(2)),  
+%	\]
+%	which is the first claim.
+%As for the second, the map
+%	\[
+%	\psi \defeq \big(\ab_{H(2)} \circ \, (\text{reduction mod 2}), \on{mult}\big): H \to H(2)^{\ab} \times (\bz_2)^\times
+%	\]
+%\begin{comment}
+%	has kernel exactly $[H, H]$ by what was proven above, so it suffices to show that $\psi$ is surjective. 
+%	\begin{itemize} 
+%		\item For any element $(1, n)$ where $n \in (\bz_2)^\times$, we can take 
+%		\[
+%		A := (x_{11} + x_{22}) \otimes \id_g, 
+%		\]
+%		in which case $\psi(A) = (1, n)$. 
+%		\todo{I'm confused by this. How does $A$
+%	depend on $n$? Also, $n$ seems like a strange letter, usually reserved for a natural number. can
+%we call it w,x,y,z or something like that?}
+%		\item For any element $(x, 1)$, it suffices to take $x' \in H(2)$ mapping to $x$ under the abelianization map. Then if $x'' \in \Sp_{2g}(\bz_2)$ is any lift of $x'$, we have $\psi(x'') = (x, 1)$. The crux is that, not only $\GSp_{2g}(\bz_2)$, but also $\Sp_{2g}(\bz_2)$, surjects onto $\Sp_{2g}(\bz / 2 \bz)$. \qedhere
+%	\end{itemize} 
+%\end{comment}
+%\end{proof} 

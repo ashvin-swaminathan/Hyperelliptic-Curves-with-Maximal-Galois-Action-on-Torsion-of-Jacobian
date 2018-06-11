@@ -1,0 +1,300 @@
+\section{Proof of Theorem~\ref{mainbldg}}
+\label{section:proof-of-mainbldg}
+
+In this section, we prove the first main result of this paper, namely Theorem~\ref{mainbldg}. We begin in Section~\ref{mygawdsadiomaneisamazing} with a description of the relevant background material on Galois representations of PPAVs. Then, in Section~\ref{prelimswine}, 
+we prove a group-theoretic Lemma, useful for determining $\delta_K$.
+In Section~\ref{symbed}, we describe the particular manner in which we embed $S_{2g+2}$ as a subgroup of $\Sp_{2g}(\ZZ/2 \ZZ)$.
+In Section~\ref{subsection:monodromy-of-families}
+we determine the monodromy groups of the four families of hyperelliptic curves introduced in Definition~\ref{definition:standard-families} and the monodromy of the universal family over the moduli stack of hyperelliptic curves. Finally, in Section~\ref{32isnotagoodscoreline}, we complete the proof of Theorem~\ref{mainbldg}.
+
+\subsection{Background}\label{mygawdsadiomaneisamazing}
+
+Let $K$ be a number field, let $r \geq 0$ be an integer, and let $U \subset \mathbb{P}_K^r$ be an open subscheme. For an integer $g \geq 0$, let $A$ be a family of $g$-dimensional PPAVs over $U$, by which we mean that $A$ is an abelian scheme over $U$, meaning that $A \rightarrow U$ is a proper smooth group scheme with geometrically connected fibers of dimension $g$, and $A$ is equipped with a principal polarization over $U$.  Because the base $U$ is rational, we call $A \to U$ a \emph{rational family}. By construction, the fiber $A_u$ of the morphism $A \to U$ over any $K$-valued point $u \in U(K)$ is a $g$-dimensional PPAV over $K$.
+
+Recall that the action of the \'{e}tale fundamental group $\pi_1(U)$ on the torsion points of a chosen geometric generic fiber of $A \to U$ gives rise to a continuous linear representation whose image is constrained by the Weil pairing to lie in the general symplectic group $\GSp_{2g}(\wh{\ZZ})$. We denote the resulting \emph{adelic representation} by 
+\begin{equation}\label{thisisthepartofme}
+	\rho_A \colon \pi_1(U) \to \GSp_{2g}(\wh{\ZZ}).\footnote{The map in~\eqref{thisisthepartofme} is well-defined up to the choice of base-point, and choosing a different base-point would only alter the image of $\rho_{A}$ by an inner automorphism.
+For this reason, when it will not lead to confusion, we may omit
+the base-point from our notation.}
+\end{equation}
+
+We now define the monodromy groups associated to $\rho_A$. We call the image of $\rho_A \colon \pi_1(U) \to \GSp_{2g}(\wh{\ZZ})$ the {\it monodromy} of the family $A \to U$, and we denote it by $\mono_A$. We write $\mono_A(m)$ for the mod-$m$ reductions and $\mono_{A,\ell}$ for the $\ell$-adic reductions of the above-defined monodromy groups.
+
+\begin{remark}
+Let $u \in U(K)$ be a $K$-valued point. Precomposing the adelic representation with the induced map $\pi_1(u) \to \pi_1(U)$ gives a representation $\pi_1(u) \to \GSp_{2g}(\wh{\ZZ})$ whose image we denote by $\mono_{A_u}$. 
+Because $\pi_1(u) \simeq G_K$,
+the representation $\rho_{A_u}$ obtained by restricting $\rho_A$ to $A_u$
+is the same as the adelic representation $\rho_{A_u}$ discussed in Section~\ref{subsection:intro-background}.
+\end{remark}
+
+\begin{remark}
+	\label{remark:det-rho-is-chi}
+For a commutative ring $R$, recall from the definition of the general symplectic group that we have a multiplier map $\on{mult} \colon \GSp_{2g}(R) \to R^\times$. If $\chi$ denotes the cyclotomic character, then for a PPAV $A$ it follows from $G_K$-invariance of the Weil pairing that $\chi = \mult \circ \rho_{A}$.
+More generally, if $A \rightarrow U$ is a family
+of PPAVs with $U$ normal and integral, and if $\phi$ denotes the map $\pi_1(U) \rightarrow \pi_1(\spec K)$ induced by the structure map $U \to \spec K$, then we have that
+$\chi \circ \phi = \mult \circ \rho_A$
+\end{remark}
+
+\subsection{Computing $\delta_K$}
+\label{prelimswine}
+
+In this section, we prove Lemma~\ref{theorem:r=2},
+which is used to compute the value of $\delta_K$ in the
+proof of Theorem~\ref{mainbldg}, given in Section~\ref{subsection:proof-of-first-claim}.
+In order to state Lemma~\ref{theorem:r=2},
+we need the following definition, in which
+we introduce notation used throughout the paper to denote various lifts of $S_{2g+i}$:
+
+\begin{definition}\label{grpnotes}
+	For $i \in \left\{ 1,2 \right\}$,
+	we define 
+	\begin{equation*}
+ \hyphat_{2g+i} \defeq (\Sp_{2g}(\zh) \to \Sp_{2g}(\bz / 2 \bz))^{-1}(S_{2g+i}) \qquad \text{and} \qquad \hypaddict_{2g+i} \defeq \fy{2^\infty}{2}^{-1}(S_{2g+i}).
+\end{equation*}
+\end{definition}
+The next lemma applies Theorem~\ref{theorem:small-ab} to determine how large the commutator subgroup of $\widetilde{\mathrm{G} \mathcal {S}}_{2g+i, K},$ is as a subgroup of $\hyphat_{2g+i}$:
+\begin{lemma} \label{theorem:r=2}
+	Let $g \ge 2$, let $i \in \left\{ 1,2 \right\}$
+	and let $H \subset \GSp_{2g}(\zh)$ be a closed subgroup. Suppose that 
+\begin{itemize} 
+\item $H_2 = \gify{2^\infty}{2}^{-1}(S_{2g+i})$, and 
+\item $H(\ell) \supset \Sp_{2g}(\bz / \ell \bz)$ for $\ell \ge 3$.
+\end{itemize} 
+Then 
+\[
+[H, H] = \fy{2^\infty}{2}^{-1}(A_{2g+i}) \times \prod_{\ell \ge 3} \Sp_{2g}(\bz_\ell),
+\]
+where $A_{2g+i}$ denotes the alternating group on $2g + i$ letters.
+\end{lemma} 
+\begin{proof} 
+By Theorem~\ref{theorem:small-ab}, 
+\begin{align*} 
+[H, H]_2 = [H_2, H_2] = \fy{2^\infty}{2}^{-1}(A_{2g+i}). 
+\end{align*} 
+Also, note that for $\ell \ge 3$, 
+\begin{align*}
+[H, H](\ell) &= [H(\ell), H(\ell)] \\
+&\supset [\Sp_{2g}(\bz / \ell \bz), \Sp_{2g} (\bz / \ell \bz)] \\
+&= \Sp_{2g}(\bz / \ell \bz), 
+\end{align*} 
+the last equality following from \cite[3.3.6]{omeara1978symplectic}. 
+We now appeal to the fact that a closed subgroup of $\Sp_{2g}(\mathbb{Z}_\ell)$ mapping onto $\Sp_{2g}(\mathbb{Z}/\ell\mathbb{Z})$ must in fact be all of $\Sp_{2g}(\mathbb{Z}_\ell)$ for $g > 1$.
+This fact was shown in~\cite[Theorem B]{weigel:on-the-profinite-completion-of-arithmetic-groups-of-split-type} (except for the case where $g = 3$ and $\ell = 2$),
+as well as in
+~\cite[Theorem 1.3]{vasiu2003surjectivity},
+and then again in~\cite[Proposition 2.5]{landesman-swaminathan-tao-xu:rational-families}.
+Applying this fact to $[H, H] \subset \Sp_{2g}(\zh)$ gives the result.
+%\footnote{The cited result~\cite[Proposition 2.5]{landesman-swaminathan-tao-xu:rational-families} essentially states that a closed subgroup of $\Sp_{2g}(\mathbb{Z}_\ell)$ mapping onto $\Sp_{2g}(\mathbb{Z}/\ell\mathbb{Z})$ must in fact be all of $\Sp_{2g}(\mathbb{Z}_\ell)$. This result was originally proven for $\ell \geq 5$ by Serre in a 1986 letter to Vign\'{e}ras (see~\cite{serre-vigneras}).} 
+\end{proof} 
+\begin{corollary} \label{theorem:r=2:special}
+For $H$ as in Lemma~\ref{theorem:r=2}, we have $[\hyphat_{2g+i} : [H, H]] = 2$. In particular, $[\hyphat_{2g+i} : [
+\widetilde{\mathrm{G} \mathcal {S}}_{2g+i, K}, 
+\widetilde{\mathrm{G} \mathcal {S}}_{2g+i, K}, 
+]] = 2$. 
+\end{corollary} 
+
+\subsection{Embedding the Symmetric Group, Take 2} \label{symbed}
+
+In Section~\ref{take1} we constructed the well-known embedding $S_{2g+2} \hookrightarrow \Sp_{2g}(\bz / 2 \bz)$. Beginning with
+\begin{align*}
+	V &\simeq \FF_2^{2g+2} \\
+	t &= (1, \dots, 1) \in V \\
+	W &= t^{\perp}/\on{span}(t),
+\end{align*}
+we observed that the action of $S_{2g+2}$ on the basis vectors of $V$ descends to a symplectic action on $W$. Our goal in this section is to relate this embedding with the mod-2 Galois representation attached to a family of hyperelliptic curves, by proving the following result:
+\begin{theorem} \label{monodromy-in-sym}
+	Given a family $\mc{C} \to \mc{U}$ of hyperelliptic curves (where $\mc{U}$ is any stack), and a geometric generic point $\ol{\eta} \hookrightarrow \mc{U}$, the monodromy group $\rho_{2}(\pi_1(\mc{U}, \ol{\eta})) \subset \Sp_{2g}(\bz / 2 \bz)$ is in fact contained in $S_{2g+2} \subset \Sp_{2g}(\bz / 2 \bz)$. As a subgroup of $S_{2g+2}$, the monodromy group is given by the action of $\pi_1(\mc{U})$ on the Weierstrass points of $\mc{C}_{\ol{\eta}}$.
+\end{theorem}
+This has an immediate consequence for our standard families:
+\begin{corollary} \label{sym-W}
+	For $i \in \{1, 2, 3, 4\}$, we have $\mono_{\standardFamily g i K} \subset \grouphypboth g {(i \bmod 2)} K$.
+\end{corollary}
+\begin{proof}
+	We have $\on{mult}(\mono_{\standardFamily g i K}) = \chi(K)$ as subgroups of $\zh^\times$, by Remark~\ref{remark:det-rho-is-chi}. Therefore, it suffices to show that $\mono_{\standardFamily g i K}(2) \subset S_{2g+2-(i \bmod 2)}$. By Theorem~\ref{monodromy-in-sym}, we need only check that the monodromy action on the Weierstrass points of $\standardFamily g i K \to \standardTarget g i K$ is contained in $S_{2g+2-(i \bmod 2))}$. The nontrivial cases $i = 1, 3$ follow by observing that, when the defining equation is $y^2 = f(x)$ with $\deg f(x) = 2g+1$, one Weierstrass point always lies over infinity, hence is fixed under monodromy.
+\end{proof}
+
+We prove Theorem~\ref{monodromy-in-sym} in three steps:
+\begin{enumerate}[(1)]
+	\item In subsection~\ref{sec:single}, we prove the statement when $\mc{U}$ is $\spec \ol{k}$. The key points are that the constructions are functorial in $\mc{C}$ and that the isomorphism with $\on{Jac}_{C/U}[2]$ follows from standard facts about divisors on hyperelliptic curves.
+	\item In subsection~\ref{part2}, we prove the statement when $\mc{U}$ is a scheme by explicitly constructing the algebraic space of Weierstrass points over $\mc{U}$, the corresponding group space $t^\perp / \on{span}(t)$ over $\mc{U}$, and the map from the latter to $\on{Jac}_{C/U}[2]$. Step (1) implies that this map is an isomorphism.
+	\item In subsection~\ref{part3}, we interpret the (functorial) constructions of step (2) as giving rise to corresponding objects and maps over the moduli space $\hyperell_g$ of hyperelliptic curves, corresponding to the universal family $\hyperellSource_g \to \hyperell_g$.
+\end{enumerate}
+
+
+
+\subsubsection{A single hyperelliptic curve} \label{sec:single}
+Let $k$ be an algebraically closed field of characteristic zero, let $C$ be a hyperelliptic curve over $k$, and let $J$ be the Jacobian of $C$. The
+set of Weierstrass points $\{P_1, \ldots, P_{2g+2}\}$ of $C$ is uniquely determined because $g \ge 2$. With this setup, define $V$
+to be the free vector space over $\FF_2$ spanned by $P_1, \ldots, P_{2g+2}$, so that
+\begin{align*}
+	t &= P_1 + \cdots + P_{2g+2} \\
+	t^\perp &= \on{span}_{\mathbb{F}_2}(P_i - P_j : i, j \in \{1, \ldots, 2g+2\}).
+\end{align*}
+The map
+\[
+\begin{tikzcd}[row sep = 0.15cm]
+\on{span}_{\bz}(P_1, \ldots, P_{2g+2}) \ar{r}{\phi} & \on{Pic}_C \\
+\sum_i a_i \cdot P_i  \ar[mapsto]{r} & \mc{O}_C\left( \sum_i a_i \cdot P_i \right),
+\end{tikzcd}
+\]
+is such that $\phi(\on{span}_{\bz}(P_i - P_j)) \subset \on{Pic}_C^0 \simeq J$. Furthermore, it can be checked that
+\begin{itemize}
+	\item The resulting map $\on{span}_{\bz}(P_i - P_j) \to J$ annihilates $2\cdot (P_i - P_j)$ and $t$. Hence it descends to a map $W \defeq t^\perp / \on{span}(t) \to J[2]$ of $\FF_2$ vector spaces.
+	\item This latter map is an isomorphism.
+\end{itemize}
+The second bullet point implies that the action of $\on{Aut}(C)$ on $J[2]$, \emph{a priori} contained in $\Sp_{2g}(\bz / 2 \bz)$, is in fact contained in the subgroup $S_{2g+2} \subset \Sp_{2g}(\bz / 2 \bz)$ which is determined by the vector space isomorphism $J[2] \simeq W$. For details, see \cite[Proposition 1.2.1(a)]{yelton2015thesis}.
+
+
+\subsubsection{Schematic families of hyperelliptic curves} \label{part2}
+Let ${C} \to {U}$ be a family of hyperelliptic curves of genus $g$, where $U$ is a scheme. Because all constructions in \ref{sec:single} were functorial, they can be carried out in families. Let us indicate how this is done.
+\begin{enumerate}[itemsep=0.25cm]
+	\item Let ${P}$ be the fixed point locus of the hyperelliptic involution. Then we have a diagram
+	\[
+	\begin{tikzcd}[column sep = 2 cm]
+	{P} \ar[hookrightarrow]{r}{\text{closed emb.}} \ar[swap]{rd}{\text{\'etale}} & {C} \ar{d} \\
+	& {U}
+	\end{tikzcd}
+	\]
+	For any geometric point $u \hookrightarrow {U}$, the fiber ${P}_u$ consists of the Weierstrass points of ${C}_u$.
+	\item Let ${G}$ be the group algebraic space over ${U}$ which represents the sheaf associated to the following presheaf on $\on{Sch}_{/{U}}$, in the \'etale topology:
+	\[
+	T \mapsto \on{span}_\bz (\on{Hom}_{{U}}(T, {P})).
+	\]
+	Representability follows by taking an \'etale cover of ${U}$ which trivializes ${P}$. For $u \ra {U}$ a geometric point, the fiber ${G}_u$ equals $\on{span}_\bz({P}_u)$.
+	
+	There is a section $t \colon {U} \to {G}$ which is first defined on a sufficiently fine \'etale cover ${U}' \to {U}$ for which $U' \times_U P$ is a trivial $(2g+2)$-cover of $U'$, by ``adding all the Weierstrass points,'' i.e.\ summing the $(2g+2)$ basis elements of
+	\[
+		\on{span}_\bz(\Hom_U(U', P)) \simeq \on{span}_\bz(\Hom_{U'}(U', U' \times_U P)).
+	\]
+	The section on $U'$ can then be descended to $U$.
+	
+	We can also define a group subspace ${G}^0 \hookrightarrow {G}$ via the sub-presheaf given by requiring that the coefficients of the $\bz$-linear combination sum to zero.
+	\item Define a map $\Phi: {G} \to \on{Pic}_{{C}/{U}}$ of group spaces over ${U}$ as follows: given $f \in {G}(T)$, we may find an \'etale cover $\sigma: T' \to T$ for which $\sigma^* f = \sum_i f_i$, for some $f_i \in \Hom_{{U}}(T', {P})$. Each $f_i$ gives a section of the pulled-back family ${C}_{T'} \to T'$, whose image determines a relative effective Cartier divisor $D_i$. A standard descent argument shows that $\sum_i D_i$ descends to a divisor $D$ on ${C}_T$, which does not depend on the chosen \'etale cover $\sigma$. We may therefore define $\Phi(f) \defeq D$. This assignment is natural in $T$, so it gives a natural transformation of functors ${G} \to \on{Pic}_{{C}/{U}}$. The fiber $\Phi_u$ is the map $\phi$ defined in \ref{sec:single}. The map $\Phi$ restricts to a map ${G}^0 \to \on{Pic}_{{C}/{U}}^0 \simeq \on{Jac}_{{C}/{U}}$.
+	\item Subsection \ref{sec:single} 
+    %shows that $\Phi$ is surjective and 
+    allows us to describe the kernel and image of $\Phi$ as follows. First, $2 \cdot G^0$ maps to zero, so $\Phi$ descends to a map $G^0 / (2 \cdot G^0) \to \on{Jac}_{C/U}$. Second, the inclusion $G^0 \hookrightarrow G$ gives an injection $G^0 / (2 \cdot G^0) \hookrightarrow G / (2 \cdot G)$, and the image of $t \in G(U)$ in the quotient $G / (2\cdot G)$ in fact lies in $G^0 / (2 \cdot G^0)$ because $t$ is a sum of an even number of terms; we abuse notation by denoting the latter section with the same symbol $t$. This $t$ spans the kernel of the descended map $G^0 / (2 \cdot G^0) \to \on{Jac}_{C/U}$, the image of which is equal to $\on{Jac}_{C/U}[2]$. Thus, we have that
+	\[
+		G^0 / (2 \cdot G^0 + \on{span}(t)) \to \on{Jac}_{C/U}[2]
+	\]
+	is an isomorphism of group stacks over $U$.
+\end{enumerate}
+This proves Theorem~\ref{monodromy-in-sym} when $\mc{U} \defeq U$ is a scheme, because the action of $\pi_1(U)$ on the fiber of $G^0 / (2G^0 + \on{span}(t))$ over a chosen geometric generic point $\ol{\eta} \in U$ (as an $\mathbb{F}_2$-vector space) is obtained from the action of $\pi_1(U)$ on the fiber of $P_{\ol{\eta}}$ (as a set of size $(2g+2)$) via the procedure of Section~\ref{take1}.
+
+\subsubsection{The universal family over $\hyperell_g$} \label{part3}
+
+The constructions of subsection~\ref{part2} are functorial in the chosen family $C \to U$, and behave well under base change $V \to U$, so we obtain the analogous constructions over the moduli stack of hyperelliptic curves:
+\[
+\begin{tikzcd}[column sep = 0.7in]
+\mc{P} \ar[hookrightarrow]{r}{\text{closed emb.}} \ar[swap]{rd}{\text{\'etale}} & \hyperellSource_g \ar{d} \\
+& \hyperell_g
+\end{tikzcd}
+\quad \text{and} \quad
+\begin{tikzcd}[column sep = 0.7in]
+\mc{G}^0 \ar{r}{\mc{O}(-)} \ar[hookrightarrow]{d} & \on{Pic}^0_{\hyperellSource_g/\hyperell_g} \ar[hookrightarrow]{d} \\
+\mc{G} \ar{r}{\mc{O}(-)} \ar{dr} & \on{Pic}_{\hyperellSource_g/\hyperell_g} \ar{d} \\
+& \hyperell_g \ar[dashed, bend left = 20]{ul}{t}
+\end{tikzcd}
+\]
+where $t$ is a section of $\mc{G} \to \hyperell_g$, for which we have the following isomorphism of group stacks over $\hyperell_g$:
+\[
+\begin{tikzcd}
+\mc{G}^0/(2 \cdot \mc{G}^0 + \on{span}(t)) \ar{r}{\simeq} \ar{dr} & \on{Pic}^0_{\hyperellSource_g/\hyperell_g}[2] \ar{d} \\
+& \hyperell_g
+\end{tikzcd}
+\]
+Here, $t$ is interpreted as a section of $\mc{G}^0 / (2 \cdot \mc{G}^0)$ over $\hyperell_g$ just as in step (4) of subsection~\ref{part2}.
+
+\begin{remark} By way of example, let us explain the definition of $\mc{P}$, and prove that it is a stack. By definition, $\mc{P}(U)$ is the groupoid whose objects are pairs $(C \to U, f)$ where $C \to U$ is a hyperelliptic family over $U$ (i.e.\ an object of $\hyperell_g(U)$) and $f$ is a section of the \'etale cover $P \to U$ constructed in subsection~\ref{part2} from the family $C \to U$. A morphism $(C_1 \to U, f_1) \simeq (C_2 \to U, f_2)$ is an isomorphism $\sigma$ of families
+\[
+\begin{tikzcd}
+C_1 \ar{rr}{\simeq} \ar{dr} && C_2 \ar{dl} \\
+& U
+\end{tikzcd}
+\]
+for which the resulting isomorphism $P_1 \simeq P_2$ of the associated spaces of Weierstrass points identifies the sections $f_1$ and $f_2$.
+
+The descent condition is easy to check. Given an \'etale cover $V \to U$, a descent datum for $\mc{P}$ is given by a family $\wt{C} \to V$ and a section $\wt{f}$ of the resulting space of Weierstrass points, denoted $\wt{P} \to V$, along with gluing isomorphisms that take place over $V \times_U V$, which satisfy a cocycle condition on $V \times_U V \times_U V$. The cocycle condition first allows us to realize $\wt{C}$ as the pullback of a family $C \to U$, because $\hyperell_g$ is known to be a stack. By functoriality, the pullback to $V$ of the resulting space of Weierstrass points $P \to U$ is canonically identified with $\wt{P} \to V$. So effectiveness of the descent datum follows from the fact that $P \to U$ is an \'etale sheaf over $\on{Sch}_{/U}$, and, as such, satisfies a gluing axiom.
+\end{remark}
+In a similar way, the following points are formal consequences of subsection~\ref{part2}:
+\begin{itemize}
+	\item All stacks appearing in the three commutative diagrams above are algebraic.
+	\item All maps to $\hyperell_g$ appearing above are representable.
+	\item The isomorphism in the third diagram, which gives the desired statement about monodromy for the universal family $\hyperellSource_g \to \hyperell_g$, can be checked on pullback to schemes $U$, but this is exactly the conclusion of subsection~\ref{part2}.
+\end{itemize}
+
+To finish the proof of Theorem~\ref{monodromy-in-sym}, we need only note that any hyperelliptic family $\mc{C} \to \mc{U},$ with $\mc U$ a Deligne-Mumford stack, is pulled back from the universal family $\hyperellSource_g \to \hyperell_g$ via a map $\mc{U} \to \hyperell_g$. In this case, all constructions above can be pulled back along the same map $\mc{U} \to \hyperell_g$. Therefore, to $\mc{C} \to \mc{U}$, we can associate a stack of Weierstrass points, whose $\bz$-span maps to $\on{Pic}_{\mc{C} / \mc{U}}$, giving rise to an isomorphism analogous to that of the third commutative diagram above. This gives the desired result, by the same reasoning as in the last paragraph of subsection~\ref{part2}.
+
+\subsection{Monodromy of Hyperelliptic Families $\standardTarget g i K$ and $\hyperelliptic g K$}
+\label{subsection:monodromy-of-families}
+
+We now show that the containment in Corollary~\ref{sym-W} is an equality for the families $\standardFamily g i K \to \standardTarget g i K$.
+\begin{lemma} \label{lemma:monodromy-std}
+Let $g \geq 2$, and let $i \in \{1, 2, 3, 4\}$. 
+\begin{enumerate}[label=(\roman*)]
+	\item For any algebraically closed field $L$ which is a subfield of $\mathbb C$, we have $\mono_{\standardFamily g i L}= \hyphat_{2g+2-(i \bmod 2)}$. 
+	\item For any number field $K$, we have $\mono_{\standardFamily g i K}= \grouphypboth g {(i \bmod 2)} {K}$. 
+\end{enumerate} 
+\end{lemma}
+\begin{proof}
+(i) $\Leftrightarrow$ (ii): we have a map of short exact sequences 
+\begin{equation}
+	\label{equation:}
+	\begin{tikzcd}
+		0 \ar {r}  &  \mono_{\standardFamily g i {\overline K}} \ar {r}\ar{d} & \mono_{\standardFamily g i K} \ar {r}{\mult}\ar{d} & \chi(K) \ar {r}\ar[equal]{d} & 0 \\
+			0 \ar {r} &  \hyphat_{2g+2-(i \bmod 2)} \ar {r} & \grouphypboth g {(i \bmod 2)} K \ar[swap]{r}{\mult} & \chi(K) \ar {r} & 0.
+	\end{tikzcd}\end{equation}
+By the Five Lemma, the second vertical map is an isomorphism if and only if the first is.
+
+Proof of (i): By Corollary~\ref{sym-W}, and because $L$ is a subfield of $\bc$, we have containments
+\[
+H_{\standardFamily g i \bc} \subset H_{\standardFamily g i L} \subset \hyphat_{2g+2-(i \bmod 2)}. 
+\]
+Therefore, it suffices to show that $H_{\standardFamily g i \bc} = \hyphat_{2g+2-(i \bmod 2)}$. For $i \in \{1, 2\}$, this follows from~\cite[Th\'eor\`eme 1]{acampo:tresses-monodromie-et-le-groupe-symplectique}, since the \'etale fundamental group is the profinite completion of the topological fundamental group. To complete the proof we need only show that, when $i \in \{3, 4\}$, we have $\mono_{\standardFamily g i {\mathbb C}} = \mono_{\standardFamily g {i-2} {\mathbb C}}$. 
+
+For this, it suffices to construct a deformation retract 
+\[
+	\phi: \standardTarget g {i-2} {\mathbb C} \times [0, 1] \to \standardTarget g {i-2} {\mathbb C}
+\]
+of $\standardTarget g {i-2} {\mathbb C}$ onto $\standardTarget g i {\mathbb C}$, which is done as follows. Let $n \defeq 2g+2-(i \bmod 2)$. Then $\standardTarget g {i-2} {\mathbb C}$ parameterizes unordered $n$-tuples of distinct points in $\ba^1_\bc$, and $\standardTarget g i {\mathbb C}$ parameterizes those which sum to zero. At time $t \in [0, 1]$, we define 
+\[
+\phi_t \colon \{z_i\}_{i=1}^n \mapsto \left\{z_i - t \cdot \frac{z_1 + \cdots + z_n}{n}\right\}_{i=1}^n, 
+\]
+where the $n$-tuple on the right sums to zero by construction. This $\phi$ is continuous, as desired. In fact, $\phi$ is regular: its coordinate functions are obtained by expressing the elementary symmetric polynomials in the right hand side $n$-tuple as polynomials in (the elementary symmetric polynomials of the $z_i$) and $t$. 
+\end{proof}
+
+\begin{corollary}
+	\label{monodromy-stack} 
+	Let $g \geq 2$. We have that $\mono_{\hyperellipticSource g K} = \grouphyp g {K}$,
+	where $\hyperellipticSource g K \ra \hyperelliptic g K$ is the universal family over the moduli stack of hyperelliptic curves.
+\end{corollary}
+\begin{proof}
+\emph{A priori}, we have the containments 
+\[
+\mono_{\standardFamily g 2 K} \subset \mono_{\hyperellipticSource g K} \subset \grouphyp g K, 
+\]
+the latter following from Corollary~\ref{monodromy-in-sym}. But Lemma~\ref{lemma:monodromy-std} implies that $\mono_{\standardFamily g 2 K} = \grouphyp g K$. 
+\end{proof}
+
+
+
+\subsection{Finishing the Proof}\label{32isnotagoodscoreline}
+
+We are now in position to complete the proof of Theorem~\ref{mainbldg}.
+The main input to the proof is the following general theorem from \cite{landesman-swaminathan-tao-xu:rational-families}.
+\begin{theorem}[\protect{\cite[Theorem 1.1]{landesman-swaminathan-tao-xu:rational-families}}]
+
+	\label{theorem:main}
+	Let $B, n > 0$, and suppose that the rational family $A \to U$ is non-isotrivial and has big monodromy, meaning that $\mono_A$ is open in $\GSp_{2g}(\zh)$. Let $\delta_\QQ$ be the index of the closure of the commutator subgroup of $\mono_A$ in $\mono_A \cap \Sp_{2g}(\zh)$, and let $\delta_K = 1$ for $K \neq \QQ$. Then $[\mono_A : \mono_{A_u}] \geq \delta_K$ for all $u \in U(K)$, and we have the following asymptotic statements:
+			\[
+				\frac{|\{u \in U(K) \cap \mathcal{O}_K^r : \lVert u \rVert \le B,\, [\mono_A : \mono_{A_u}] = \delta_K\}|}{|\{u \in U(K) \cap \mc{O}_K^r : \lVert u \rVert \le B\}|} = 1 + O((\log B)^{-n}), \text{ and}
+			\]
+\[
+				\frac{|\{u \in U(K) : \on{Ht}(u) \leq B,\, [\mono_A : \mono_{A_u}] = \delta_K\}|}{|\{u \in U(K) : \on{Ht}(u) \le B\}|} = 1 + O((\log B)^{-n}),
+			\]
+	 where the implied constants depend only on $A \to U$ and $n$.
+\end{theorem} 
+\begin{proof}[Proof of Theorem~\ref{mainbldg}]
+	First, we explain how Theorem~\ref{theorem:main} applies to the standard families $\standardFamily g i K \rightarrow \standardTarget g i K$. By Lemma~\ref{lemma:monodromy-std}(ii), these families have big monodromy, so Theorem~\ref{theorem:main} applies.  Lemma~\ref{lemma:monodromy-std}(ii) says that $H_{\standardFamily g i K} = \grouphypboth g {(i\bmod 2)} K$. With this in mind, Corollary~\ref{theorem:r=2:special} implies that $\delta_\bq = 2$ in the statement of Theorem~\ref{theorem:main}. 
+
+	Next, we apply Theorem~\ref{theorem:main} to a rational family $C \rightarrow U$ represented by a map $U \to \hyperelliptic g K$ with connected geometric generic fiber. This hypothesis implies that $\pi_1(U) \to \pi_1(\hyperelliptic g K)$ is a surjection, cf.\ \cite[Corollary 5.3]{landesman-swaminathan-tao-xu:rational-families}, so the monodromy group of $C \to U$ is equal to that of the universal family over $\hyperelliptic g K$, and Corollary~\ref{monodromy-stack} implies that the universal family over $\hyperelliptic g K$ has monodromy group $\grouphyp g K$. At this point, Corollary~\ref{theorem:r=2:special} implies $\delta_\bq = 2$, as before. 
+\end{proof}

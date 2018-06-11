@@ -1,0 +1,652 @@
+\section{Verification of the Examples}\label{verified}
+
+The objective of this section is to prove our second main result, namely Theorem~\ref{exemplinongratia}. To verify that the example curves stated in Theorem~\ref{exemplinongratia} have maximal monodromy among members of $\hyperelliptic{g}{\QQ}$, we shall rely on two different sets of criteria, one adapted from~\cite{anni2017constructing}, and the other adapted from~\cite{seaweed}. We introduce these criteria in Section~\ref{sweenytime}; then, in Section~\ref{icheckthat}, we apply these criteria to check the example curves.
+%have maximal monodromy.
+%Recall from Section~\ref{subsection:stimpy} that $[H,H]$ denotes the closure of the usual commutator subgroup.
+
+\subsection{Criteria for Having Maximal Monodromy}\label{sweenytime}
+
+Let $g \in \{2,3\}$, and let $C$ be a genus-$g$ hyperelliptic curve over $\QQ$ given by the Weierstrass equation $y^2 = f(x)$, where $f(x) \in \bq[x]$ is a polynomial of degree $2g+2$; note that $C$ is a $\mathbb Q$-valued point of $\standardTarget{g}{2}{\QQ}$.
+%Let $S$ denote the set of primes at which $C$ has bad reduction. 
+%Suppose that $C$ has semi-stable reduction at each prime in $S$ and further suppose that the minimal discriminant $\Delta$ of $C$ is square-free.
+
+Let $J$ denote the Jacobian of $C$. We want to write down criteria for the associated monodromy group $H_J$ to be as large as possible in $H_{\hyperelliptic{g}{\mathbb Q}} \simeq \grouphyp{g}{\QQ}$, which by Theorem~\ref{mainbldg} is equivalent to having index $2$ in $\grouphyp{g}{\QQ}$.
+%Note that by Lemmas~\ref{lemma:geometric-monodromy-of-standard-family} and~\ref{lemma:moduli-stack-monodromy}, we have that
+%$$\mono_{\standardFamily{g}{i}{\QQ}} = \mono_{\hyperelliptic{g}{K}} = \grouphyp{g}{\QQ},$$
+%so any such criteria would also ensure that $H_J$ is maximal in $\mono_{\standardFamily{g}{i}{\QQ}}$.
+%Our first step is to reduce the problem of studying subgroups of $\GSp_{2g}(\wh{\ZZ})$ to studying subgroups of $\Sp_{2g}(\ZZ/\ell \ZZ)$ as $\ell$ ranges through the prime numbers. To do this, we will first replace the relevant monodromy groups by their commutators, via the following lemma:
+We shall rely on the following lemma, which gives us two conditions under which maximal monodromy is attained:
+\begin{lemma}
+	\label{lemma:reduction-from-adelic-to-mod-l}
+	Suppose $C$ is a hyperelliptic curve over $\mathbb Q$ with Jacobian $J$ satisfying
+	\begin{align}\label{thethingIwanttocheck}
+(\mono_J)_2 &= \gify{2^\infty}{2}^{-1}(S_{2g+2}), \text{ and} \\ 
+%\fy{2^\infty}{2}^{-1}(\mono_J(2)) \quad \text{and} \quad \mono_J(2) \supset S_{2g+2}, \\
+%then in fact $[\mono_J, \mono_J]_2 = [\hyphat_{2g+2}, \hyphat_{2g+2}]_2$, because we necessarily have $\mono_J(2) \subset \hyphat_{2g+2}(2) = S_{2g+2}$. Moreover, if we have that
+\label{asillysequel}
+\mono_J(\ell) &\supset \Sp_{2g}(\ZZ / \ell \ZZ) \text{ for every prime number } \ell \geq 3.
+\end{align}
+%then it follows by~\cite[Proposition~3.8]{landesman-swaminathan-tao-xu:rational-families} \todo{this reference is wrong} that
+%$$[\mono_J, \mono_J] = [\hyphat_{2g+2}, \hyphat_{2g+2}]_2 \times \prod_{\text{prime }\ell \geq 3} \Sp_{2g}(\ZZ_\ell) = [\hyphat_{2g+2}, \hyphat_{2g+2}].$$
+Then, $[\grouphyp{g}{\QQ} : \mono_J] = 2$.
+\end{lemma}
+\begin{proof}
+Since the maximal abelian extension $\QQ^{\on{ab}}$ is equal to the maximal cyclotomic extension $\QQ^{\on{cyc}}$, we have that
+\begin{equation}\label{factcheck}
+\rho_J(\Gal(\ol{\QQ}/\QQ^{\on{cyc}})) = \rho_J(\Gal(\ol{\bq}/\bq^{\ab})) = [\mono_J , \mono_J].
+\end{equation}
+Using~\eqref{factcheck}, we find that
+\begin{align*}
+[\grouphyp{g}{\QQ} : \mono_J] & = [\hyphat_{2g+2} : \rho_J(\Gal(\ol{\QQ}/\QQ^{\on{cyc}}))] \\
+& = [\hyphat_{2g+2} : [\grouphyp{g}{\QQ},\grouphyp{g}{\QQ}]] \cdot [[\grouphyp{g}{\QQ}, \grouphyp{g}{\QQ}] : \rho_J(\Gal(\ol{\bq}/\bq^{\cyc}))] \\
+& = 2 \cdot [[\hyphat_{2g+2}, \hyphat_{2g+2}] : [\mono_J, \mono_J]] ,
+\end{align*}
+where in the last step above we used the result of Corollary~\ref{theorem:r=2:special}. Thus, to prove that $H_J$ is maximal, it suffices to show that the inclusion $[\mono_J, \mono_J] \subset [\hyphat_{2g+2}, \hyphat_{2g+2}]$ is an equality.
+%As in the proof of Corollary~\ref{theorem:r=2}, we have by~\cite[Proposition~3.8]{landesman-swaminathan-tao-xu:rational-families} \todo{this reference is wrong} that 
+%$$[\hyphat_{2g+2}, \hyphat_{2g+2}] = [\hyphat_{2g+2}, \hyphat_{2g+2}]_2 \times \prod_{\text{prime }\ell \geq 3} \Sp_{2g}(\ZZ_\ell).$$
+The result then follows from Lemma~\ref{theorem:r=2}.
+%Now, by Theorem~\ref{theorem:small-ab}, if we have that
+%\todo{Pursuant to my comment about Lemma 3.2, the $\supset$ became an $=$. I think it's now fixed. -James}
+\end{proof}
+
+Criterion~\eqref{asillysequel} may be broken down into two different sets of criteria by means of the following two propositions, adapted from~\cite{anni2017constructing} and~\cite{seaweed} respectively. The first set of criteria has the advantage that it implies the image is surjective
+at all but finitely many primes, 
+although notably it does omit a finite list of primes $\ell$.
+
+We first recall definitions from~\cite{anni2017constructing}.
+\begin{definition}[\protect{\cite[Definition 1.2, Definition 1.3]{anni2017constructing}}]
+	\label{definition:t-eisenstein}
+	Let $t \geq 1$ be an integer and $p$ a prime. A polynomial $f(x) \defeq x^m + a_{m-1} x^{m-1} + \cdots + a_0 \in \mathbb Z_p[x]$
+	is {\em $t$-Eisenstein} if $v(a_i) \geq t$ for $i > 0$ and $v(a_0) = t$, for $v$ the $p$-adic valuation.
+	Further, suppose $q_1, \ldots, q_k$ are prime numbers and $f(x) \in \mathbb{Z}_p[x]$ is monic and squarefree.
+	We say $f(x)$ is of {\em type} $t - \left\{ q_1, \ldots, q_k \right\}$ if it can be factored as
+	$f(x) = h(x) \prod_{i=1}^k g_i(x-\alpha_i)$ over $\mathbb Z_p[x]$ for $\alpha_i \in \mathbb Z_p$ with
+	$\alpha_i \not\equiv \alpha_j \bmod p$ for all $i \neq j$, $g_i(x)$ a $t$-Eisenstein polynomial
+	of degree $q_i$, and $h(x) \bmod p$ a separable polynomial with $h(\alpha_i) \not \equiv 0 \bmod p$ for all $i$.
+\end{definition}
+The next proposition follows immediately upon combining the main results of~\cite{anni2017constructing}:
+\begin{proposition}[\protect{\cite{anni2017constructing}}]
+	\label{prop-anni}
+Suppose $f \in \mathbb{Z}[x]$ satisfies the following properties:
+\begin{enumerate}
+\item There exist primes $q_1$, $q_2$, and $q_3$ such that
+$$q_1 \leq q_2 < q_3 < q_1 + q_2 = 2g + 2.$$
+\item There exist two distinct primes $p_{t_1}, p_{t_2} > g$ so that $f$ has type $1 - \left\{ 2 \right\}$ at $p_{t_1}$ and $p_{t_2}$.
+\item There exists a prime $p_2 > 2g+2$ which is a primitive root modulo $q_1, q_2$, and $q_3$ so that $f$ has type $1 - \left\{ q_1, q_2 \right\}$ at $p_2 > 2g + 2$.
+\item There exist a prime $p_3 > 2g+2$  which is a primitive root modulo $q_3$ such that $f$ has type $2-\left\{ q_3 \right\}$ at $p_3$.
+\item Writing $f = x^{2g+2} + a_{2g+1} x^{2g+1} + \cdots + a_1x + a_0$ we have $a_0\equiv 2^{2g} \bmod 2^{2g+2}$,
+	$a_{2g+1}\equiv 2 \bmod 2^{2g+2}$, and $a_i\equiv 0 \bmod 2^{2g+2-i}$ for $1 \leq i \leq 2g$.
+\item For all primes $p \notin \left\{ 2,p_2,p_3 \right\}$ we have that $p^2 \nmid \disc f$, the discriminant of $f$.
+\end{enumerate}
+Let $J$ denote the Jacobian of the regular proper model for the affine curve $y^2 = f(x)$.
+Then $\mono_J(\ell) \supset \Sp_{2g}(\ZZ / \ell \ZZ)$ for every $\ell > g$ so long as $\ell \not\in \{2,3,q_1, q_2, q_3, p_2, p_3\}$.
+\end{proposition}
+\begin{proof}
+	We now demonstrate why Proposition~\ref{prop-anni} follows immediately from the results of \cite{anni2017constructing}.
+	It suffices to verify the hypotheses of \cite[Theorem 6.2]{anni2017constructing}.
+	Their hypotheses (G+$\varepsilon$), (2T), ($p_2$) and ($p_3$) are respectively (1), (2), (3), and (4) above.
+	Next, we note that $f$ satisfies their condition (adm):
+	We have to show $f$ is admissible (in the terminology of
+	\cite[Definition 4.6]{anni2017constructing}) at all primes $p$.
+	$f$ is admissible at $p_2$ by \cite[Lemma 4.10]{anni2017constructing} and at $p_3$ by \cite[Lemma 4.11]{anni2017constructing}.
+	Further, $f$ is admissible at all primes with semistable reduction by \cite[Lemma 4.9]{anni2017constructing}
+	so it suffices to show $f$ is semistable at all primes $p \notin \left\{ p_2, p_3 \right\}$.
+	At $p = 2$ this follows from \cite[Lemma 7.7]{anni2017constructing}, using (5) above, while at
+	at all odd primes this follows from \cite[Lemma 7.7]{anni2017constructing}, using (6) above.
+	To conclude the proof, we only need check that all primes $\ell > g$ with $\ell \not\in \{2,3,q_1, q_2, q_3, p_2, p_3\}$
+	satisfy either \cite[Theorem 6.2(i) or (iii)]{anni2017constructing}.
+	If $\ell \neq p_2, p_3$ then $\ell$ satisfies \cite[Theorem 6.2(i)]{anni2017constructing} because we have seen $J/\mathbb Q_\ell$
+	is semistable above. If $\ell = p_2$ or $p_3$ then $\ell$ satisfies \cite[Theorem 6.2(iii)]{anni2017constructing} by (3) and (4) above.
+\end{proof}
+
+
+The second set of criteria has the advantages that it is simpler to state and works for every odd prime $\ell$.
+The following criteria has essentially appeared in several papers including
+\cite[Theorem 1.1]{renyaDW:classification-of-subgroups-of-symplectic-groups-over-finite-fields}, \cite[Theorem 1.1]{hall:big-symplectic-or-orthogonal-monodromy-modulo-l}, and \cite[Proposition 2.2]{seaweed}.
+\begin{proposition}
+	\label{proposition:zywina-criterion}
+	Let $g \ge 2$, and let $\ell \ge 3$ be prime. Consider a subgroup $H(\ell) \subset \GSp_{2g}(\mathbb{F}_\ell)$ satisfying the following conditions: 
+	\begin{enumerate}
+		\item[\customlabel{propa}{(A)}] $H(\ell)$ contains a transvection, by which we mean an element with determinant $1$ that fixes a codimension-$1$ subspace.%\textcolor[rgb]{1,1,1}{This right here is just filler text, don't mind me please!!!}
+	\item[\customlabel{propb}{(B)}] The action of $H(\ell)$ on $(\ZZ/\ell \ZZ)^{2g}$ is irreducible, in the sense that there are no nontrivial invariant subspaces.
+\item[\customlabel{propc}{(C)}] The action of $H(\ell)$ on $(\ZZ / \ell \ZZ)^{2g}$ is primitive, in the sense that there does not exist a decomposition $(\ZZ / \ell \ZZ)^{2g} \simeq V_1 \oplus \dots \oplus V_k$ with $H(\ell)$ permuting the $V_i$'s.
+	\end{enumerate}
+	Then we have that $H(\ell) \supset \Sp_{2g}(\mathbb{Z} / \ell \ZZ)$. 
+\end{proposition}
+
+
+\subsection{Checking the Criteria}\label{icheckthat}
+
+The remainder of the paper is devoted to using the criteria introduced in Section~\ref{sweenytime} to verify the examples declared in Theorem~\ref{exemplinongratia}.
+
+%~\eqref{propa},~\eqref{propb}, and~\eqref{propc} for the two examples claimed in Theorem~\ref{exemplinongratia}. Once we do so, this will complete the proof of ~\ref{exemplinongratia} because ~\eqref{propa},~\eqref{propb}, and~\eqref{propc}
+%together imply~\eqref{asillysequel}, which implies that $[\grouphyp{g}{\QQ} : \mono_J] = 2$ by Lemma~\ref{lemma:reduction-from-adelic-to-mod-l}.
+
+
+%\todo{I think the following three criteria are quite well written, but if you look at the proofs, they're all just saying, this is an immediate generalization of Zywina, as they should be.
+%Since the generalization seems very immediate, we could basically just state the final criterion for checking
+%existence of transvections, irreducibility
+%(which is a combination of 5.7 - 5.10) and primitivity.
+%If the referee asks for a more complete description,
+%then we can easily add this longer version back in
+%
+%or we could leave it as is, i just wanted to mention this is an option if it feels like we're citing zywina too much
+%}
+
+\subsubsection{Criterion~\eqref{thethingIwanttocheck}: The $2$-adic Component} \label{subsection:2-adic}
+
+The following lemma allows us to verify criterion~\eqref{thethingIwanttocheck}:
+
+\begin{lemma} \label{lemma:2-adic}
+	Let $g \in \{2,3\}$, and let $H_2 \subset \hypaddict_{2g+2}$ be a closed subgroup. If $H_2(2) = S_{2g+2}$, then we have that $H_2 = \hypaddict_{2g+2}$. 
+\end{lemma} 
+\begin{proof} 
+	When $g = 2$, the inclusion $S_6 \subset \Sp_4(\bz / 2 \bz)$ is an equality, so the lemma follows from~\cite[Theorem 1]{landesman-swaminathan-tao-xu:lifting-symplectic-group}. For the rest of the proof, we take $g = 3$. Note that an easy generalization of the argument given in~\cite[Lemma 3, Section IV.3.4]{serre1989abelian} shows that, if $H \subset \Sp_{6}(\mathbb Z_2)$ is a closed subgroup satisfying $\hypaddict_{8}(8) = H(8)$, then $H_2 = \fy{2^{\infty}}{2}^{-1}(H(2))$.
+So it suffices to show that
+$\hypaddict_{8}(8) = H(8)$.
+%or equivalently,
+%		$H(8) = \left( \Sp_6(\mathbb Z/8\mathbb Z) \rightarrow \Sp_6 (\mathbb Z/2 \mathbb Z) \right)^{-1}H(2)$.
+	Indeed, the following \texttt{magma} code verifies that there are no strict subgroups of
+$\hypaddict_{8}(8)$ with $\bmod$-$2$ reduction equal to
+$\hypaddict_{8}(2) = S_{8}$.
+\vspace*{0.1in}
+\begin{adjustwidth}{0.5in}{0in}
+\begin{alltt}
+G := GL(6,quo<Integers()|8>);
+e := elt<G| 1,0,0,0,0,0,1,1,0,0,0,0,0,0,1,0,0,0,
+\qquad 0,0,0,1,0,0,0,0,0,0,1,0,0,0,0,0,0,1>;
+f := elt<G|1,1,0,0,0,0,0,1,1,0,0,0,1,1,1,1,0,0, 
+\qquad 1,1,0,1,1,0,1,1,1,1,1,1,1,1,1,1,0,1>;
+H := sub<G|e,f>;
+maximals := MaximalSubgroups(H);
+grp, f := ChangeRing(G, quo<Integers()|2>);
+for K in maximals do
+    if #f(K{\`{}}subgroup) eq #H then
+        assert false;
+    end if;
+end for; \qedhere
+\end{alltt}
+\end{adjustwidth}
+%\vspace*{0.1in}
+\end{proof}
+
+Recall from the discussion in Section~\ref{sec:single} that $\mono_J(2) = S_{2g+2}$ if and only if the polynomial $f(x)$ has Galois group $S_{2g+2}$. A simple {\tt magma} computation that this is the case for the polynomials $f(x)$ associated to the curves stated in Theorem~\ref{exemplinongratia}.
+%; indeed, we need only perform a change of variables to rewrite each curve in the form $y^2 = f(x)$, and a short \texttt{magma} computation gives the Galois group of $f(x)$. For the record, the polynomials $f(x)$ corresponding to the curves $C_2$ and $C_3$ are
+%\begin{align*}
+%C_2 & \rightsquigarrow f(x) = x^6 - 2x^4 - 2x^3 - 3x^2 - 2x + 1, \quad \text{and} \\
+%C_3 & \rightsquigarrow f(x) = x^8 -4x^3 + 4x + 4.
+%\end{align*}
+Then Lemma~\ref{lemma:2-adic} tells us that $(\mono_J)_2 = \hypaddict_{2g+2}$, thus verifying the criterion~\eqref{thethingIwanttocheck}. 
+
+%where $f(x)$ is given as in~\eqref{curveq2}, 
+%the following {\tt Magma} code verifies that $f(x)$ has Galois group $S_6$:
+%\begin{Verbatim}[xleftmargin=.5in]
+%
+%Pol<x>:=PolynomialRing(Rationals());
+%GaloisGroup(x^6 - 2*x^4 - 2*x^3 - 3*x^2 - 2*x + 1)
+%
+%\end{Verbatim}
+%Thus, $\rho_{J_C,2}$ is surjective.
+
+\subsubsection{Criterion~\eqref{asillysequel}: The Genus-$2$ Example}
+
+We now verify the genus-$2$ example. We first apply Proposition~\ref{prop-anni}. To verify the conditions (1)-(6) on the polynomial $f(x)$, we make the following choices:
+$$q_1 = q_2 = 3,\, q_3 = 5,\, p_{t_1} = 3,\, p_{t_2} = 5,\, p_2 = 17,\, p_3 = 7.$$ 
+Condition (1) is clearly satisfied and
+conditions (2)-(4) are satisfied upon observing that $f(x)$ admits the following factorizations:
+\begin{align*}
+( x^4 + x^3 + x^2 + x + 1 )( x^2 - 3 ) & \bmod 3^2 \\
+	( x^4 + x^2 + x + 1 )( x^2 - 5 ) & \bmod 5^2 \\
+	( x^3 - 17 ) ( ( x-1 )^3 - 17 ) & \bmod 17^2 \\
+	( x-1 )( x^5 - 7^2 ) & \bmod 7^3.
+\end{align*}
+Condition (5) is verified by reducing $f$ modulo $2^{2g+2} = 2^6 = 64$.
+Finally, the computer verifies that the prime factorization of $\disc f$ is given by
+\begin{equation*}
+	\disc f = 3 \cdot 5 \cdot 7^8 \cdot 17^4 \cdot 421 \cdot 6397 \cdot 103434941173345262214445927 \cdot 4899652830439610728976665849.
+	\end{equation*}
+Hence, Proposition~\ref{prop-anni} tells us that condition~\eqref{asillysequel} holds for every odd prime $\ell$ satisfying $\ell \not\in \{3,5,7,17\}$.
+
+To deal with the four remaining primes $\ell$, we utilize the criteria given in Proposition~\ref{proposition:zywina-criterion}. 
+First, we show the existence of a transvection (condition (A) of Proposition~\ref{proposition:zywina-criterion}). 
+Indeed, this follows from \cite[Lemma 2.9]{anni2017constructing}, which says that if there is a prime $p \nmid 2 \ell$ such that $f(x)$ has type $1 - \left\{ 2 \right\}$ when viewed as a polynomial in $\mathbb Z_p[x]$, then $J[\ell]$ contains a transvection.
+For $\ell \in \left\{ 5,7,17 \right\}$ this follows by taking $p = 3$ while for $\ell =3$ this follows by taking $p = 5$.
+
+%\begin{proposition}[\protect{\cite[Section 4]{seaweed}}] \label{proposition:transvection2}
+%If $p$ is a prime of semistable reduction of $C$ and $\ell \neq p$, then the mod-$\ell$ reduction of $\rho_{J}(I_p)$ is cyclic of order $\ell$. If furthermore $C_{p}$ has a single node (and no other singularities), then the mod-$\ell$ reduction of $\rho_{J}(I_p)$ is generated by a transvection. In particular, if there are two distinct primes $p_1, p_2 \in S$ such that mod-$p_1$ and mod-$p_2$ reductions of $C$ both have single nodes (and no other singularities), then $H_J(\ell)$ contains a transvection \mbox{for every odd prime $\ell$.} 
+%\end{proposition} 
+%\begin{proof} 
+%Zywina's argument relies only on Deligne's version of the Picard-Lefschetz formula [SGA7-II, XV], for which it suffices that $C$ has semistable reduction at $p$; i.e.~there exists a model over $\mathbb Z_p$ so that the special fiber has ordinary nodal singularities, at worst.
+%%This assumption was made in Section~\ref{sweenytime}. 
+%\end{proof} 
+%
+%We claim that by taking $p_1 = 421$ and $p_2 = 6397$ for the curve $C_2$, the criterion provided by Proposition~\ref{proposition:transvection2} holds. To prove this claim, it suffices to show that the reduction of $C_2$ modulo each $p_i$ has exactly one nodal singularity and no others. We rely on the following result of Zywina:
+%
+%\begin{lemma}[\protect{\cite[Section 4]{seaweed}}] \label{lem-semis}
+%Let $f \in \mathbb{Z}[x]$, and let $F(x,y) = y^2 - f(x)$. Suppose that the curve cut out by $F(x,y) = 0$ has a singularity at $(0,0)$ modulo a prime $p$. Then $p$ is a prime of semistable reduction of the curve if we can express $$F(x,y) = a + a_1 x + a_2 y + Q(x,y) \bmod (x,y)^3,$$ where $Q(x,y)$ is a nondegenerate quadratic form modulo $p$ and $a \equiv a_1 \equiv a_2 \equiv 0 \bmod p$, with $a \neq 0 \bmod p^2$.
+%\end{lemma}
+%
+%It is not difficult to see that the reduction of $C_2$ modulo $p_1 = 421$ has exactly one nodal singularity at the point $(123,0)$, and upon applying the linear change of coordinates $(x,y) \mapsto (x+y+123,y)$ to the polynomial $y^2 - f(x)$, the resulting polynomial $F(x,y)$ is easily seen to satisfy the requirements of Lemma~\ref{lem-semis} with $p = 421$. Similarly, one readily verifies that the reduction of $C_2$ modulo $p_2 = 6397$ has exactly one nodal singularity at the point $(2563,0)$, and upon applying the linear change of coordinates $(x,y) \mapsto (x+y+2563,0)$ to the polynomial $y^2 - f(x)$, the resulting polynomial $F(x,y)$ is easily seen to satisfy the requirements of Lemma~\ref{lem-semis} with $p = 6397$.
+
+To complete the proof, it suffices to verify conditions (B) and (C) of Proposition~\ref{proposition:zywina-criterion}.
+For $p$ be a prime of good reduction of $J$, let $\frob_p \in G_{\QQ}$ denote the corresponding Frobenius element, and let $\charpoly_p(T) \in \ZZ[t]$ denote the characteristic polynomial of $\rho_J(\frob_p) \in \GSp_{2g}(\wh{\ZZ})$. The next proposition gives us a criterion to check irreducibility and primitivity together (conditions (B) and (C)):
+
+\begin{proposition}[\protect{\cite[Proof of Lemma 7.2]{seaweed}}]\label{prop-irrop}
+	Fix a prime $\ell \ge 3$. Suppose there exists $p \neq \ell$ of good reduction such that $\charpoly_p(T)$ is irreducible modulo $\ell$ and $\ell \nmid \operatorname{tr}(\frob_p)$. Then $H(\ell)$ acts irreducibly and primitively on $(\mathbb{F}_\ell)^{2g}$. 
+\end{proposition}
+
+A simple {\tt magma} calculation shows that for $\ell \in \{3,17\}$, we can apply Proposition~\ref{prop-irrop} with
+$$\on{ch}_{401}(T) = T^4 - 49T^3+1257T^2-19649T+160801.$$
+Likewise, for $\ell = 5$, we can use 
+$$\on{ch}_{61}(T) = T^4 + 6T^3 + 54T^2 + 366T + 3721,$$
+and for $\ell = 7$, we can use
+$$\on{ch}_{277}(T) = T^4 + 31T^3 + 765T^2 + 8587T + 76729.$$
+This completes the verification that the curve $C_2$ in Theorem~\ref{exemplinongratia} has maximal monodromy.
+
+\subsubsection{Criterion~\eqref{asillysequel}: The Genus-$3$ Example}
+
+We now verify the genus-$3$ example. We begin again by applying Proposition~\ref{prop-anni}. To verify the conditions (1)-(6) on the polynomial $f(x)$, we make the following choices:
+$$q_1 = 3, \,  q_2 = 5,\, q_3 = 7,\, p_{t_1} = 5,\, p_{t_2} = 13,\, p_2 = 17,\, p_3 = 19.$$ 
+Condition (1) is clearly satisfied and
+conditions (2)-(4) are satisfied upon observing that $f(x)$ admits the following factorizations:
+\begin{align*}
+( x^6 + x^3 + x^2 + 1 )( x^2 + 5 ) & \bmod 5^2 \\
+	 (x^6 + 51x^5 + 12 x^4 + 70x^3 + 82x^2 + 41x + 158)((x-10)^2 + 143(x-10)+78)  & \bmod 13^2 \\
+	((x-1)^3 + 17)(x^5 + 17) & \bmod 17^2 \\
+	(x+1)(x^7 + 361) & \bmod 19^3.
+\end{align*}
+Condition (5) is verified by reducing $f$ modulo $2^{2g+2} = 2^8 = 256$.
+Finally, the computer verifies that the prime factorization of $\disc f$ is given by
+\begin{align*}
+	& \disc f = 2^{44} \cdot 5 \cdot 13 \cdot 17^6 \cdot 19^{12} \cdot 409 \cdot 71347 \cdot 
+249200273817326443 \cdot 2259862376409853901527 \cdot \\
+& \qquad \qquad 
+\qquad 76378336963241484055881774103 \cdot 3700557180228322572272219236151
+.
+	\end{align*}
+Hence, Proposition~\ref{prop-anni} tells us that condition~\eqref{asillysequel} holds for every odd prime $\ell$ satisfying $\ell \not\in \{3,5,7,13,17,19\}$.
+
+To deal with the four remaining primes $\ell$, we again utilize the criteria given in Proposition~\ref{proposition:zywina-criterion}. 
+First, we show the existence of a transvection (condition (A) of Proposition~\ref{proposition:zywina-criterion}). 
+This follows from~\cite[Lemma 2.9]{anni2017constructing}, which says that if there is a prime $p \nmid 2 \ell$ such that $f(x)$ has type $1 - \left\{ 2 \right\}$ when viewed as a polynomial in $\mathbb Z_p[x]$, then $J[\ell]$ contains a transvection.
+For $\ell \in \left\{ 3, 7,13,17,19 \right\}$ this follows by taking $p = 5$ while for $\ell =5$ this follows by taking $p = 13$.
+
+%\begin{proposition}[\protect{\cite[Section 4]{seaweed}}] \label{proposition:transvection2}
+%If $p$ is a prime of semistable reduction of $C$ and $\ell \neq p$, then the mod-$\ell$ reduction of $\rho_{J}(I_p)$ is cyclic of order $\ell$. If furthermore $C_{p}$ has a single node (and no other singularities), then the mod-$\ell$ reduction of $\rho_{J}(I_p)$ is generated by a transvection. In particular, if there are two distinct primes $p_1, p_2 \in S$ such that mod-$p_1$ and mod-$p_2$ reductions of $C$ both have single nodes (and no other singularities), then $H_J(\ell)$ contains a transvection \mbox{for every odd prime $\ell$.} 
+%\end{proposition} 
+%\begin{proof} 
+%Zywina's argument relies only on Deligne's version of the Picard-Lefschetz formula [SGA7-II, XV], for which it suffices that $C$ has semistable reduction at $p$; i.e.~there exists a model over $\mathbb Z_p$ so that the special fiber has ordinary nodal singularities, at worst.
+%%This assumption was made in Section~\ref{sweenytime}. 
+%\end{proof} 
+%
+%We claim that by taking $p_1 = 421$ and $p_2 = 6397$ for the curve $C_2$, the criterion provided by Proposition~\ref{proposition:transvection2} holds. To prove this claim, it suffices to show that the reduction of $C_2$ modulo each $p_i$ has exactly one nodal singularity and no others. We rely on the following result of Zywina:
+%
+%\begin{lemma}[\protect{\cite[Section 4]{seaweed}}] \label{lem-semis}
+%Let $f \in \mathbb{Z}[x]$, and let $F(x,y) = y^2 - f(x)$. Suppose that the curve cut out by $F(x,y) = 0$ has a singularity at $(0,0)$ modulo a prime $p$. Then $p$ is a prime of semistable reduction of the curve if we can express $$F(x,y) = a + a_1 x + a_2 y + Q(x,y) \bmod (x,y)^3,$$ where $Q(x,y)$ is a nondegenerate quadratic form modulo $p$ and $a \equiv a_1 \equiv a_2 \equiv 0 \bmod p$, with $a \neq 0 \bmod p^2$.
+%\end{lemma}
+%
+%It is not difficult to see that the reduction of $C_2$ modulo $p_1 = 421$ has exactly one nodal singularity at the point $(123,0)$, and upon applying the linear change of coordinates $(x,y) \mapsto (x+y+123,y)$ to the polynomial $y^2 - f(x)$, the resulting polynomial $F(x,y)$ is easily seen to satisfy the requirements of Lemma~\ref{lem-semis} with $p = 421$. Similarly, one readily verifies that the reduction of $C_2$ modulo $p_2 = 6397$ has exactly one nodal singularity at the point $(2563,0)$, and upon applying the linear change of coordinates $(x,y) \mapsto (x+y+2563,0)$ to the polynomial $y^2 - f(x)$, the resulting polynomial $F(x,y)$ is easily seen to satisfy the requirements of Lemma~\ref{lem-semis} with $p = 6397$.
+
+To complete the proof, it suffices to verify conditions (B) and (C) of Proposition~\ref{proposition:zywina-criterion}. A simple {\tt magma} calculation shows that for $\ell = 3$, we can apply Proposition~\ref{prop-irrop} with
+$$\on{ch}_{101}(T) = T^6 + 10T^5 + 60T^4 + 222T^3 + 6060T^2 + 102010T + 1030301.$$
+Likewise, for $\ell = 5$, we can use
+$$\on{ch}_{89}(T) = T^6 - 3T^5 + 93T^4 + 40T^3 + 8277T^2 - 23763T + 704969,$$
+for $\ell \in \{7, 17\}$, we can use 
+$$\on{ch}_{127}(T) = T^6 - 12T^5 + 8T^4 + 548T^3 + 1016T^2 - 193548T + 2048383,$$
+and for $\ell \in \{13,19\}$, we can use
+$$\on{ch}_{103}(T) = T^6 - 7T^5 + 55T^4 - 191T^3 + 5665T^2 - 74263T + 1092727
+.$$
+This completes the verification that the curve $C_3$ in Theorem~\ref{exemplinongratia} has maximal monodromy.
+
+\begin{comment}
+\subsubsection{Criterion~\eqref{propa}: Existence of Transvections} 
+
+%\begin{proposition} \label{proposition:transvection1}
+%	
+%\end{proposition} 
+%\begin{proof} 
+%
+%\end{proof} 
+
+For a prime number $p$, let $I_p \subset G_{\bq}$ be the inertia subgroup at $p$, determined up to conjugation. The following result, due to Zywina, gives us an easy-to-use criterion for determining the existence of a transvection. %\todo{James:please add brief picard-lefschetz intuitive description here.}
+
+\begin{proposition}[\protect{\cite[Section 4]{seaweed}}] \label{proposition:transvection2}
+If $p \in S$ and $\ell \neq p$, then the mod-$\ell$ reduction of $\rho_{J}(I_p)$ is cyclic of order $\ell$. If furthermore $C_{p}$ has a single node (and no other singularities), then the mod-$\ell$ reduction of $\rho_{J}(I_p)$ is generated by a transvection. In particular, if there are two distinct primes $p_1, p_2 \in S$ such that mod-$p_1$ and mod-$p_2$ reductions of $C$ both have single nodes (and no other singularities), then $H_J(\ell)$ contains a transvection \mbox{for every odd prime $\ell$.} 
+\end{proposition} 
+\begin{proof} 
+Zywina's argument relies only on Deligne's version of the Picard-Lefschetz formula [SGA7-II, XV], for which it suffices that $C$ has semistable reduction at each prime, i.e.\ for each prime $p$, 
+there exists a model over $\mathbb Z_p$ so that the special fiber have ordinary node singularities, at worst. 
+%This assumption was made in Section~\ref{sweenytime}. 
+\end{proof} 
+
+The criterion provided by Proposition~\ref{proposition:transvection2} is easily seen to hold for the curves stated in Theorem~\ref{exemplinongratia}. Indeed, one checks that for the curve $C_2$, we can take $p_1 = 19$ and $p_2 = 47$, and that for the curve $C_3$, we can take $p_1 = 5$ and $p_2 = 71$. Note that for $C_2$, we have $S = \{19,47\}$, and for $C_3$, we have $S = \{5,71,1579\}$.
+\todo{Aaron: I forget, how did we show there was no way of creating a smooth model for the curve at the various primes? Is this something about a minimal discriminant? I think it is important to know that there is no possible smooth model to say that the curve has bad reduction at these primes.}
+
+\subsubsection{Criterion~\eqref{propb}: Irreducibility} \label{sussubirred}
+
+Let $p$ be a prime of good reduction of $J$, let $\frob_p \in G_{\QQ}$ denote the corresponding Frobenius element, and let $\charpoly_p(T) \in \ZZ[t]$ denote the characteristic polynomial of $\rho_J(\frob_p) \in \GSp_{2g}(\wh{\ZZ})$. The next proposition gives us a criterion to check the irreducibility condition:
+
+\begin{proposition}\label{prop-irrop}
+	Fix a prime $\ell \ge 3$. Suppose there exists $p \notin S \cup \{\ell\}$ such that $\charpoly_p(T)$ is irreducible modulo $\ell$. Then $H(\ell)$ acts irreducibly on $(\mathbb{F}_\ell)^{2g}$. 
+\end{proposition} 
+\begin{proof} 
+	If $\frob_p$ acts reducibly on $(\mathbb{F}_\ell)^{2g}$, then the characteristic polynomial of $\rho_{J, \ell}(\frob_p)$ splits into factors corresponding to the action of $\frob_p$ on the subquotients of a stratification of $(\mathbb{F}_\ell)^{2g}$ by subspaces fixed under $\frob_p$. This contradicts the irreducibility of $\charpoly_p(T)$ modulo $\ell$. We conclude that $\frob_p$, and hence $H(\ell)$, acts irreducibly on $(\mathbb{F}_\ell)^{2g}$. 
+\end{proof}
+%\subsubsection{Determinantal characters of reducible representations}
+
+%\textbf{For the rest of this section, assume that $\ell \notin S$. Also, assume that $H(\ell)$ acts irreducibly for various $\ell$.} 
+
+Given the result of Proposition~\ref{prop-irrop}, our goal is to show that the set of primes $\ell$ for which $\charpoly_p(T)$ is reducible modulo $\ell$ for every prime $p$ is an finite set. \todo{Aaron: I don't really understand this. What is this finite set? Don't we end up showing it is reducible modulo $\ell$ for every prime? Maybe you're saying we use general methods to rule out all but an explicit finite set, and then check that set by hand? Is this what you mean? If so, it's not clear to me exactly which finite set you're referring to, or where you check it} We do this by emulating a similar argument given in~\cite[Section 6.1]{seaweed}; although Zywina's analysis is tailored to the dimension-$3$ case, much of applies to any dimension $g$, and it can also be fully carried out in dimension $2$.
+%, since the key ingredient for his argument is the classification of determinantal characters of representations of $G_{\bq}$, which holds for all $g$. That classification is stated as follows.
+
+Let $W$ be a finite dimensional vector space over $\mathbb{F}_\ell$, and consider a representation 
+%\todo{what does it mean by ``the classification of determinantal characters holds for all g? What is this classification? (You say stated as follows, but I'm not sure where the statement is, I don't see any classification. If you're referring to Prop 5.6, that doesn't seem like a classification. We only know how to do this in dimensions 1,2,3 so I'm not sure how it can be carried out in all dimensions}
+\[
+	\rho \colon G_{\bq} \to \on{Aut}_{\mathbb{F}_\ell}(W).
+\]
+In our application, the representation $\rho$ will be the mod-$\ell$ reduction of $\rho_J$. Furthermore, let 
+\begin{align*} 
+	\rho^\vee \colon G_{\bq} &\to \on{Aut}_{\mathbb{F}_\ell}(W^\vee) \\
+	\sigma & \mapsto \rho(\sigma^{-1})^\vee
+\end{align*} 
+be the dual representation of $\rho$, and let
+\begin{align*} 
+	\rho^\vee(1) \colon G_{\bq} & \to \on{Aut}_{\mathbb{F}_\ell}(W^\vee) \\
+	\sigma & \mapsto \chi_\ell(\sigma) \cdot \rho^\vee(\sigma)
+\end{align*} 
+be the twisted dual representation. When it is convenient to leave the action of $G_{\bq}$ implicit, we also denote these representations as $W^\vee$ and $W^\vee(1)$, respectively. 
+
+Recall that $\mu_\ell$ denotes the multiplicative group of the $\ell$-th roots of unity. The Weil pairing $J[\ell] \times J[\ell] \to \mu_\ell$ is nondegenerate and $G_{\bq}$-equivariant, implying that $J[\ell]$ and $J[\ell]^\vee(1)$ are isomorphic representations of $G_{\bq}$. If $J[\ell]$ is reducible, say 
+\[
+	J[\ell] = V_1 \oplus \cdots \oplus V_r
+\]
+is a decomposition of $G_{\bq}$-modules, where each $V_i$ is shorthand for a representation $\rho_i \colon G_{\bq} \to \on{Aut}_{\mathbb{F}_\ell} V_i$, then 
+\[
+	J[\ell]^\vee(1) = V_1^\vee(1) \oplus \cdots \oplus V_r^\vee(1),
+\]
+so the $\{V_i\}_i$ and $\{V_i^\vee(1)\}_i$ are pairwise isomorphic, in some order. Let $d_i \defeq \dim_{\mathbb{F}_\ell} V_i$ for each $i$. We may assume that $r \ge 2$ and reorder the $V_i$ so that $d_1 \le d_2 \le \cdots \le d_r$; note that $\sum_{i=1}^r d_i = 2g$. Then we have the following characterization:
+
+\begin{proposition} \label{proposition:de}
+	Suppose $\ell \ge g + 2$. 
+	\begin{enumerate}[(i)]
+		\item For each $1 \le i \le r$, there is a unique integer $0 \le e_i \le d_i$ such that $\det \circ \rho_i = \chi_\ell^{e_i}$. 
+		\item We have $\sum_{i=1}^r e_i = g$. 
+		\item We have $\{e_1, \ldots, e_r\} = \{d_1 - e_1, \ldots, d_r - e_r\}$. 
+		\item If $V_i^\vee(1) \simeq V_i$, then $d_i = 2 e_i$. 
+	\end{enumerate} 
+\end{proposition} 
+\begin{proof} 
+The proof of \cite[Lemma 6.3]{seaweed} involves the following ingredients: 
+\begin{itemize} 
+\item The first statement of \cite[Proposition 4.1]{seaweed}, stating that $\rho_{J, \ell}(I_p)$ is cyclic of order $\ell$. We have already explained in Proposition~\ref{proposition:transvection2} why this is valid as long as $C$ has semistable reduction. 
+\item The content of \cite[Section 5]{seaweed}, which pertains to Galois representations of general PPAV's. 
+\item Repeated use of the inequality $3 < \ell - 1$ to turn $(\bmod\, \ell)$ congruences into equalities of integers. In our setting, it suffices to replace this inequality by $g < \ell - 1$. 
+\end{itemize} 
+Therefore, Zywina's argument generalizes with minimal modifications. 
+\end{proof} 
+
+It is easy to rule out the case where any irreducible block is of dimension one, as demonstrated by the next result:
+
+\begin{proposition} \label{proposition:dim-one}
+	Suppose $\ell \ge g + 2$ and $d_1 = 1$. For any prime $p \notin S \cup \{\ell\}$, we have 
+	\[
+		\charpoly_p(1) \equiv 0 \pmod{\ell} \qquad \text{or} \qquad \charpoly_p(p) \equiv 0 \pmod{\ell}.
+	\]
+\end{proposition} 
+\begin{proof} 
+	The character $\rho_1 \colon G_\bq \to (\ZZ/\ell \ZZ)^\times$ is either $1$ or $\chi_\ell$ by Proposition~\ref{proposition:de}. The result follows because $\chi_\ell(\frob_p) \equiv p \pmod{\ell}$. See \cite[Section 6.2]{seaweed}. 
+\end{proof} 
+
+\todo{I fixed the following computations. Before, there was no consideration of the values of $\on{ch}_p(p)$, only of $\on{ch}_p(1)$. -James} 
+
+Proposition~\ref{proposition:dim-one} gives us a strong condition on the possible values of $\ell$ for which an irreducible block has dimension one. Indeed, in the case of the curve $C_2$, we find that
+\begin{align*}
+\on{ch}_7(T) & = T^4 + T^3 + 7T^2 + 7T + 49, \quad \text{and} \\
+\on{ch}_{11}(T) & = T^4 + 19T^2 + 121
+\end{align*}
+so Proposition~\ref{proposition:dim-one} implies that
+\begin{itemize} 
+\item $\ell$ divides $\on{ch}_7(1) = 65$ or $\on{ch}_7(7) = 3185$, and 
+\item $\ell$ divides $\on{ch}_{11}(1) = 141$ or $\on{ch}_{11}(11) = 17061$. 
+\end{itemize}
+There are no such primes, hence no representation $\rho_{J, \ell}$ can have an irreducible block of dimension 1. 
+
+In the case of the curve $C_3$, we similarly find that
+\begin{align*}
+\on{ch}_7(T) & = T^6 + 2T^5 + 2T^4 + 12T^3 + 14T^2 + 98T + 343
+, \quad \text{and} \\
+\on{ch}_{53}(T) & = T^6 - 2T^5 + 9T^4 - 543T^3 + 477T^2 - 5618T + 148877,
+\end{align*}
+so Proposition~\ref{proposition:dim-one} implies that
+\begin{itemize} 
+  \item $\ell$ divides $\on{ch}_7(1) = 472$ or $\on{ch}_7(7) = 161896$, and 
+\item $\ell$ divides $\on{ch}_{53}(1) = 143201$ or $\on{ch}_{53}(53) = 21319335277$. 
+\end{itemize}
+Again, there are no such primes, hence no $\bmod$-$\ell$ representation can have an irreducible block of dimension 1. 
+
+Eliminating the case where every irreducible block has dimension at least $2$ is quite a bit harder; the next three subsubsections are devoted to this case.
+
+\subsubsection{Serre's Conjecture rules out $(d_i, e_i) = (2, 1)$} \label{sussub-serre}
+
+Define $N$ to be the product of the primes in $S$. For any $p \notin S$, note that the roots of $\charpoly_p(x) \in \bz[x]$ can be partitioned into $g$ pairs $\{\lambda_i, \eta_i\}_{1 \le i \le g}$ such that $\lambda_i \cdot \eta_i = p$ for each $i$. Therefore the following degree $g$ polynomial has integer coefficients: 
+\[
+	Q_p(x) \defeq \prod_{i = 1}^g (x - \lambda_i - \eta_i).
+\]
+Using the polynomials $Q_p$, we obtain the following nice condition on (some of) the primes $\ell$ for which an irreducible block of dimension $2$ occurs.
+\begin{proposition} \label{proposition:serre} 
+	Suppose $\ell \ge g + 2$ and $(d_i, e_i) = (2, 1)$ for some $i$. Also suppose that $\ell$ does not divide any element of $S - 1 \defeq \{x-1 : x \in S \}$. For any prime $p \notin S \cup \{\ell\}$, let $H_p(x) \in \bz[x]$ be the characteristic polynomial of the Hecke operator $T_p$ acting on $S_2(\Gamma_0(N))$, and let $Q_p(x)$ be as defined above. Then $\ell$ divides the resultant of $H_p(x)$ and $Q_p(x)$. 
+\end{proposition} 
+\begin{proof} 
+	The proof of~\cite[Lemma 6.5]{seaweed}, which relies on Serre's Modularity Conjecture, carries through with minimal modification. In the penultimate paragraph, it suffices to replace \cite[Lemma~4.1]{seaweed} with Proposition~\ref{proposition:transvection2}. The conclusion is then that $N$ divides the product of the primes in $S$. In the last paragraph, in which the nebentypus of the modular form $f$ corresponding to $\rho_1$ is proven to be trivial, the decomposition 
+    \[
+    	(\bz / N \bz)^\times \simeq (\bz / 7 \bz)^\times \times (\bz / 11 \bz)^\times \times (\bz / 83 \bz)^\times
+    \]
+    is replaced by 
+    \[
+    	(\bz / N \bz)^\times \simeq \prod_{\ell' \in S} (\bz / \ell' \bz)^\times, 
+    \]
+    and the assumption that $\ell$ does not divide any element of $S - 1$ suffices. 
+    
+    Our proposition now follows from this and the two paragraphs following the proof of \cite[Lemma 6.5]{seaweed}, which also hold in a general setting, provided that $6391$ is replaced by the product of primes in $S$. 
+\end{proof}
+
+We now use Proposition~\ref{proposition:serre} to rule out the possibility that, for some $\ell$, the composition series of $\rho_{J, \ell}$ contains a $V_i$ for which $(d_i, e_i) = (2, 1)$. For the curve $C_2$, the {\tt magma} code provided in~\cite[p.~14-15]{seaweed} can be used to check that the greatest common divisor of the resultants of $H_p(x)$ and $Q_p(x)$ for $p \in \{5, 7, 11, 17\}$ is a power of $2$, implying that $\ell = 2$, which is a contradiction. Thus, we must have that $\ell$ divides some element of $S - 1$. In this case, $S- 1 = \{18,46\}$, so $\ell = 3$ or $23$, but $\on{ch}_7(T)$ is irreducible modulo $3$ and $\on{ch}_{37}(T)$ is irreducible modulo $23$. Then Proposition~\ref{prop-irrop} implies that $\rho_{J, \ell}$ is in fact irreducible. 
+
+Similarly, we find that for the curve $C_3$, the greatest common divisor of the resultants of $H_p(x)$ and $Q_p(x)$ for $p \in \{7, 11, 13, 17\}$ is also a power of $2$, so $\ell = 2$, which is a again a contradiction. Thus, we must have that $\ell$ divides some element of $S - 1$. In this case, $S- 1 = \{4, 70, 1578\}$, so $\ell = 5$, $7$, or $263$, \todo{3 is also a prime factor of 1578. This needs to be checked as well}
+but $\on{ch}_{89}(T)$ is irreducible modulo $5$, $\on{ch}_{41}(T)$ is irreducible modulo $7$, and $\on{ch}_{113}(T)$ is irreducible modulo $263$. Again, Proposition~\ref{prop-irrop} implies that $\rho_{J, \ell}$ is in fact irreducible. 
+
+\subsubsection{Genus 2 Criterion} 
+
+Suppose $H(\ell)$ acts reducibly on $(\ZZ/ \ell \ZZ)^4$. The possibilities for the $d_i$ are given by the four nontrivial partitions of 4: 
+\begin{align*} 
+	4 &= 1 + 1 + 1 + 1 \\
+	&= 1 + 1 + 2 \\
+	&= 1 + 3 \\
+	&= 2 + 2.
+\end{align*}
+This shows that the determinantal characters fall in one of three possible cases: 
+\begin{enumerate}[(A)]
+	\item We have $d_1 = 1$, so there is a one-dimensional irreducible component, and we have already dealt with this case in Subsubsection~\ref{sussubirred}. 
+	\item We have $d_1 = d_2 = 2$ and $(e_1, e_2) = (0, 2)$. 
+	\item We have $d_1 = d_2 = 2$ and $(e_1, e_2) = (1, 1)$, and we have already dealt with this case in Subsubsection~\ref{sussub-serre}.
+\end{enumerate} 
+The last remaining case is (B), which we handle by means of the following result:
+\begin{proposition}  \label{prop-22}
+	Suppose $\ell \ge g + 2$ and (B) holds. For any prime $p \notin S \cup \{\ell\}$, we have 
+	\[
+		\charpoly_p(T) \equiv (T^2 + uT + 1)(T^2 + upT + p^2) \pmod{\ell}
+	\]
+	for some $u \in \ZZ/\ell \ZZ$.  
+\end{proposition} 
+\begin{proof} 
+	First we mimic the proof of \cite[Lemma 6.7]{seaweed}. We wish to show that, if $\alpha, \beta \in \ol{\mathbb{F}}_\ell$ are the roots of the characteristic polynomial of $\rho_1(\frob_p)$, then $p / \alpha$ and $p / \beta$ are the roots of the characteristic polynomial of $\rho_2(\frob_p)$. In fact, the roots of the characteristic polynomial of $\rho_1^*(\frob_p)$ are $1 / \alpha$ and $1 / \beta$, so the roots of the characteristic polynomial of $\chi_\ell(\frob_p) \rho_1^*(\frob_p)$ are $p/\alpha$ and $p / \beta$. Now the desired result follows because Proposition~\ref{proposition:de}(iv) shows that $V_1^\vee(1) \simeq V_2$. 
+    
+    By hypothesis, 
+    \[
+    	\charpoly_p(T) \equiv P_1(T) \cdot P_2(T) \pmod{\ell}
+    \]
+    where $P_1(T)$ is the characteristic polynomial of $\rho_1(\frob_p)$ and $P_2(T)$ is the characteristic polynomial of $\rho_2(\frob_p)$. Since $e_1 = 0$, we have $P_1(0) = 1$, so we may write $P_1(T) = T^2 + uT + 1$ for some $u \in \mathbb{F}_\ell$. The preceding paragraph shows that $P_2(T) = T^2 \cdot P_1(p / T)$, and the result follows. 
+\end{proof} 
+
+For the curve $C_2$, to show that no $\rho_{J, \ell}$ splits as in case (B), it suffices to find a prime $p \not\in S \cup \{\ell\}$ such that $\on{ch}_p(T)$ cannot factor as in Proposition~\ref{prop-22} modulo any prime $\ell \geq 4$. Notice that if $\on{ch}_p(T)$ admits such a factorization, then it can be expressed as
+\begin{equation}\label{eq-use}
+\on{ch}_p(T) = T^4 + u(p+1)T^3 + (p^2 + u^2p + 1)T^2 + up(p+1)T + p^2 \pmod{\ell}.
+\end{equation}
+Suppose $\ell \not\in \{5,11\}$. We can then take $p = 5$, in which case
+$$\on{ch}_5(T) = T^4 + 4T^3 + 11T^2 + 20T + 25.$$
+By~\eqref{eq-use}, we have that
+$$6u - 4 \equiv 5u^2 + 26 - 11  \equiv 0 \pmod{\ell},$$
+which implies that $\ell = 31$. But we can also take $p = 11$, in which case the resulting congruences imply that $\ell = 14843$. Since $\ell$ cannot equal both $31$ and $14843$, we conclude that, if $\rho_{J, \ell}$ splits as in case (B), then $\ell \in \{5, 11\}$. Finally, to exclude these two cases, we simply check that $\on{ch}_{113}(T)$ is irreducible modulo $5$ and that $\on{ch}_{101}(T)$ is irreducible modulo $11$, cf.\ Proposition~\ref{prop-irrop}. 
+
+\subsubsection{Genus 3 Criterion} 
+
+Suppose $H(\ell)$ acts reducibly on $(\mathbb{F}_\ell)^6$. The possibilities for the $d_i$ are given by the nontrivial partitions of 6: 
+\begin{align*} 
+	6 &= 1 + P_5 \\
+	&= 2 + 2 + 2 \\
+	&= 2 + 4 \\
+	&= 3 + 3, 
+\end{align*} 
+where $P_5$ denotes a partition of $5$.
+This shows that the determinantal characters fall in one of 5 possible cases: 
+\begin{enumerate}[(A)]
+	\item We have $d_1 = 1$, and we have already dealt with this case in Subsubsection~\ref{sussubirred}. 
+	\item We have $(d_1, d_2, d_3) = (2, 2, 2)$. Since $e_1 + e_2 + e_3 = 3$, some $e_i$ must equal 1, and we have already dealt with this case in Subsubsection~\ref{sussub-serre}. 
+	\item We have $(d_1, d_2) = (2, 4)$. Since $\{e_1, e_2\} = \{d_1 - e_1, d_2 - e_2\}$, we must have $e_1 = 1$, and we have already dealt with this case in Subsubsection~\ref{sussub-serre}.
+	\item We have $(d_1, d_2) = (3, 3)$ and the smaller of $e_1$ and $e_2$ equals $0$. 
+	\item We have $(d_1, d_2) = (3, 3)$ and the smaller of $e_1$ and $e_2$ equals $1$.
+\end{enumerate} 
+The Propositions~\ref{prop-331} and~\ref{proposition:ruling-out-case-(E)} handle cases (D) and (E) respectively. We omit their proofs as they are immediate consequences of~\cite[Lemma 6.7]{seaweed} and the discussion thereafter.
+
+\begin{proposition} \label{prop-331}
+	Suppose $\ell \ge g + 2$ and (D) holds. For any prime $p \notin S \cup \{\ell\}$, we have 
+	\[
+		\charpoly_p(T) \equiv (T^3 + uT^2 + vT + 1)(T^3 + pvT^2 + p^2uT + p^3)
+	\]
+	for some $u, v \in \mathbb{F}_\ell$. 
+\end{proposition} 
+
+To show that case (D) fails to hold for the curve $C_3$, all we need to do is to find a prime $p \not\in S \cup \{\ell\}$ such that $\on{ch}_p(T)$ cannot factor as in Proposition~\ref{prop-331} modulo any prime $\ell \geq 5$. Notice that if $\on{ch}_p(T)$ admits such a factorization, then it can be expressed as
+\begin{align}\label{eq-use2}
+\on{ch}_p(T) & = T^6 + (u + pv)T^5 + (p^2u + v + puv)T^4 + (p^3 + p^2u^2 + pv^2 + 1)T^3 + \\
+& \qquad (p^3 u + pv + p^2 uv)T^2 + (p^2u + p^3v)T + p^3 \pmod{\ell} \nonumber
+\end{align}
+Suppose $\ell \not\in \{7,11\}$. We can then take $p = 7$, in which case
+$$\on{ch}_7(T) = T^6 + 2T^5 + 2T^4 + 12T^3 + 14T^2 + 98T + 343.$$
+By~\eqref{eq-use2}, we have that
+$$u+7v - 2 \equiv 49u + v + 7uv - 2 \equiv 343 + 49u^2 + 7v^2 + 1 - 12 \equiv  0 \pmod{\ell},$$
+which implies that $\ell \in \{41,277,13577\}$ as long as $\ell \neq 571$. But repeating this process for $p = 11$ yields that $\ell \in \{11,101,1789,121853\}$ as long as $\ell \not\in \{5,179\}$. Since $\left\{ 41,277,13577 \right\} \cap \left\{ 11,101,1789,121853 \right\} = \emptyset$, $\ell$ must lie in $\{5, 7,11, 179, 571\}$. 
+However, it is easy to check that $\on{ch}_{89}(T)$ is irreducible modulo $5$, that $\on{ch}_{41}(T)$ is irreducible modulo $7$, that $\on{ch}_{61}(T)$ is irreducible modulo $11$, that $\on{ch}_{127}(T)$ is irreducible modulo $179$, and \mbox{that $\on{ch}_{113}(T)$ is irreducible modulo $571$.}
+
+\begin{proposition}
+	\label{proposition:ruling-out-case-(E)}
+	Suppose $\ell \ge g + 2$ and (E) holds. For any prime $p \notin S \cup \{\ell\}$, we have 
+	\[
+	\charpoly_p(T) \equiv (T^3 + uT^2 + vT + p)(T^3 + vT^2 + puT + p^2)
+	\]
+	for some $u, v \in \mathbb{F}_\ell$. 
+\end{proposition} 
+
+The proof that condition (E) does not hold for the curve $C_3$ is very similar to the proof that condition (D) does not hold, so we omit it.
+
+\subsubsection{Criterion~\eqref{propc}: Primitivity} 
+
+In the next proposition, we demonstrate that for most primes $\ell$, the primitivity condition is a consequence of irreducibility. Taking $c_g$ to be the maximal order of an element of $S_{2g}$, we have the following result:
+
+\begin{proposition}  \label{prim-inf}
+	Fix a prime $\ell \notin S$ such that $\ell \ge c_g + 2$. If $H(\ell)$ acts irreducibly on $(\ZZ/ \ell \ZZ)^{2g}$, then it acts primitively. 
+\end{proposition} 
+\begin{proof} 
+	The argument of \cite[Lemma 7.3]{seaweed} works with the following easy modifications:
+    \begin{itemize} 
+	    \item In the first paragraph, Zywina applies \cite[Proposition~4.1]{seaweed} and the assumption that $\ell > 6$ to conclude that $\ell$ does not divide $r!$, since $r \le 6$. Proposition~\ref{proposition:transvection2} replaces \cite[Proposition~4.1]{seaweed}, and the argument remains valid because $r \le 2g$ while $\ell \ge c_g + 2 \ge 2g + 2$ by hypothesis. 
+    \item In the second paragraph, Zywina uses the fact that the tame inertia group at $\ell$ is pro-cyclic to show that $\phi(I_\ell) \subset S_r$ is cyclic, hence has order at most $6$. In general, this argument shows that $\phi(I_\ell)$ is cyclic of order at most $c_g$, which is good enough for the rest of the argument because $c_g < \ell - 1$ by hypothesis. 
+    \item The third paragraph applies since~\cite[Lemma 5.2]{seaweed} holds for all $g \ge 1$. \qedhere
+    \end{itemize}
+\end{proof}
+
+Since we have already shown that irreducibility holds for all $\ell$, Proposition~\ref{prim-inf} implies that it remains to check that primitivity holds for the finitely many primes $\ell$ that are elements of $S$ or that are less than $c_g + 2$. The following proposition provides an easy test that can be used to verify primitivity at a given prime $\ell$.
+
+\begin{proposition} \label{prop-lastprop}
+	Fix a prime $\ell \ge 3$. Suppose there exists $p \notin S \cup \{\ell\}$ such that $\charpoly_p(T)$ is irreducible modulo $\ell$, and the coefficient of $T^{2g-1}$ is nonzero modulo $\ell$. Then $H(\ell)$ acts primitively on $(\ZZ/\ell \ZZ)^{2g}$. 
+\end{proposition} 
+\begin{proof} 
+	This follows from the argument presented in the second paragraph of the proof of \cite[Lemma 7.2]{seaweed}.  
+\end{proof} 
+
+To apply Proposition~\ref{prop-lastprop}, we need to do the following in each of our examples: for every $\ell \in S \cup \{i \in \ZZ : i \leq c_g + 1\}$, \todo{I changed $c_g$ to $c_g + 1$, because that is what Proposition 4.11 requires. It only handles $c_g + 2$ and higher. -James} we must find a prime $p$ such that $\on{ch}_p(T)$ is irreducible modulo $\ell$ and has nonzero $T^{2g-1}$ coefficient modulo $\ell$. In the following table, we provide such primes $p$ along with the associated polynomials $\on{ch}_p(T)$ for each $\ell \in S \cup \{i \in \ZZ : i \leq c_g+1\}$ in the case of the curve $C_2$:
+\todo{When $g = 2$, we have $c_g + 1 = 4$, so we need to handle $\ell = 3$ as well. }
+\todo{Aaron: Confused by the todo on the above line, when $g = 2$, isn't $c_g + 1 = 5$, so don't we need to handle $\ell = 3$ and $5$?}
+\bigskip
+\begin{center}
+\begin{tabular}{ccc}
+\toprule 
+$\ell$ & $p$ & $\on{ch}_p(T)$ \\
+\midrule
+\rowcolor{black!20} 
+19 & 7 & $T^4 + T^3 + 7T^2 + 7T + 49$
+ \\
+47 & 53 & $T^4 - 6T^3 + 70T^2 - 366T + 3721
+$ \\
+\bottomrule
+\end{tabular}
+\end{center}
+\bigskip
+In the following table, we do the same for the curve $C_3$:
+\todo{When $g = 3$, we have $c_g + 1 = 7$, so we need to handle $\ell = 3$ and $7$ as well.}
+\bigskip
+\begin{center}
+\begin{tabular}{ccc}
+\toprule 
+$\ell$ & $p$ & $\on{ch}_p(T)$ \\
+\midrule
+\rowcolor{black!20} 5 & 89 & $T^6 - 5T^5 + 38T^4 + 716T^3 + 3382T^2 - 39605T + 704969
+$
+ \\
+71 & 73 & $T^6 + 4T^5 + 158T^4 + 458T^3 + 11534T^2 + 21316T + 389017$
+ \\
+\rowcolor{black!20} 1579 & 61 & $T^6 + 3T^4 + 284T^3 + 183T^2 + 226981
+$ \\
+\bottomrule
+\end{tabular}
+\end{center}
+\bigskip
+
+\end{comment}
+
+%\subsection{Ashvin's prior version of the criteria}
+%Here is a section where I'm keeping Ashvin's prior version of the criteria in case we prefer it.
+%\begin{proposition}[\protect{\cite[Theorem 6.2, Lemmas 4.9-11, 7.4]{anni2017constructing}}]  \label{prop-anni}
+%Suppose $f \in \mathbb{Z}[x]$ satisfies the following properties:
+%\begin{enumerate}
+%\item There exist primes $q_1$, $q_2$, and $q_3$ such that
+%$$q_1 \leq q_2 < q_3 < q_1 + q_2 = 2g + 2,$$
+%\item There exist distinct primes $p_{t_1}, p_{t_2} > g$ such that for each $i$, we have that $f$ is congruent modulo $p_{t_i}^2$ to a polynomial over $\mathbb{Z}_{p_{t_i}}$ of the form
+%$$h_i(x) \cdot g_i(x - \alpha_i),$$
+%where $h_i$ modulo $p_{t_i}$ is separable, $g_i$ is monic of degree $2$ with the property that $p_{t_i}$ divides every non-leading coefficient of $g_i$ at least once but divides the constant term exactly once, and $\alpha_i \in \mathbb{Z}_{p_{t_i}}$ is not a root of $h_i$ modulo $p_{t_i}$, 
+%\item There exists a prime $p_2 > 2g+2$ which is a primitive root modulo $q_1$, $q_2$, and $q_3$ and is such that $f$ is congruent modulo $p_2^2$ to a polynomial over $\mathbb{Z}_{p_2}$ of the form
+%$$f(x) = h(x) \cdot g_1(x - \alpha_1) \cdot g_2(x-\alpha_2),$$
+%where $h$ modulo $p_2$ is separable, $\alpha_1$ and $\alpha_2$ are not congruent modulo $p_2$, and for each $i$, we have the following: $g_i$ is monic of degree $q_i$ with the property that $p_2$ divides every non-leading coefficient of $g_i$ at least once but divides the constant term exactly once, and $\alpha_i \in \mathbb{Z}_{p_i}$ is not a root of $h$ modulo $p_2$.
+%\item There exist a prime $p_3 > 2g+2$  which is a primitive root modulo $q_3$ such that $f$ is congruent modulo $p_3^3$ to a polynomial over $\mathbb{Z}_{p_3}$ of the form
+%$$h(x) \cdot g_1(x - \alpha),$$
+%where $h$ modulo $p_3$ is separable, $g_1$ is monic of degree $q_3$ with the property that $p_3$ divides every non-leading coefficient of $g_1$ at least twice but divides the constant term exactly twice, and $\alpha \in \mathbb{Z}_{p_3}$ is not a root of $h$ modulo $p_3$,
+%\item One of the following three ``admissibility'' criteria holds for each prime $p$:
+%\begin{enumerate}
+%\item $J$ is semistable at $p$,
+%\item $p$ is odd, and there exist odd primes $r_1, r_2 \neq p$ with $r_1 + r_2 = 2g+2$ as well as an odd positive integer $t$ such that $f$ is congruent modulo $p^{t+1}$ to a polynomial over $\mathbb{Z}_p$ of the form
+%$$f(x) = h(x) \cdot g_1(x - \alpha_1) \cdot g_2(x-\alpha_2),$$
+%where $h$ is separable, $\alpha_1$ and $\alpha_2$ are not congruent modulo $p$, and for each $i$, we have the following: $g_i$ is monic of degree $r_i$ with the property that $p^t$ divides every non-leading coefficient of $g_i$ at least once but divides the constant term exactly once, and $\alpha_i \in \mathbb{Z}_{p_i}$ is not a root of $h$ modulo $p$,
+%\item $p$ is odd, and there exists an odd prime $q$ with $g+1 < q < 2g+2$ such that $f$ is congruent modulo $p^3$ to a polynomial over $\mathbb{Z}_{p}$ of the form
+%$$h(x) \cdot g_1(x - \alpha),$$
+%where $h$ is separable, $g_1$ is monic of degree $q$ with the property that $p$ divides every non-leading coefficient of $g_1$ at least twice but divides the constant term exactly twice, and $\alpha \in \mathbb{Z}_{p}$ is not a root of $h$ modulo $p$.
+%\end{enumerate}
+%\end{enumerate}
+%Then $\mono_J(\ell) \supset \Sp_{2g}(\ZZ / \ell \ZZ)$ for every $\ell$ satisfying the following conditions:
+%\begin{enumerate}
+%\item $\ell \not\in \{2,3,q_1, q_2, q_3, p_2, p_3\}$,
+%\item $\ell > g$, and
+%\item $J/\mathbb{Q}_\ell$ is semistable.
+%\end{enumerate}
+%\end{proposition}
+
+

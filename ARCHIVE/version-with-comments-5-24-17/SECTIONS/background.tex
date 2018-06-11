@@ -1,0 +1,71 @@
+\section{Definitions and Background Material}\label{section:backwaters}
+
+\begin{comment}
+\subsection{Symplectic Groups}\label{subsection:stimpy}
+
+Fix a commutative ring $R$, a finitely-generated free $R$-module $M$ of rank $2n$ for some positive integer $n$, and a non-degenerate alternating bilinear form $\langle -, - \rangle : M \times M \to R$. Define the group of $\GSp(M)$ to be the subgroup of $\on{GL}(M)$ consisting of all $R$-automorphisms $S$ such that for some $m_S \in R^\times$, called the multiplier of $S$, we have $\langle S v, Sw \rangle = m_S \cdot \langle v, w \rangle$. One readily observes that the map $\on{mult} : \GSp(M) \to R^\times$ defined by $S \mapsto m_S$ is a group homomorphism, and its kernel is denoted by $\Sp(M)$.
+
+By choosing a suitable $R$-basis for $M$, we can arrange for the corresponding matrix of the inner product $\langle -, - \rangle$ to be given by
+$$\Omega_n = \left[\begin{array}{c|c} 0 & \id_n \\ \hline -\id_n & 0\end{array}\right],$$
+where $\id_n$ denotes the $n \times n$ identity matrix. From this choice of basis we obtain an identification $\GL(M) \simeq \GL_{2n}(R)$. We then define $\GSp_{2n}(R)$ to be the image of $\GSp(M)$ and $\Sp_{2n}(R)$ to be the image of $\Sp(M)$ under this identification. Let $\det : \GL_{2n}(R) \to R^\times$ be the determinant map. Upon noticing that the diagram
+
+\begin{center}
+\begin{tikzcd}
+\GSp(M) \arrow{r}{\sim} \arrow[swap]{rd}{\on{mult}^n} &  \GSp_{2n}(R) \arrow{d}{\on{det}} \\
+& R^\times
+\end{tikzcd}
+\end{center}
+
+\noindent commutes, where the diagonal map is the multiplier map raised to the $n^{\mathrm{th}}$ power, one deduces that $\GSp_{2n}(R)$ is in fact the subgroup of $\GL_{2n}(R)$ consisting of all invertible matrices $S$ satisfying $S^T \Omega S = (\on{mult} S) \, \Omega$ and that $\Sp_{2n}(R) = \ker(\on{mult} : \GSp_{2n}(R) \to R^\times)$. The groups $\GSp(M)$ and $\GSp_{2n}(R)$ are typically referred to as general symplectic groups, or groups of symplectic similitudes, while the groups $\Sp(M)$ and $\Sp_{2n}(R)$ are usually just \mbox{called symplectic groups.}
+
+For the purpose of studying Galois representations associated to abelian varieties, we will be primarily interested in the cases where the ring $R$ is the profinite completion $\wh{\ZZ}$ of $\ZZ$, the ring of $\ell$-adic integers $\ZZ_{\ell}$, or the finite cyclic ring $\ZZ/(\ell^k)$. Recall that $$\ZZ_\ell = \underset{k}{\varprojlim } \, \ZZ/(\ell^k)$$ and that $\wh{\ZZ}$ can be characterized in the following two equivalent ways:
+$$\prod_{\text{prime } \ell} \ZZ_\ell  \,\,\, \simeq  \,\,\, \wh{\ZZ} \,\,\,  \simeq \,\,\, \underset{m}{\varprojlim } \,\ZZ/(m).$$
+Applying $\GSp_{2n}$ as a functor to the above identifications,
+% and in particular to the surjections
+%$$\wh{\ZZ} \twoheadrightarrow \ZZ_\ell \twoheadrightarrow \ZZ/({\ell^{k_1}}) \twoheadrightarrow \ZZ/({\ell^{k_2}})$$
+% for all primes $\ell$ and all positive integers $k_1,k_2$ with $k_1 \geq k_2$,
+we obtain the identifications
+\begin{equation}\label{orientation1}
+\GSp_{2n}(\ZZ_\ell)   \simeq  \underset{k}{\varprojlim } \,\GSp_{2n}(\ZZ/(\ell^k)) \quad \text{and}
+\end{equation}
+\begin{equation}\label{orientation2}
+\prod_{\text{prime } \ell} \GSp_{2n}(\ZZ_\ell) \simeq  \GSp_{2n}(\wh{\ZZ}) \simeq  \underset{m}{\varprojlim }\,\GSp_{2n}(\ZZ/(m)),
+\end{equation}
+%along with the surjections
+%\begin{equation}\label{ontop}
+%\GSp_{2n}(\wh{\ZZ}) \twoheadrightarrow \GSp_{2n}(\ZZ_\ell) \twoheadrightarrow \GSp_{2n}(\ZZ/({\ell^{k_1}})) \twoheadrightarrow \GSp_{2n}(\ZZ/({\ell^{k_2}})).
+%\end{equation}
+Observe that~\eqref{orientation1} and~\eqref{orientation2}, %and~\eqref{ontop} all
+both hold with $\GSp_{2n}$ replaced by $\Sp_{2n}$.
+
+%It will later be convenient to make the definition $$\Lie \Sp_{2n}(\ZZ/(\ell^k)) \defeq \ker(\Sp_{2n}(\ZZ/(\ell^k)) \twoheadrightarrow \Sp_{2n}(\ZZ/(\ell^{k-1})))$$ for positive integers $k \geq 2$. To justify the use of Lie algebra notation here, observe that the matrices $S \in \Lie \Sp_{2n}(\ZZ/(\ell^k))$ are characterized by the property that $S = \id_{2n} + \ell^{k-1}S'$ for some matrix $S'$, with entries in $\ZZ/(\ell^k)$, satisfying $(S')^T \Omega_n + \Omega_n S' = 0 \pmod \ell$.
+\end{comment}
+
+
+\begin{comment}
+
+\subsection{Galois Representations of Abelian Varieties}\label{rapsack}
+
+We begin by recalling the setting of the introduction. Let $K$ be a number field, and let $\ol{K}$ be a fixed algebraic closure of $K$. Let $A$ be an abelian variety of dimension $g \geq 1$ over $K$, and suppose that $A$ is given a principal polarization (i.e.\ an isomorphism $A \rightarrow A^\vee$). For each positive integer $n$, denote by $A[n]$ the kernel of the usual multiplication-by-$n$ endomorphism $[n]: A \to A$. Then $A[n]$ has the structure of an abelian variety, and the set $A[n](\ol{K})$ of the $\ol{K}$-valued points of $A[n]$ is called the $n$-torsion subgroup of $A(\ol{K})$. Recall that $A[n](\ol{K})$ has the structure of $2g$-dimensional $(\ZZ/(n))$-lattice, in the sense that $A[n](\ol{K}) \simeq (\ZZ/(n))^{\oplus 2g}$.
+
+For each positive integer $n$, let $\mu_n \simeq \ZZ/(n)$ denote the group of $n^{\mathrm{th}}$ roots of unity (in $\ol{\QQ}$), and let $\chi_n : G_K \to (\ZZ/(n))^\times$ denote the mod-$n$ cyclotomic character, which is characterized by the property that $\sigma(\zeta) = \zeta^{\chi_n(\sigma)}$ for all $\sigma \in G_K$. Recall that we have an alternating nondegenerate bilinear form $A[n](\ol{K}) \times A^\vee[n](\ol{K}) \to \mu_n$ called the Weil pairing. Composing the Weil pairing with the principal polarization isomorphism $A \to A^\vee$ yields an alternating nondegenerate bilinear form
+$$e_n : A[n](\ol{K}) \times A[n](\ol{K}) \to \mu_n.$$
+Notice that we have now arrived at a particular instance of the setting described in Section~\ref{subsection:stimpy}. Indeed, taking $R = \ZZ/(n)$, $M = A[n](\ol{K})$, and $\langle -, - \rangle = e_n$, we obtain a general symplectic group $\GSp(A[n](\ol{K})) \simeq \GSp_{2g}(\ZZ/(n))$.
+
+The action of $G_K$ on $A(\ol{K})$ (i.e.~the $\ol{K}$-valued points of $A$) is compatible with the group law and hence gives rise to a (likewise compatible) action of $G_K$ on the $n$-torsion subgroups $A[n](\ol{K})$ for each positive integer $n$. We therefore obtain Galois representations
+ $$G_K \to \Aut(A[n](\ol{K})) \simeq \GL_{2g}(\ZZ/(n))$$
+ for each positive integer $n$. But recall that the Weil pairing map $e_n$ is $G_K$-equivariant, in the sense that
+$$e_n(\sigma v, \sigma w) = \sigma(e_n(v,w)) = e_n(v,w)^{\chi_n(\sigma)}$$
+for all $v, w \in A[n](\ol{K})$ and $\sigma \in G_K$. It follows that the image of $G_K$ in $\GL_{2g}(\ZZ/(n))$ lands in $\GSp_{2g}(\ZZ/(n))$, so we obtain the mod-$n$ Galois representation
+$$\rho_{A,n} : G_K \to \GSp_{2g}(\ZZ/(n)).$$
+ Taking the inverse limit over $k$ of the maps $\rho_{A,\ell^k}$ yields the $\ell$-adic Galois representation
+$$\rho_{A,\ell^\infty} : G_K \to \underset{k}{\varprojlim } \,\,{\GSp_{2g}(\ZZ/(\ell^k))} = \GSp_{2g}(\ZZ_\ell).$$
+Taking the product over all the $\ell$-adic representations, or equivalently taking the inverse limit over all the mod-$n$ representations, yields the adelic or global Galois representation
+$$\rho_A : G_K \to \GSp_{2g}(\wh{\ZZ}).$$
+The composite map $\on{mult} \circ \rho_A : G_K \to \wh{\bz}^\times$ is equal to the global cyclotomic character $\chi : G_K \to \wh{\ZZ}^\times$, which is defined by the property that postcomposition with the projection map $\wh{\ZZ}^\times \to (\ZZ/(n))^\times$ yields the mod-$n$ cyclotomic character $\chi_n$.
+
+In what follows, we will be primarily interested in the case where $A = J_C$ is the ($g$-dimensional) Jacobian of a smooth projective hyperelliptic curve $C$ of genus $g$ over $K$. In this situation, the $\Theta$-divisor of $J_C$ induces a principal polarization of $J_C$, so as above, we obtain adelic, $\ell$-adic, and mod-$n$ representations $\rho_{J_C}$, $\rho_{J_C,\ell^\infty}$, and $\rho_{J_C, n}$ associated to $J_C$. 
+
+\end{comment}
+
+\todo{Describe background on families of PPAVs, and define the monodromy group notation}

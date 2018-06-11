@@ -1,0 +1,287 @@
+\section{Introduction}
+%\todo{It seems like we have decided to make the standing assumption $g \geq 2$, so this should
+%	either be clearly stated (maybe it is already and I've missed it)
+%	or we will need to put in assumptions that $g \geq 2$ in our theorems, particularly
+% in the group theory statements}
+\subsection{Background}
+\label{subsection:intro-background}
+Let $A$ be a principally polarized abelian variety (PPAV) of dimension $g \geq 1$
+over a number field $K$.
+Fix an algebraic closure $\ol{K}$ of $K$, and let $G_K \defeq \Gal(\ol{K}/K)$ be the absolute Galois group. 
+The action of $G_K$ on the torsion points of $A(\ol{K})$ gives rise to the 
+%\emph{mod-$m$ Galois representation}
+%$$\rho_{A,m} : G_K \to \on{Aut}(A[m](\ol{K}))\simeq \GL_{2g}(\ZZ/m \ZZ).$$ Furthermore, because the Weil pairing is Galois-equivariant, the image of $\rho_{A,m}$ actually lies in the general symplectic group $\GSp_{2g}(\ZZ/m \ZZ)$. By taking the inverse limit of the mod-$m$ representations over all positive integers $m$ ordered by divisibility, we obtain the \emph{adelic} or \emph{global Galois representation} 
+\emph{adelic} Galois representation
+$$\rho_A \colon G_K \to\GSp_{2g}(\wh{\ZZ}).$$
+For prime numbers $\ell$, the \emph{mod-$\ell$ Galois representation} $\rho_{A,\ell} \colon G_K \to \GSp_{2g}(\bz/\ell\bz)$ is defined by reducing the image of $\rho_A$ modulo $\ell$.
+See~\cite[Section 2.2]{seaweed} and
+\cite[Section 3.1]{landesman-swaminathan-tao-xu:rational-families} for more detailed descriptions of these representations.
+
+In 1972, Jean-Pierre Serre proved the celebrated Open Image Theorem (see~\cite{causalrelationship}), which states that for an elliptic curve $E/K$ without complex multiplication, $\rho_E(G_K)$ is an open subgroup of, and hence has finite index in, the profinite group $\GSp_{2}(\wh{\ZZ})$. 
+%Generalizations of Serre's theorem to PPAVs of higher dimension were subsequently obtained by Serre himself in~\cite[Corollaire au Th\'eor\`eme 3]{serelacs} for the cases where the dimension is odd, $2$, or $6$, and by Hall in~\cite[Theorem 1]{hollabackgirl} for all other dimensions. 
+While the Open Image Theorem implies that the adelic Galois representation maps onto a large subgroup of $\GSp_{2g}(\wh{\ZZ})$, the image of this representation is not always equal to $\GSp_{2g}(\wh{\ZZ})$. 
+Indeed, Serre observed in~\cite[Proposition 22]{causalrelationship} that for every elliptic curve $E/\QQ$, the image of $\rho_E$ has even index in $\GSp_2(\wh{\ZZ})$.
+Nonetheless, in~\cite[Sections 5.5.6-8]{causalrelationship},
+Serre constructs several examples of elliptic curves over $\bq$
+whose Galois representations have ``maximal image'' among all elliptic curves, in the sense that the index of the \mbox{image in $\GSp_2(\widehat{\mathbb Z})$ is equal to $2$.}
+
+\begin{comment}
+In this paper, we give both asymptotic results
+(Theorem~\ref{mainbldg}) and explicit examples
+(Theorem~\ref{exemplinongratia}) 
+for Galois representations of Jacobians of higher-genus hyperelliptic curves
+with maximal adelic Galois image. In order to introduce our results,
+we first recall many related results from the existing literature.
+\end{comment}
+
+The obstruction faced by elliptic curves over $\QQ$ to having surjective adelic Galois representation no longer exists when $\QQ$ is replaced by a larger number field. 
+In~\cite{greasy}, Greicius constructs an example of an elliptic curve over a cubic extension of $\bq$ whose Galois representation
+has image equal to $\GSp_2(\widehat{\mathbb Z})$.
+Furthermore, in~\cite{seaweed}, Zywina constructs an example of a non-hyperelliptic curve of genus $3$ over $\bq$ whose Jacobian has adelic Galois image equal to $\GSp_6(\widehat{\mathbb Z})$. 
+While there are explicit examples in genera $1$ and $3$, to the authors' knowledge,
+there are no examples in the literature of curves of genus 
+$2$ with associated Galois representation having maximal image among such curves.
+Additionally, there are no known examples of hyperelliptic curves of genus $3$ whose Galois image is maximal.
+Nevertheless, there are a few examples that come close:
+	In~\cite[Theorem 5.4]{dooleyfat},
+	Dieulefait gives an example of a
+	genus-$2$ curve over $\mathbb Q$
+	whose Jacobian has mod-$\ell$
+	monodromy equal to $\GSp_6(\mathbb Z/\ell \mathbb Z)$
+	for $\ell \ge 5$.
+	Similarly, in~\cite[Corollary 1.1]{anni2016residual},
+	an example of a genus-$3$ hyperelliptic curve
+	over $\bq$ whose Jacobian has mod-$\ell$ Galois image equal to $\GSp_6(\mathbb Z/\ell \mathbb Z)$
+	for primes $\ell \geq 3$ is constructed.
+	However, in both of these cases, it is easy to check 
+	%(using, say, Lemma~\ref{lemma:2-torsion-of-hyperelliptic-curve-action} in the present article\todo{Aaron: Fix citation here, preferably restore this lemma})
+	that these examples have mod-2
+	Galois image that is not maximal
+	among all hyperelliptic curves of genus
+	$2$ or $3$.
+	In Theorem~\ref{exemplinongratia},
+	we improve on the results of~\cite{dooleyfat} and~\cite{anni2016residual},
+	giving explicit examples of hyperelliptic
+	curves of genus $2$ and $3$ over $\QQ$ with maximal adelic Galois image.
+	The reader may wish to also refer to the related recent paper~\cite{anni2017constructing}, which constructs
+	hyperelliptic curves with maximal mod-$\ell$ Galois image in all genera $g$ with the property that $2g+2$ can be expressed as of sum of two primes in two different ways, with none of the primes being the largest prime less than $2g + 2$.\footnote{Note that~\cite{anni2017constructing}
+	therefore does not address the cases $g = 2, 3$,
+	which we cover in this paper.% Also, the results of this article imply that the curves produced in~\cite{anni2017constructing} have surjective adelic Galois representations. 
+	%---- Aaron: I don't think this previous commented out statement is not correct - I believe that we have not shown that once it is surjective mod 2 it is also surjective mod 4
+    }
+
+In addition to finding explicit examples of PPAVs with maximal Galois image, there are a number of results in the literature concerning how many members of a given family of PPAVs have maximal adelic Galois image.
+%In light of the results of Serre, it is natural to wonder how frequently it happens that a $g$-dimensional PPAV $A$ has \emph{maximal} adelic Galois image, by which we mean that the map $\rho_A : G_K \to \GSp_{2g}(\wh{\ZZ})$ is as close to being surjective as possible. 
+The first key result in this direction is due to Duke, who proved in~\cite{duke:elliptic-curves-with-no-exceptional-primes} that ``most'' elliptic curves $E/\QQ$ in the standard family with Weierstrass equation $y^2 = x^3 + ax + b$ have the property that $\rho_{E,\ell}(G_{\QQ}) = \GSp_2(\ZZ/\ell \ZZ)$ for every prime number $\ell$; here, the term ``most'' means a density-$1$ subset of curves ordered by na\"{i}ve height. Building upon the work of Duke, Jones proved in~\cite[Theorem 4]{josofabank} that $[\GSp_{2g}(\wh{\ZZ}) : \rho_E(G_K)] = 2$ for most elliptic curves $E$ in the standard family over $\QQ$.
+%The hurdle faced by elliptic curves over $\QQ$ to having surjective adelic Galois representation no longer exists when $\QQ$ is replaced by a larger number field. 
+%In~\cite[Theorem 1.5]{greasy}, Greicius exhibited an elliptic curve over a number field with adelic Galois image equal to all of $\GSp_2(\wh{\ZZ})$, and in~\cite[Theorem 1.2]{zywina2010elliptic}, Zywina used Jones's result to show that most elliptic curves in the standard family over a number field $K \neq \QQ$ have adelic Galois image equal to all of $\GSp_2(\wh{\ZZ})$ whenever $K \cap \QQ^{\cyc} = \QQ$, where $\QQ^{\cyc}$ is maximal cyclotomic extension of $\QQ$. 
+In~\cite[Theorem 1.15]{zywina2010hilbert}, Zywina generalized 
+the above results, showing that most members of every non-isotrivial rational family of elliptic curves over an arbitrary number field have maximal adelic Galois image, subject to the constraints that arise from the arithmetic and geometric properties of the family under consideration. 
+Additional results over $\mathbb Q$ were
+obtained in~\cite{grant:a-formula-for-the-number-of-elliptic-curves-with-exceptional-primes},~\cite{cojocaruH:uniform-results-for-serres-theorem-for-elliptic-curves}, and~\cite{cojocaruGJ:one-parameter-families-of-elliptic-curves}
+(see~\cite[p.~6]{zywina2010hilbert} for a more detailed overview).
+In Theorem~\ref{mainbldg}, we give an explicit version of~\cite[Theorem 1.1]{landesman-swaminathan-tao-xu:rational-families} -- a result that generalizes Zywina's results to rational families of higher-dimensional PPAVs --
+for many common families of hyperelliptic curves.
+This yields a generalization of \cite[Theorem 1.2]{zywina2010elliptic}
+%(which is the case $K \neq \mathbb Q$) 
+and~\cite[Theorem 4]{josofabank} %(which is the case $K = \mathbb Q$)
+to hyperelliptic curves of higher genus.
+
+\subsection{Main Results}
+
+In this paper, we primarily consider those PPAVs that arise as Jacobians of hyperelliptic curves belonging to one of the following four standard families; we restrict our consideration to curves of genus at least $2$ because the results of Zywina in~\cite{zywina2010hilbert} completely handle the case of elliptic curves.
+\begin{definition}
+	\label{definition:standard-families}
+Let $g \geq 2$ be an integer, and for $i \in \{1, 2, 3, 4 \}$ define $\standardTarget g i K$ by
+\begin{align*}
+&\standardTarget g 1 K = \mathbb A^{2g+1}_{[a_0, \ldots, a_{2g}]} \setminus \Delta^{(1)}, \,\,\,\,\, \standardTarget g 2 K = \mathbb A^{2g+2}_{[a_0, \ldots, a_{2g+1}]}\setminus \Delta^{(2)}, \\
+&\,\,\,\,\,  \standardTarget g 3 K = \mathbb A^{2g}_{[a_0, \ldots, a_{2g-1}]}\setminus \Delta^{(3)}, \,\,\,\,\,  \standardTarget g 4 K = \mathbb A^{2g+1}_{[a_0, \ldots, a_{2g}]} \setminus \Delta^{(4)}, 
+\end{align*}
+where each $\Delta^{(i)}$ is the discriminant locus, on which the indicated polynomial has at least one multiple root: 
+\[
+\begin{array}{cc}
+x^{2g+1} + a_{2g}x^{2g} + \cdots + a_0  &\rightsquigarrow  \Delta^{(1)}  \\
+x^{2g+2} + a_{2g+1}x^{2g+1} + \cdots + a_0 & \rightsquigarrow  \Delta^{(2)}\\
+x^{2g+1} + a_{2g-1}x^{2g-1} + \cdots + a_0  &\rightsquigarrow \Delta^{(3)}\\
+x^{2g+2} + a_{2g}x^{2g} + \cdots + a_0 &\rightsquigarrow \Delta^{(4)}.
+\end{array}
+\]
+Consider the following vanishing loci, and view them as families over $\standardTarget g i K$ via projection onto the first factor:
+\begin{align*}
+V(y^2 - x^{2g+1} - a_{2g}x^{2g} - \cdots - a_0) &\hookrightarrow \standardTarget g 1 K \times \mathbb A^2_{[x,y]} \to \standardTarget g 1 K, \\
+V(y^2 - x^{2g+2} - a_{2g+1}x^{2g+1} - \cdots - a_0) &\hookrightarrow \standardTarget g 2 K \times \mathbb A^2_{[x,y]} \to \standardTarget g 2 K,  \\
+V(y^2 - x^{2g+1} - a_{2g-1}x^{2g-1} - \cdots - a_0) &\hookrightarrow \standardTarget g 3 K\times \mathbb A^2_{[x,y]} \to  \standardTarget g 3 K, \\
+V(y^2 - x^{2g+2} - a_{2g}x^{2g} - \cdots - a_0) &\hookrightarrow \standardTarget g 4 K \times \mathbb A^2_{[x,y]} \to \standardTarget g 4 K.
+\end{align*}
+For $1 \leq i \leq 4$, define $\standardFamily g i K$, the \emph{standard families} of genus-$g$ hyperelliptic curves by completing the above smooth affine
+curve over $\standardTarget g i K$ to a smooth projective curve over $\standardTarget g i K$. The definition of $\Delta^{(i)}$ ensures that these are indeed genus-$g$ hyperelliptic curves. 
+% To be more precise, we should really say that we glue this affine curves to another affine curve in the usual way of constructing hyperelliptic curves, but I think people will know what we mean here.
+For a $K$-valued point $u \in \standardTarget g i K (K)$, we denote by $A_u$ the Jacobian (which is necessarily a $g$-dimensional PPAV) of the fiber over $u$ of the corresponding standard family.
+\begin{comment}
+and define the standard family $\standardFamily g i K$ to be the completion of the family $\widetilde{\standardFamily g i K}$ to a smooth projective curve over $\mathbb A^{2g+3 - i}$.
+
+The four {\it standard families} of genus-$g$ hyperelliptic curves over $K$ are denoted by $\standardFamily g i K$ for $i \in \left\{ 1,2,3, 4 \right\}$ and may be defined as follows. Consider the following vanishing loci, and view them as families via projection onto the first factor:
+\begin{align*}
+	\widetilde{\standardFamily g 1 K}  & = V(y^2 - x^{2g+1} - a_{2g}x^{2g} - \cdots - a_0) \hookrightarrow \mathbb A^{2g+1}_{[a_0, \ldots, a_{2g}]} \times \mathbb A^2_{[x,y]} \to \mathbb A^{2g+1}_{[a_0, \ldots, a_{2g}]}, \\
+	\widetilde{\standardFamily g 2 K} & = V(y^2 - x^{2g+2} - a_{2g+1}x^{2g+1} - \cdots - a_0) \hookrightarrow \mathbb A^{2g+2}_{[a_0, \ldots, a_{2g+1}]} \times \mathbb A^2_{[x,y]} \to \mathbb A^{2g+2}_{[a_0, \ldots, a_{2g+1}]},  \\
+	\widetilde{\standardFamily g 3 K} & = V(y^2 - x^{2g+1} - a_{2g-1}x^{2g-1} - \cdots - a_0) \hookrightarrow \mathbb A^{2g}_{[a_0, \ldots, a_{2g-1}]} \times \mathbb A^2_{[x,y]} \to  \mathbb A^{2g}_{[a_0, \ldots, a_{2g-1}]}, \text{ and} \\
+	\widetilde{\standardFamily g 4 K} &= V(y^2 - x^{2g+2} - a_{2g}x^{2g} - \cdots - a_0) \hookrightarrow \mathbb A^{2g+1}_{[a_0, \ldots, a_{2g}]} \times \mathbb A^2_{[x,y]} \to \mathbb A^{2g+1}_{[a_0, \ldots, a_{2g}]}.
+\end{align*}
+and define the standard family $\standardFamily g i K$ to be the completion of the family $\widetilde{\standardFamily g i K}$ to a smooth projective curve over $\mathbb A^{2g+3 - i}$.
+\end{comment}
+\end{definition}
+
+As we show in Section~\ref{symbed},
+the mod-$2$ Galois image of the Jacobian of a member of $\standardFamily{g}{i}{K}$ always lands in a certain copy of the symmetric group $S_{2g+2-(i \bmod 2)} \subset \Sp_{2g}(\ZZ/2\ZZ)$. Denote by $\grouphypboth{g}{(i \bmod 2)}{K}$ the intersection of the following two subgroups of $\GSp_{2g}(\wh{\ZZ})$: (1) the subgroup of those matrices with multiplier landing in $\chi(K) \subset \wh{\ZZ}^\times$, where $\chi$ denotes the cyclotomic character, and (2) the preimage of $S_{2g+2-(i \bmod 2)}$ under the projection map $\GSp_{2g}(\wh{\ZZ}) \to \Sp_{2g}(\ZZ/2\ZZ)$. 
+Let $\on{Ht}\colon\mathbb P^r(\overline K) \rightarrow \mathbb R_{>0}$
+denote the absolute multiplicative height on projective space, and define a height function $\| - \|$ on the lattice $\mathcal O^r_K$
+sending $\left( t_1, \ldots, t_n \right) \mapsto \max_{\sigma,i}|\sigma(t_i)|$,
+where $\sigma$ varies over all field embeddings $\sigma\colon K \hookrightarrow \mathbb C$.
+Having fixed this notation, our first main theorem may be stated as follows:
+
+\begin{theorem}\label{mainbldg}	
+Let $B> 0$, $i \in \{1,2,3,4\}$, $g \geq 2$, and let $n$ be an arbitrarily positive integer. Let $\delta_\QQ = 2$, and let $\delta_K = 1$ for $K \neq \QQ$. Then $[ \grouphypboth g {(i \bmod 2)}{K} : \rho_{A_u}(G_K) ] \geq \delta_K$
+%\todo{Aaron: I like including this, but wouldn't it make more sense to have a statement analogous to the rational families paper?
+%Shouldn't we either include this in both or neither?
+%Also, if we include this statement, we have to prove it.
+%I'm in favor of including a remark on the proof of this, although
+%I suppose we could reference the proof of Zywina again, or else
+%the proof from our rational families paper.
+%}
+for all $u \in \standardFamily g i K(K)$, 
+and we have the following asymptotic statements, with the implied constants depending only on $n$, $g$, and $K$:
+%\todo{should we say constants depend on $i$? There are only 4 values of i, so we can make the constants independent of i}
+			\[
+				\frac{|\{u \in \standardTarget g i K(\OO_K) : \lVert u \rVert \le B,\, [ \grouphypboth g {(i \bmod 2)}{K} : \rho_{A_u}(G_K) ] = \delta_K \}|}{|\{u \in \standardTarget g i K(\OO_K): \lVert u \rVert \le B\}|} = 1 + O((\log B)^{-n}),
+			\]
+\[
+	\frac{|\{u \in \standardTarget g i K(K) : \on{Ht}(u) \leq B,\, [ \grouphypboth g {(i \bmod 2)}{K} : \rho_{A_u}(G_K) ] = \delta_K \}|}{|\{u \in \standardTarget g i K(K) : \on{Ht}(u) \le B\}|} = 1 + O((\log B)^{-n}). 
+			\]
+\begin{comment}
+Let $B, n > 0, g \geq 2$ and $1 \leq i \leq 4$.
+Then we have the following asymptotic statements: 
+\begin{enumerate}
+	\item[\customlabel{main-not-q}{(a)}] If $K \neq \mathbb Q$, then 
+			\[
+				\frac{|\{u \in \standardTarget g i K(K) \cap \mathcal{O}_K^r : \lVert u \rVert \le B,\, \mono_{A_u} = \grouphypboth g {(i \bmod 2)} \}|}{|\{u \in \standardTarget g i K(K) \cap \mc{O}_K^r : \lVert u \rVert \le B\}|} = 1 + O((\log B)^{-n}), \text{ and} 
+			\]
+\[
+	\frac{|\{u \in \standardTarget g i K(K) : \on{Ht}(u) \leq B,\, \mono_{A_u} = \grouphypboth g {(i \bmod 2)} K\}|}{|\{u \in \standardTarget g i K(K) : \on{Ht}(u) \le B\}|} = 1 + O((\log B)^{-n}). 
+			\]
+		\item[\customlabel{main-q}{(b)}] If $K = \mathbb Q$, then 
+			\[
+				\frac{\left| \left\{ u \in \standardTarget g i {\mathbb Q}(\mathbb Q) \cap \bz^r : \lVert u \rVert \le B, \, \left[ \grouphypboth g {(i \bmod 2)} {\mathbb Q} : \mono_{A_u} \right] = 2 \right\} \right|}{|\{u \in \bz^r : \lVert u \rVert \le B\}|} = 1 + O((\log B)^{-n}), \text{ and}
+			\]
+\[
+	\frac{\left| \left\{ u \in \standardTarget g i {\mathbb Q}(\mathbb Q) : \on{Ht}(u) \le B, \, \left[ \grouphypboth g {(i \bmod 2)} {\mathbb Q} : \mono_{A_u}\right] = 2 \right\} \right|}{|\{u \in \standardTarget g i {\mathbb Q}(\mathbb Q) : \on{Ht}(u) \le B\}|} = 1 + O((\log B)^{-n}),
+			\]
+\end{comment}
+\noindent Furthermore, the statement above applies
+if we take $i = 2$ and replace
+$\standardTarget g 2 K$ by any rational family 
+of hyperelliptic curves
+dominating the moduli of hyperelliptic curves,
+so long as the map to the moduli of hyperelliptic
+curves has geometrically connected generic fiber.
+\begin{comment}
+\textcolor[rgb]{1,0,0}{If $g = 1$, then for any $\varepsilon > 0$, and for $C \rightarrow U$ any family of genus $1$ curves dominating the moduli of genus $1$ curves or any of $\standardFamily 1 i K \rightarrow \standardTarget 1 i K$,
+we have
+			\[
+				\frac{|\{u \in U : \lVert u \rVert \le B,\, [ \widetilde{\mathrm{G} \mathcal {S}}_{3, K}
+				: \rho_{A_u}(G_K) ] = \delta_K \}|}{|\{u \in U(\OO_K): \lVert u \rVert \le B\}|} = 1 + O(B^{-1/2} \log B),
+			\]
+\[
+	\frac{|\{u \in U : \on{Ht}(u) \leq B,\, [ \widetilde{\mathrm{G} \mathcal {S}}_{3, K} : \rho_{A_u}(G_K) ] = \delta_K \}|}{|\{u \in U(K) : \on{Ht}(u) \le B\}|} = 1 + O(B^{-1/2 + \varepsilon}). 
+			\]}
+\end{comment}
+\end{theorem}
+%\begin{remark}
+%We note that if $i = 2$, the conclusion of Theorem~\ref{mainbldg} applies when $\standardTarget g 2 K$ is replaced by any
+%family of hyperelliptic curves dominating the moduli stack of such curves, as long as the map to
+%the moduli stack has geometrically connected
+%generic fiber.
+%\end{remark}
+
+%We show Theorem~\ref{mainbldg} applies to these three families, assuming Lemma~\ref{lemma:connected-generic-fiber}.
+%\begin{theorem}
+%	\label{theorem:examples}
+%	For any $g \geq 1$, the conclusions of Theorem~\ref{mainbldg} apply to the three families $\standardTarget g 1 K, \standardTarget g 2 K$,
+%	and $\standardTarget g 3 K$.
+%\end{theorem}
+%\begin{proof}[Proof assuming Lemma~\ref{lemma:connected-generic-fiber}]
+%	Since these three families clearly dominate the moduli of hyperelliptic curves $\hyperelliptic g K$, it suffices
+%	to verify the corresponding map has geometrically connected generic fiber. This is done later in
+%	Lemma~\ref{lemma:connected-generic-fiber}.
+%\end{proof}
+
+The methods employed to prove density-$1$ results like Theorem~\ref{mainbldg} do not lend themselves well to the construction of explicit examples, which may be useful insofar as they can provide evidence in support of related conjectures. 
+%In~\cite[Sections 5.5.6-8]{causalrelationship},
+%Serre gives several examples of elliptic curves over $\bq$
+%whose Galois representations have image with index
+%$2$ in $\GSp_2(\widehat{\mathbb Z})$.
+%Since Serre also proves in~\cite[Proposition 22]{causalrelationship}, that all elliptic curves over $\bq$
+%have image with index dividing $2$ in $\GSp_2(\widehat{\mathbb Z})$, the examples he constructs have maximal possible image.
+%In Theorem~\ref{exemplinongratia}, we construct
+%analogous examples of hyperelliptic curves over $\bq$
+%whose Galois representations have maximal image.
+We now give two explicit examples, improving upon the examples of \cite{dooleyfat} and \cite{anni2016residual} mentioned in Section~\ref{subsection:intro-background}.
+To the authors' knowledge,
+these are the first examples of hyperelliptic curves in genus $g = 2$ and $3$
+whose mod-$\ell$ monodromy is equal to 
+$\GSp_{2g}(\bz/\ell\bz)$ when $\ell > 2$,
+and equal to $S_{2g+2}$ when $\ell = 2$.
+Moreover, we show the Galois representations of
+these curves have index $2$ in the group
+$\grouphyp g {\mathbb Q}$. Note that all hyperelliptic
+curves over $\bq$ have Galois representation
+strictly contained in $\grouphyp g {\mathbb Q}$,
+as follows from
+Corollary~\ref{monodromy-stack} (since the monodromy of any curve
+is contained in that of the universal family).
+Hence, our examples yield curves with
+maximal monodromy among all hyperelliptic curves
+of genus $2$ and $3$.
+
+%Such examples have been provided in the literature by Greicius in~\cite{greasy} and Zywina in~\cite{seaweed} for the $1$- and $3$-dimensional cases, respectively.
+%In~\cite{greasy}, Greicius constructs an explicit example of an elliptic curve $E$ over a certain real cubic extension of $\QQ$ with the property that $\rho_E$ is surjective. In~\cite{seaweed}, Zywina provides an explicit example of a $3$-dimensional PPAV -- in particular, the Jacobian $J$ of a smooth projective genus-$3$ plane curve over $\QQ$ -- with $\rho_J$ surjective.
+%Our second main result is devoted to writing down explicit examples in the $2$-dimensional case (i.e.,~that of abelian surfaces).
+%Although some aspects of Zywina's strategy for the $3$-dimensional case carry over, the obstruction to surjectivity that arises in the case of elliptic curves over $\QQ$ resurfaces in the $2$-dimensional case: as Zywina himself shows (see Proposition 2.5 in~\cite{seaweed}), if $J$ is the Jacobian of a smooth projective genus-$2$ plane curve over $\QQ$, then $\rho_J(G_\QQ)$ has index at least $2$ in $\GSp_4(\wh{\ZZ})$.
+
+\begin{theorem}\label{exemplinongratia}
+Let $C_2$ and $C_3$ over $\QQ$ be smooth projective models of the affine plane curves cut out by the equations
+\begin{align*}
+C_2 & : \quad y^2 = x^6 + 7471225x^5 + 16548721x^4 + 6639451x^3 + 16857421x^2 + \\
+& \qquad \qquad \qquad 20754195x +9508695, \text{ and} \\
+C_3 & : \quad y^2 = x^8 + 10781051650x^7 + 5302830080x^6 + 33362176x^5 + 10656581376x^4  + \\
+& \qquad \qquad \qquad 5522318080x^3 + 4238752256x^2  + 3613465600x  + 3725404480.
+\end{align*}
+%\begin{align*}
+%C_2 & : \quad y^2 + (x^3 + x + 1)y = -x^4 - x^3 - x^2 - x, \text{ and} \\
+%C_3 & : \quad y^2 + x^4y = -x^3 + x + 1 
+%\end{align*}
+Then for each $g \in \{2, 3\}$, the Jacobian $J_{C_g}$ of $C_g$ is a $g$-dimensional PPAV over $\QQ$ satisfying the condition $[\grouphyp g {\mathbb Q} : \rho_{J_{C_g}}(G_\QQ)] = 2$. \end{theorem}
+\begin{remark}
+In checking the examples declared in Theorem~\ref{exemplinongratia}, we combined the methods developed in~\cite{anni2017constructing} and~\cite{seaweed} to expedite the verification process. It is also possible to modify the techniques introduced in~\cite{seaweed} to show that the curves cut out by the equations
+\begin{align}
+f(x) & = x^6 - 2x^4 - 2x^3 - 3x^2 - 2x + 1 \quad \text{and} \\
+f(x) & = x^8 -4x^3 + 4x + 4,
+\end{align}
+which are of respective genera $2$ and $3$, both have maximal monodromy. The reader may contact any one of the authors if further details of the proof of this claim are desired.
+\end{remark}
+
+The rest of this paper is organized as follows:
+%Section~\ref{section:backwaters} provides background material on symplectic groups and Galois representations of abelian varieties. In Section~\ref{verified}, we prove Theorem~\ref{mainbldg} by showing that the image of $\rho_{J_{C_g}}$ under the map of reduction modulo $\ell$ is equal to $\GSp_4(\ZZ/(\ell))$ for every prime number $\ell$.
+Section~\ref{section:group-theory} is concerned with proving the
+group-theoretic Theorem~\ref{theorem:small-ab}.
+In Section~\ref{prelimswine},
+we use Theorem~\ref{theorem:small-ab} to prove
+Lemma~\ref{theorem:r=2}, which
+is employed in the proof of 
+Theorem~\ref{mainbldg} to verify the claimed value
+of $\delta_K$.
+In Section~\ref{subsection:monodromy-of-families}
+we compute the monodromy of various families of hyperelliptic curves.
+We combine these two results to prove Theorem~\ref{mainbldg}
+in Section~\ref{32isnotagoodscoreline}.
+Finally, in Section~\ref{verified},
+we prove Theorem~\ref{exemplinongratia}.

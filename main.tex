@@ -1,0 +1,266 @@
+\documentclass[12 pt]{amsart}
+
+
+\usepackage{etex,seqsplit}
+\usepackage[shortlabels]{enumitem}
+\usepackage{amsmath}
+\usepackage{amscd}
+\usepackage{amsthm}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{eucal}
+\usepackage{mathrsfs, fancyvrb}
+\usepackage{morefloats, comment}
+\usepackage{thm-restate}
+\usepackage{hyperref}
+\usepackage[margin=1in]{geometry}
+\usepackage{tikz}
+\usepackage{tikz-cd, alltt, changepage}
+\usepackage{booktabs} 
+\usepackage{colortbl} 
+\usepackage{xcolor} 
+\usepackage{xfrac}
+
+\usepackage{todonotes}
+
+\theoremstyle{plain}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{conjecture}[theorem]{Conjecture}
+\newtheorem{postulate}[theorem]{Postulate}
+
+\newtheorem*{question}{Question}
+
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{example}[theorem]{Example}
+
+\newtheorem*{theorem*}{Theorem}
+\newtheorem*{proposition*}{Proposition}
+\newtheorem*{lemma*}{Lemma}
+
+
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+\newtheorem{remarks}{Remarks}
+\newtheorem{notation}{Notation}
+
+\numberwithin{equation}{section}
+
+
+
+\newcommand{\CC}{\mathbb C}
+\newcommand{\FF}{\mathbb F}
+\newcommand{\QQ}{\mathbb Q}
+\newcommand{\OO}{\mathcal O}
+\newcommand{\ZZ}{\mathbb Z}
+\newcommand{\NN}{\mathbb N}
+\newcommand{\RR}{\mathbb R}
+\newcommand{\Norm}{\bm N}
+\newcommand{\on}{\operatorname}
+\newcommand{\ol}{\overline}
+\newcommand{\wt}{\widetilde}
+\newcommand{\wh}{\widehat}
+\makeatletter
+\newcommand*{\defeq}{\mathrel{\rlap{%
+                     \raisebox{0.3ex}{$\m@th\cdot$}}%
+                     \raisebox{-0.3ex}{$\m@th\cdot$}}%
+                     =}
+\makeatother
+\renewcommand{\aa}{\mathfrak a}
+\newcommand{\pp}{\mathfrak p}
+\newcommand{\qq}{\mathfrak q}
+\newcommand{\mm}{\mathfrak m}
+\newcommand{\eps}{\varepsilon}
+\newcommand\half{\frac12}
+\newcommand{\qcurve}{C_1}
+\newcommand{\qjacobian}{J_{C_1}}
+\newcommand{\kcurve}{C_2}
+\newcommand{\kjacobian}{J_{C_2}}
+\newcommand{\badreduction}{S}
+\newcommand{\id}{\on{id}}
+\newcommand\ab{\on{ab}}
+\newcommand{\Hom}{\on{Hom}}
+
+\newcommand{\hyperell}{\mathscr{X}}
+\newcommand{\hyperellSource}{\mathscr{C}}
+% these correspond to \hyperelliptic and \hyperellipticSource but do not include that pesky comma
+
+\newcommand\hyperelliptic[2]{\mathscr X_{#1, #2}} % moduli stack of hyperelliptic curves of genus g over field K, takes in genus g, field K
+\newcommand\hyperellipticSource[2]{\mathscr C_{#1, #2}} % universal family of hyperelliptic curves of genus g over field K, takes in genus g, field K
+\newcommand\grouphyp[2]{\widetilde{\mathrm{G} \mathcal {S}}_{2{#1}+2, #2}} % group of hyperelliptic monodromy for degree 2g+2 polynomials, takes in genus g, field K
+\newcommand\grouphypsmall[2]{\widetilde{\mathrm{G} \mathcal {S}}_{2{#1}+1, #2}} % group of hyperelliptic monodromy for degree 2g+1 polynomials, takes in genus g, field K
+\newcommand\grouphypboth[3]{\widetilde{\mathrm{G} \mathcal {S}}_{2{#1}+2-{#2}, #3}} % convenient notation for previous two groups together (both S_{2g+1} and S_{2g+2}), takes in genus g, shift index i (either 1 or 2), field K
+\newcommand\commutatorhyp[1]{\mathscr S_{2{#1}+2}} 
+\newcommand\moduliSpaceHyp[2]{X_{#1, #2}} % coarse moduli space of hyperelliptic curves, takes in genus g, field K
+\newcommand\standardFamily[3]{\mathscr Y_{#1, #3}^{(#2)}} %notation for the source of the standard families of hyperelliptic curves, takes in genus g, index i (from 1 to 4), field K
+\newcommand\standardTarget[3]{\mathscr W_{#1, #3}^{(#2)}} %notation for the target of the standard families of hyperelliptic curves, takes in genus g, index i (from 1 to 4), field K
+\newcommand\symmetricFamily[3]{\Sigma_{#1,#3}^{(#2)}} %notation for the source of the symmetric families of hyperelliptic curves, takes in genus g, index i (from 1 to 4), field K
+\newcommand\symmetricTarget[3]{\Omega_{#1,#3}^{(#2)}} %notation for the of the symmetric families of hyperelliptic curves, takes in genus g, index i (from 1 to 4), field K
+
+\newcommand{\gify}[2]{\mathrm{G}\Phi_{#1 \to #2}}
+\newcommand{\fy}[2]{\Phi_{#1 \to #2}}
+
+\newcommand{\mg}{\mathscr M_g}
+\newcommand{\ag}{\mathscr A_g}
+
+
+
+%MACROS INTENDED TO GIVE PREIMAGES OF S_2g+2
+
+\newcommand{\hyphat}{\wt{\mathcal{S}}} %Adelic preimage of S_2g+2 in Sp
+\newcommand{\hyp}{\wt{\mathcal{S}}}
+
+\newcommand{\ghypaddict}{\mathrm{G}\mathcal S} %2-adic preimage of S_2g+2 in GSp
+\newcommand{\hypaddict}{\mathcal S} %2-adic preimage of S_2g+2 in Sp
+
+\newcommand{\redtwo}{\big(\Sp_{2g}(\bz_2)\to\Sp_{2g}(\bz/2\bz)\big)}
+\newcommand{\gredtwo}{\big(\GSp_{2g}(\bz_2)\to\GSp_{2g}(\bz/2\bz)\big)}
+
+\newcommand\se{\section}
+\newcommand\ssec{\subsection}
+\newcommand\sssec{\subsubsection}
+\newcommand\bn{{\mathbb N}}
+\newcommand\bc{{\mathbb C}}
+\newcommand\br{{\mathbb R}}
+\newcommand\bq{{\mathbb Q}}
+\newcommand\bp{{\mathbb P}}
+\newcommand\CF{{\mathcal F}}
+\newcommand\bz{{\mathbb Z}}
+\newcommand\scc{{\mathcal C}}
+\newcommand\ba{{\mathbb A}}
+\newcommand\fa{{\mathfrak a}}
+\newcommand\fp{{\mathfrak p}}
+\newcommand\fq{{\mathfrak q}}
+\newcommand\fm{{\mathfrak m}}
+\newcommand\so{{\mathscr O}}
+\newcommand\sg{{\mathscr G}}
+
+\newcommand{\mc}{\mathcal}
+
+\newcommand{\zh}{\widehat{\mathbb Z}}
+
+\DeclareMathOperator\Sp{Sp}
+\newcommand\mono{H}
+\DeclareMathOperator\GSp{GSp}
+\DeclareMathOperator\GL{GL}
+\DeclareMathOperator\Gal{Gal}
+\DeclareMathOperator\Frob{Frob}
+\DeclareMathOperator\Aut{Aut}
+\DeclareMathOperator\Lie{Lie}
+\DeclareMathOperator\tr{tr}
+\DeclareMathOperator\quo{Quo}
+\DeclareMathOperator\Res{Res}
+\DeclareMathOperator\PGL{PGL}
+\DeclareMathOperator\SL{SL}
+\DeclareMathOperator\mult{mult}
+\DeclareMathOperator\disc{disc}
+
+\newcommand \ra{\rightarrow}
+\newcommand{\mf}{\mathfrak}
+
+\DeclareMathOperator\charpoly{ch}
+\newcommand{\frob}{\operatorname{Frob}}
+\newcommand{\red}{r}
+
+%THESE ARE SOME OTHER MACROS
+
+\makeatletter
+\def\@bignumber#1#2{%
+  \ifx#2\end
+    #1\let\next\@gobble
+  \else
+    #1\hspace{0pt plus 1pt}\let\next\@bignumber
+  \fi
+  \next#2}
+\newcommand{\bignumber}[1]{\@bignumber#1\end}
+\makeatother
+
+\newcommand{\hyptwo}{\mathcal S}
+
+\newcommand{\hypmono}{\mathcal H} %Monodromy of the family
+
+\newcommand{\spec}{\on{Spec}}
+\newcommand{\cyc}{\on{cyc}}
+
+\makeatletter
+\newcommand{\customlabel}[2]{%
+   \protected@write \@auxout {}{\string \newlabel {#1}{{#2}{\thepage}{#2}{#1}{}} }%
+   \hypertarget{#1}{#2}
+}
+
+\def\arraystretch{1.3}
+
+\newenvironment{brsm}{% % short for 'bracketed small matrix'
+  \bigl[ \begin{smallmatrix} }{%
+  \end{smallmatrix} \bigr]}
+
+\title[Hyperelliptic Curves with Maximal Galois Action on Torsion of Jacobian]{Hyperelliptic Curves with Maximal Galois Action on the Torsion Points of their Jacobians}
+
+\date{\today}
+
+\author[Aaron Landesman]{Aaron Landesman}
+%\address{\textsuperscript{1}Department of Mathematics, Stanford University, \mbox{Stanford, CA 94305}}
+%\email{\href{mailto:aaronlandesman@stanford.edu}{{\tt aaronlandesman@stanford.edu}}}
+
+\author[Ashvin A. Swaminathan]{Ashvin A. Swaminathan}
+%\address{\textsuperscript{2}Department of Mathematics, Harvard College, \mbox{Cambridge, MA 02138}}
+%\email{\href{mailto:aaswaminathan@college.harvard.edu}{{\tt aaswaminathan@college.harvard.edu}}}
+
+\author[James Tao]{James Tao}
+%\address{\textsuperscript{3}Department of Mathematics, Harvard College, \mbox{Cambridge, MA 02138}}
+%\email{\href{mailto:jamestao@college.harvard.edu}{{\tt jamestao@college.harvard.edu}}}
+
+\author[Yujie Xu]{Yujie Xu}
+%\address{\textsuperscript{4}Department of Mathematics, Harvard University, \mbox{Cambridge, MA 02138}}
+%\email{\href{mailto:yujiex@math.harvard.edu}{{\tt yujiex@math.harvard.edu}}}
+
+
+\AtEndDocument{\bigskip{\footnotesize%
+  \textsc{Department of Mathematics, Stanford University, \mbox{Stanford, CA 94305}} \par  
+  \textit{E-mail address}, Aaron Landesman: \texttt{aaronlandesman@stanford.edu} \par
+  \addvspace{\medskipamount}
+  \textsc{Department of Mathematics, Princeton University, \mbox{Princeton, NJ 08544}} \par  
+  \textit{E-mail address}, Ashvin A. Swaminathan: \texttt{ashvins@math.princeton.edu} \par
+  \addvspace{\medskipamount}
+  \textsc{Department of Mathematics, Harvard College, \mbox{Cambridge, MA 02138}} \par  
+\textit{E-mail address}, James Tao: \texttt{jamestao@college.harvard.edu}
+\par
+  \addvspace{\medskipamount}
+  \textsc{Department of Mathematics, Harvard University, \mbox{Cambridge, MA 02138}} \par
+  \textit{E-mail address}, Yujie Xu: \texttt{yujiex@math.harvard.edu}
+}}
+
+\begin{document}
+
+\begin{abstract}
+In this article, we show that in each of four standard families of hyperelliptic curves, there is a density-$1$ subset of members with the property that their Jacobians have adelic Galois representation with image as large as possible. This result constitutes an explicit application of a general theorem on arbitrary rational families of abelian varieties to the case of families of Jacobians of hyperelliptic curves.
+Furthermore, we provide explicit examples
+of hyperelliptic curves of genus $2$ and $3$ over $\mathbb Q$
+whose Jacobians have such maximal adelic Galois representations.
+\end{abstract} 
+
+\maketitle
+
+
+\input{SECTIONS/intro}
+\input{SECTIONS/commutator}
+\input{SECTIONS/monodromy-of-families}
+\input{SECTIONS/zywina-criteria} 
+\input{SECTIONS/conjecture}
+	
+\section*{Acknowledgments}
+
+\noindent This research was supervised by Ken Ono and David Zureick-Brown at the Emory University Mathematics REU and was supported by the National Science Foundation (grant number DMS-1557960). We would like to thank David Zureick-Brown for suggesting the problem that led to the present article and for offering us his invaluable advice and guidance.  We would like to thank
+Samuele Anni
+and
+Vladimir Dokchitser
+for helpful correspondence regarding applying their work.
+We thank Jackson Morrow and David Zureick-Brown for reading early drafts and providing helpful feedback, and we thank the anonymous referee for providing a number of useful suggestions. We used {\tt Magma} and \emph{Mathematica} for explicit calculations.
+
+\bibliographystyle{alpha}
+\bibliography{bibfile}
+
+\end{document}
